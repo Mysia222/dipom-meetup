@@ -1,0 +1,65 @@
+<div class="home-wr">
+    <div *ngIf="isDelete">
+        <h2>This item deleted</h2>
+        <a class="waves-effect waves-light" routerLink="/meetups/edit/">Go back</a>
+    </div>
+    <div>
+        <div class="admin-card" *ngIf="authService.getloggedIn()">
+            <div class="row">
+                <form [formGroup]="EditProfileForm">
+                <div class="col s5">
+                <div class="card once-meetup">
+                    <div class="card-image">
+                        <img src="./assets/img/profile.png">
+                    </div>
+                </div>
+                </div>
+                <div class="col s7">
+                <div class="card-content">
+                    <span class=" price-card"> 
+                    <span class="label"> Email: </span> <input formControlName="email" id="input_text" type="text" value = {{profile.email}}> 
+                    </span>
+                    <span> 
+                    <span class="label"> Имя:</span> <input id="input_text" formControlName="firstName" type="text" value = {{profile.firstName|uppercase}}>
+                    </span>
+                    <span class="price-card"> 
+                    <span class="label">Фамилия: </span> <input formControlName="lastName" id="input_text" type="text" value = {{profile.lastName|uppercase}}> 
+                     </span>
+                    </div>
+                </div>
+                <!--<input class="waves-effect waves-light btn profile-account" type="submit" value="Save">-->
+                </form>
+            </div>
+        </div>
+        <div *ngIf="!authService.getloggedAdminIn() && authService.getloggedIn()">
+        <h4>Мероприятия:</h4>
+        <div class="row favs" *ngIf="favsObs | async as onefav else loading">    
+            <div *ngIf="onefav.length else cat">
+            <app-favs class="col s12 m6 l3" *ngFor="let fav of onefav"  [fav]="fav">   
+            </app-favs>
+            </div> 
+        </div>
+        </div>
+        <ng-template #cat>
+            <div class="no-fav">
+                <h6>Вы еще не участвуйте в мероприятиях :(</h6>
+                <img src="./assets/img/no-fav.jpg">
+            </div>
+        </ng-template>
+        <ng-template #loading>
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-green-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+             </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

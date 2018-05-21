@@ -1,0 +1,100 @@
+.card-image img {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.card {
+    width: 350px;
+    margin: 20px 2px;
+    padding: 10px 20px 5px 20px;
+}
+
+.col.s12.m6 {
+    display: flex;
+}
+
+.card-content {
+    padding: 0px;
+    padding-bottom: 10px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #898686;
+}
+
+.home-wr {
+    margin-top: 10px;
+    margin-left: 350px;
+}
+
+.price-card {
+    position: absolute;
+    margin-left: 150px;
+    font-size: 17px;
+}
+
+span.card-title {
+    font-size: 18px !important;
+}
+
+p {
+    font-weight: bold;
+}
+
+a.collapsible-header.waves-effect.waves-teal {
+    font-weight: bold !important;
+}
+
+input#icon_prefix {
+    width: 300px;
+    float: right;
+    margin-right: 1000px;
+}
+
+.search-ico {
+    margin-top: 10px;
+    position: absolute;
+}
+
+.col.s12.m6 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    width: 110%;
+}
+
+.ng-star-inserted {
+    margin: 0 33px;
+}
+
+.add-button {
+    margin-bottom: 30px!important;
+}
+
+div#modal2 {
+    width: 30%;
+    height: 30%;
+    border: solid 5px #ffced2;
+}
+
+button.modal-action.modal-close.waves-effect.waves-green.btn-flat {
+    margin-left: 93%;
+    padding: 0;
+}
+
+i.large.material-icons {
+    font-size: 35px;
+}
+
+i.large.material-icons.done {
+    font-size: 140px;
+    margin-left: 140px;
+    color: #258e42;
+}
+
+.model-cont {
+    padding: 20px;
+}

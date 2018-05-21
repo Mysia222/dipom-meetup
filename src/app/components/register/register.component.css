@@ -1,0 +1,64 @@
+.card-image img {
+    width: 200px;
+    margin: 0 auto;
+}
+
+.card {
+    width: 300px;
+    margin: 20px 30px;
+    padding: 10px 20px 5px 20px;
+}
+
+.col.s12.m6 {
+    display: flex;
+}
+
+.card-content {
+    padding: 0px;
+    padding-bottom: 10px;
+}
+
+h2 {
+    
+    text-align: center;
+    font-size: 38px;
+    font-weight: bold;
+    color: #898686;
+}
+
+.home-wr {
+        margin-top: 10px;
+    margin-left: 300px;
+}
+
+
+h2 {
+
+    text-align: center;
+    font-size: 38px;
+    font-weight: bold;
+    color: #898686;
+}
+
+.row {
+    width: 60%;
+}
+
+a.waves-effect.waves-light.btn {
+    margin-left: 10px;
+}
+
+h2 {    
+    font-weight: 300 !important;
+}
+
+form {
+    width: 40%;
+    margin-left: 374px;
+}
+
+.form-control-feedback {
+    color: red;
+    margin-top: -30px;
+    margin-bottom: 40px;
+}

@@ -1,0 +1,64 @@
+<ul id="dropdown1" class="dropdown-content">
+    <li> <a class="nav-link" routerLink="/meetups/edit"> Мероприятия </a>
+    </li>
+    <li><a class="nav-link" routerLink="/meetups/edit"> Пользователи</a>
+    </li>
+    <li class="divider"></li>
+</ul>
+
+<nav class="lighten-2">
+    <div class="nav-wrapper lighten-2">
+        <a routerLink="/" class="brand-logo"><img src=".\assets\img\chat.png"> </a>
+        <ul class="right hide-on-med-and-down">
+            <li> <a class="nav-link" routerLink="/"> Главная</a>
+            </li>
+            <!--<li >
+                 <a  *ngIf="usersService.getloggedAdminIn()" class="dropdown-button" data-activates="dropdown1">Admin<i class="material-icons right">arrow_drop_down</i></a>
+              </li>-->
+            <li> <a routerLink="/register" *ngIf="!authService.getloggedIn()">Регистрация</a>
+            </li>
+            <li> <a *ngIf="!authService.getloggedIn()" class="nav-link" routerLink="/login"> Войти</a>
+            </li>
+            <li> <a *ngIf="authService.getloggedIn()" class="nav-link" routerLink="/profile"> Профиль</a>
+            </li>
+            <!--<li> <a *ngIf="authService.getloggedAdminIn()" class="nav-link" routerLink="/users"> Users</a>
+              </li>-->
+            <li> <a *ngIf="authService.getloggedAdminIn()" class="nav-link" routerLink="/meetups/edit"> Мероприятия </a>
+            </li>
+            <li> <a *ngIf="authService.getloggedIn()" class="nav-link" (click)="LogOut()"> Выйти</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<a href="#" data-target="nav-mobile" class="top-nav sidenav-trigger waves-effect waves-light circle hide-on-large-only">
+        <i class="material-icons">menu</i></a>
+<ul id="nav-mobile" class="side-nav fixed">
+    <li class="logo">
+        <a href="#!" class="brand-logo"><img src=".\assets\img\chat.png"> </a>
+    </li>
+    <h3> Meetups </h3>
+    <li class="search">
+        <div class="search-wrapper card">
+            <input id="search" [(ngModel)]="queryString" (click)="isClicked = true"><i class="material-icons">search</i>
+            <div *ngIf="queryString && isClicked">
+                <div class="search-results" (click)="makeInvisible($event)" *ngIf="meetupsObs | async as onemeetup else loading">
+                    <div *ngFor="let meetup of onemeetup | filter: queryString" class="list-search">
+                        <button [routerLink]="['/meetups/', meetup._id]">  {{meetup.title}} </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="bold collapsible-header active waves-effect waves-teal">КАТЕГОРИИ</a>
+                <div class="collapsible-body" *ngFor="let category of categories">
+                    <ul>
+                        <li> <button class="category"> {{category.category_name }}</button></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+</ul>

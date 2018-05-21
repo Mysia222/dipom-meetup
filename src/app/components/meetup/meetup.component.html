@@ -1,0 +1,152 @@
+<script>
+        function initMap() {
+            var uluru = {lat: -25.363, lng: 131.044};
+            var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: uluru
+            });
+            var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+            });
+        }
+    </script>
+<div class="home-wr">
+    <div *ngIf="isDelete">
+        <div id="modal2" class="modal modal-fixed-footer open" style="z-index: 1005; display: block; opacity: 1; transform: scaleX(1); top: 10%;">
+            <div class="modal-content">
+                <h4>Item is deleted</h4>
+            </div>
+            <div class="modal-footer">
+                <a routerLink="/meetups/edit/" class="modal-action modal-close waves-effect waves-green btn-flat ">Go edit meetups</a>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="meetupObs | async as meetup else loading">
+
+        <div class="admin-card" *ngIf="authService.getloggedAdminIn() else user">
+            <div class="row">
+                <form [formGroup]="EditmeetupForm" (submit)="onUpdateMeetupSubmit()">
+                    <div class="col s5">
+                        <div class="card once-meetup edit">
+                            <div class="card-image">
+                                <img src="./assets/img/{{meetup.meetupData.image}}">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title price-card"> 
+                      Название: <input formCozntrolName="name" id="input_text" type="text" value = "{{meetup.meetupData.name}}"/> 
+                      </span>
+                                <span> 
+                      Изображение(Url): <input  id="input_text" formControlName="image" type="text" value = {{meetup.meetupData.image}}>
+                      </span>
+                                <span class="price-card"> 
+                      Цена(USD): <input formControlName="price" id="input_text" type="text" value = {{meetup.meetupData.price}}> 
+                      </span>
+                                <span> 
+                      Организатор: <input id="input_text" formControlName="createdBy" type="text" value = {{meetup.createdBy}}>
+                      </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s7">
+                        <p class="category-label">Category:</p>
+                        <input id="input_text" formControlName="category" type="text" value={{meetup.meetupData.category}}>
+                    </div>
+                    <div class="row s7">
+                    <div class="col s7">
+                    <p>Description:</p>
+                    <textarea id="textarea1" [froalaEditor] formControlName="description" class="materialize-textarea" value={{meetup.meetupData.description}}></textarea>
+                    </div>
+                    <input class="waves-effect waves-light btn" type="submit" value="Save">
+                    <a class="waves-effect waves-light btn" (click)="deletemeetup()">delete</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <ng-template #user>
+            <div class="row user">
+                <div class="row s5">
+                    <div class="card once-meetup">
+                        <div class="card-image">
+                            <img src="./assets/img/{{meetup.meetupData.image}}">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title price-card">Название: 
+                                <br>
+                                <span class="name-event">
+                                    {{meetup.meetupData.name}}
+                                </span>
+                            </span>
+                            <span class="price-card">Цена(USD): <br>{{meetup.meetupData.price}} $</span>
+                            <div class="author"> <span class="price-card">Организатор:<br> {{meetup.createdBy}}</span>
+                            </div>
+                            <p class="price-card">Категория:</p>
+                            <span class="price-card">{{meetup.meetupData.category}}</span>
+                            <br>
+                            <br>
+                            <button class="btn modal-trigger">Присоединиться</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row s7">
+                        
+                    <p>Описание:</p>
+                    <div id="textarea1" class="materialize-textarea">
+                        {{meetupObj}}
+                    </div>
+                </div>
+                <div class="row s7 map-class">
+                    <app-map> </app-map>
+                </div>
+            </div>
+            <div>
+                <div *ngIf="!authService.getloggedAdminIn() && authService.getloggedIn()">
+                    <h5>Comments</h5>
+                    <div class="admin-card" *ngIf="authService.getloggedIn()">
+                        <div class="row">
+                            <form [formGroup]="AddCommentForm" (ngSubmit)="addCommentSubmit()">
+                                <div class="card once-meetup">
+                                    <div class="card-content">
+                                        <span class="card-title price-card"> 
+                                 Title: <input formControlName="commentsTitle" id="input_text" type="text"> 
+                                 Rating (0-5): <input formControlName="commentsRating" id="input_text" type="text"> 
+                                 </span>
+                                        <p>Description:</p>
+                                        <textarea [froalaEditor] formControlName="editorData"></textarea>
+                                        <textarea [froalaEditor] formControlName="commentsDescription" class="materialize-textarea add-comment">
+                                 </textarea> 
+                                        <input class="waves-effect waves-light btn" type="submit" [disabled]="AddCommentForm.invalid" value="Add comment">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="commentsObs | async as onecomment else loading">
+                    <div>
+                        <app-comment *ngFor="let comment of onecomment" [comment]="comment">
+                        </app-comment>
+                    </div>
+                </div>
+            </div>
+
+        </ng-template>
+        <ng-template #loading>
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-green-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+
+</div>

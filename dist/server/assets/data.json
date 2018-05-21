@@ -1,0 +1,19 @@
+{
+    "meetups": [
+      {
+          "meetup_id": 1,
+          "meetup_title": "Unshakeable: Your Financial Freedom Playmeetup",
+          "author_name": "Tony Robbins"
+      }, 
+      {
+          "meetup_id": 2,
+          "meetup_title": "Tools of Titans: The Tactics, Routines, and Habits of Billionaires, Icons, and World-Class Performers",
+          "author_name": "Timothy Ferriss"
+      }, 
+      {
+          "meetup_id": 3,
+          "meetup_title": "The 10X Rule: The Only Difference Between Success and Failure",
+          "author_name": "Grant Cardone"
+      } 
+    ]
+  }

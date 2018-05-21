@@ -1,0 +1,140 @@
+.card-image img {
+    width: 300px;
+}
+
+.card {
+    width: 300px;
+    margin: 20px 30px;
+    padding: 10px 20px 5px 20px;
+}
+
+.col.s12.m6 {
+    display: flex;
+}
+
+.card-content {
+    padding: 0px;
+    padding-bottom: 10px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #898686;
+}
+
+.home-wr {
+    margin-top: 10px;
+    margin-left: 350px;
+}
+
+.price-card {
+    margin-top: 10px;
+}
+
+
+p {
+    font-weight: bold;
+    margin-left: -200px;
+}
+
+a.collapsible-header.waves-effect.waves-teal {
+    font-weight: bold !important;
+}
+
+input#icon_prefix {
+    width: 300px;
+    float: right;
+    margin-right: 1000px;
+}
+
+.search-ico {
+    margin-top: 10px;
+    position: absolute;
+}
+
+.card.once-meetup {
+    width: 80%;
+    margin-left: -200px;
+}
+
+
+card .card-title {
+    font-size: 20px;
+    font-weight: 300;
+    position: absolute;
+    margin-top: -400px;
+    margin-left: 32%;
+    width: 50%;
+}
+
+
+#textarea1 {
+
+    margin-left: -200px;
+    display: block;
+    padding: 0;
+    width: 100%;
+
+}
+
+img {
+    width: 200px;
+}
+
+input#input_text {
+    width: 200px;
+    margin-left: 10px;
+}
+
+p.card-title.price-card {
+    margin-top: 50px;
+}
+
+.row {
+    margin-left: 100px;
+}
+
+h2 {
+    margin-right: 400px;
+}
+
+input.waves-effect.waves-light.btn {
+    margin-left: -80px;
+}
+
+.admin-card {
+    margin-left: 150px;
+}
+
+.row.user {
+    margin-left: 270px;
+}
+
+.card-content {
+    margin-left: -230px;
+    width: 50%;
+    margin-top: 30px;
+}
+
+span.label {
+    font-weight: bold;
+}
+
+.row.favs {
+    margin-left: -140px;
+}
+
+.col.s12.m6.l3 {
+    width: 240px;
+    margin-left: 100px;
+}
+h4 {
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.no-fav {
+    margin-left: 140px;
+
+}

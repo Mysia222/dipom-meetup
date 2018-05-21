@@ -1,0 +1,17 @@
+agm-map {
+    height: 300px;
+  }
+
+  agm-map.map.sebm-google-map-container {
+    /* margin-left: -100px; */
+    width: 700px;
+    height: 400px;
+}
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.5;
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    color: rgba(0,0,0,0.87);
+}

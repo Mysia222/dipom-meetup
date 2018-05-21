@@ -1,0 +1,181 @@
+
+@media (max-device-width: 800px) {
+    .card.once-meetup {
+        width: 60%;
+        margin-left: -600px;
+        position: absolute;
+    }
+}
+@media (min-device-width: 800px) {
+    .card.once-meetup {
+    width: 130%;
+    height: 500px;
+    margin-left: -400px;
+    }  
+    .card.once-meetup.edit {
+        margin-left: -300px;
+    }
+    .author {
+        margin-left: 960px;
+        /* margin-top: -45px; */
+        position: absolute;
+        text-align: right;
+    }
+    .row.s7.map-class {
+        margin-left: -300px;
+        /* font-size: 13px; */
+    }
+}
+span.name-event {
+    font-size: 22px;
+    /* margin-bottom: -10px; */
+}
+.row.s7 {
+    margin-left: -100px;
+}
+.card {
+    width: 300px;
+    margin: 20px 30px;
+    padding: 10px 20px 5px 20px;
+}
+.card-content[_ngcontent-c2] {
+    padding: 0px;
+    height: 360px;
+    padding-bottom: 10px;
+}
+
+.col.s12.m6 {
+    display: flex;
+}
+
+.card-content {
+    padding: 0px;
+    padding-bottom: 10px;
+}
+.card .card-image {
+    position: relative;
+    float: left;
+    width: 60%;
+}
+.card .card-image img {
+    display: block;
+    border-radius: 2px 2px 0 0;
+    position: relative;
+    left: 0;
+    right: 0;
+    /* top: 0; */
+    /* bottom: 0; */
+    width: 90%;
+}
+
+h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #898686;
+}
+
+.home-wr {
+    margin-top: 10px;
+    margin-left: 350px;
+}
+
+.price-card {
+    margin-top: 10px;
+}
+
+span.card-title {
+    font-size: 18px !important;
+}
+
+p {
+    font-weight: bold;
+    margin-left: -200px;
+}
+
+a.collapsible-header.waves-effect.waves-teal {
+    font-weight: bold !important;
+}
+
+input#icon_prefix {
+    width: 300px;
+    float: right;
+    margin-right: 1000px;
+}
+
+.search-ico {
+    margin-top: 10px;
+    position: absolute;
+}
+
+
+
+card .card-title {
+    font-size: 20px;
+    font-weight: 300;
+    position: absolute;
+    margin-top: -400px;
+    margin-left: 32%;
+    width: 50%;
+}
+
+.card-title.decription {
+    float: left;
+    margin-top: -380px;
+    margin-left: 400px;
+}
+
+#textarea1 {
+
+    margin-left: -200px;
+    display: block;
+    padding: 0;
+    width: 100%;
+}
+
+img {
+    width: 200px;
+}
+
+input#input_text {
+    width: 200px;
+    margin-left: 10px;
+}
+
+p.card-title.price-card {
+    margin-top: 50px;
+}
+
+.row {
+    margin-left: 100px;
+}
+
+h2 {
+    margin-right: 400px;
+}
+
+.admin-card {
+    margin-left: 150px;
+}
+
+.row.user {
+    margin-left: 270px;
+}
+
+span.price-card.category {
+    margin-top: 16px;
+    margin-left: -100px;
+    display: block;
+}
+
+p.category-label {
+    position: absolute;
+}
+
+div#modal2 {
+    width: 30%;
+    height: 30%;
+}
+
+h5 {
+    margin-left: 46px;
+}

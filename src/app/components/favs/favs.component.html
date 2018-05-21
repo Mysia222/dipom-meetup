@@ -1,0 +1,12 @@
+
+<div *ngIf="meetupObs | async as meetup">
+<div class="card"[routerLink]="['/meetups/', fav.meetupId]">
+    <div class="card-image fav-image">
+        <img src="./assets/img/{{meetup.image}}">
+    </div>
+    <div class="card-content">
+        <span class="card-title">{{meetup.title}}</span>
+        <span class="price-card">{{fav.additionDate | date}}</span>
+    </div>
+</div>
+</div>

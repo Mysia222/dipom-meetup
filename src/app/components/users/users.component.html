@@ -1,0 +1,18 @@
+
+
+     <div class="row" *ngIf="usersObs | async as oneuser">
+         <div class="col s12 m6">
+             <div *ngFor="let user of oneuser ">   
+                    <div class="card" [routerLink]="['/user/', user._id]">
+                        <div class="card-image">
+                            <img src="./assets/img/profile.png">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">{{user.firstName}}</span>
+                            <span class="card-title price-card">{{user.lastName}}</span>
+                            <p>{{user.email}}</p>
+                        </div>
+                    </div>
+                </div>
+         </div>
+     </div>

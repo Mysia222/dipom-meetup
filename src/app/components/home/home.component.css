@@ -1,0 +1,133 @@
+@media (max-device-width: 800px) {
+    .slides-wrapper {
+        display: none;
+    }
+    .mobile-title {
+        display: block;
+        margin-left: -130px;
+        color:  #31caa9;
+    }
+    app-meetups.ng-tns-c2-0.ng-star-inserted {
+        margin-left: -300px;
+    }
+    h2.row {
+        margin-left: -300px;
+    }
+    nav.lighten-2 {
+        width: 170%;
+    }
+}
+@media (min-device-width: 800px) {
+    .mobile-title {
+        display: none;
+    }
+    
+}
+.col.s12.m6 {
+    display: flex;
+}
+
+li.ng-tns-c1-0 {
+    margin-right: -100px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #898686;
+}
+
+.home-wr {
+    margin-top: 10px;
+    margin-left: 350px;
+}
+
+.price-card {
+    position: absolute;
+    margin-left: 150px;
+    font-size: 17px;
+}
+
+span.card-title {
+    font-size: 18px !important;
+}
+
+p {
+    font-weight: bold;
+}
+
+a.collapsible-header.waves-effect.waves-teal {
+    font-weight: bold !important;
+}
+
+input#icon_prefix {
+    width: 300px;
+    float: right;
+    margin-right: 75% !important;
+}
+
+.search-ico {
+    margin-top: 10px;
+    position: absolute;
+}
+
+.col.s12.m6[_ngcontent-c2] {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 110%;
+    margin-left: -30px;
+}
+
+select.browser-default {
+    width: 20%;
+    border-color: #31caa9;
+    margin-left: 50px;
+}
+
+label {
+    margin-top: 80px;
+    font-size: 18px !important;
+    position: absolute;
+}
+
+#container {
+    width: 100%;
+    padding: 0;
+    background:#fff;
+}
+
+.items {
+
+    height:500px;
+    background:#ECECEC;
+}
+
+#left, #right { 
+    margin: 30px;
+}
+
+img.slider-img {
+    filter: brightness(70%);
+}
+
+.slider-info {
+    position: absolute;
+    z-index: 1;
+    color: white;
+    width: 100%;
+    margin-left: 100px;
+    /* margin: 0 auto; */
+    margin-top: 100px;
+}
+
+h1.ng-tns-c2-0 {
+    width: 90%;
+}
+
+.slides-wrapper {
+    margin-left: -100px;
+    margin-top: -10px;
+}

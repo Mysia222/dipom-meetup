@@ -1,0 +1,111 @@
+<div class="home-wr">
+    <h2> Edit Meetups</h2>
+    <ul>
+        <li>
+            <i class="material-icons prefix search-ico">search</i>
+        </li>
+        <li>
+            <input id="icon_prefix" type="text" [(ngModel)]="queryString" class="validate">
+        </li>
+    </ul>
+
+    <button data-target="modal1" (click)="openModal()" class="btn modal-trigger">Add new meetup</button>
+
+    <div *ngIf="isDialogOpen" id="modal2" class="modal open" style="z-index: 1005; display: block; opacity: 1; transform: scaleX(1); top: 10%;">
+        <div class="modal-content">
+            <h4>Adding meetup</h4>
+            <form novalidate [formGroup]="MeetupForm" id="add-meetup-form" (ngSubmit)="onMeetupFormSubmit()" class="col s4 edit-meetups-form">
+                <div class="form-group" [ngClass]="{
+                    'has-danger': name.invalid && (name.dirty || name.touched),
+                    'has-success': name.valid && (name.dirty || name.touched)
+                    }">
+                    <label>Name</label>
+                    <input type="text" class="form-control" formControlName="name" required>
+                    <div class="form-control-feedback" *ngIf="name.errors && (name.dirty || name.touched)">
+                        <p class="error-input" *ngIf="name.errors.required">*name is required</p>
+                    </div>
+                </div>
+                <div class="form-group" [ngClass]="{
+                'has-danger': description.invalid && (description.dirty || description.touched),
+                'has-success': description.valid && (description.dirty || description.touched)
+                }">
+                    <label>Description</label>
+                    <input type="text" class="form-control" formControlName="description" required>
+                    <div class="form-control-feedback" *ngIf="description.errors && (description.dirty || description.touched)">
+                        <p class="error-input" *ngIf="description.errors.required">*Description is required</p>
+                    </div>
+                </div>
+                <div class="form-group" [ngClass]="{
+                    'has-danger': address.invalid && (address.dirty || address.touched),
+                    'has-success': address.valid && (address.dirty || address.touched)
+                    }">
+                    <label>Address</label>
+                    <input type="text" class="form-control" formControlName="address" required>
+                    <div class="form-control-feedback" *ngIf="address.errors && (address.dirty || address.touched)">
+                        <p class="error-input" *ngIf="address.errors.required">*Address is required</p>
+                    </div>
+                </div>
+                <div class="form-group" [ngClass]="{
+                'has-danger': eventsDate.invalid && (eventsDate.dirty || eventsDate.touched),
+                'has-success': eventsDate.valid && (eventsDate.dirty || eventsDate.touched)
+                }">
+                    <label>Events date</label>
+                    <input type='date' formControlName="eventsDate" />
+                    <div class="form-control-feedback" *ngIf="eventsDate.errors && (eventsDate.dirty || eventsDate.touched)">
+                        <p class="error-input" *ngIf="eventsDate.errors.required">*Events Date is required</p>
+                    </div>
+                </div>
+                <div class="form-group" [ngClass]="{
+                    'has-danger': createdBy.invalid && (createdBy.dirty || createdBy.touched),
+                    'has-success': createdBy.valid && (createdBy.dirty || createdBy.touched)
+                    }">
+                    <label>Create By</label>
+                    <input type="text" class="form-control" formControlName="createdBy" required>
+                    <div class="form-control-feedback" *ngIf="createdBy.errors && (createdBy.dirty || createdBy.touched)">
+                        <p class="error-input" *ngIf="createdBy.errors.required">*Author is required</p>
+                    </div>
+                </div>
+                <div class="form-group" [ngClass]="{
+                    'has-danger': price.invalid && (price.dirty || price.touched),
+                    'has-success': price.valid && (price.dirty || price.touched)
+                    }">
+                    <label>Price (USD)</label>
+                    <input type="text" class="form-control" formControlName="price" required>
+                    <div class="form-control-feedback" *ngIf="price.errors && (price.dirty || price.touched)">
+                        <p class="error-input" *ngIf="price.errors.required">*Price is required</p>
+                        <p class="error-input" *ngIf="price.errors.pattern">*It should be number.</p>
+                    </div>
+                </div>
+                <div class="form-group" [ngClass]="{
+                    'has-danger': image.invalid && (image.dirty || image.touched),
+                    'has-success': image.valid && (image.dirty || image.touched)
+                    }">
+                    <label>Image URL</label>
+                    <input type="text" class="form-control" formControlName="image" required>
+                    <div class="form-control-feedback" *ngIf="image.errors && (image.dirty || image.touched)">
+                        <p class="error-input" *ngIf="image.errors.required">*Image Url is required</p>
+                    </div>
+                </div>
+                <div class="form-group" [ngClass]="{
+                    'has-danger': category.invalid && (category.dirty || category.touched),
+                    'has-success': category.valid && (category.dirty || category.touched)
+                    }">
+                    <label>Category</label>
+                    <input type="text" class="form-control" formControlName="category" required>
+                    <div class="form-control-feedback" *ngIf="category.errors && (category.dirty || category.touched)">
+                        <p class="error-input" *ngIf="category.errors.required">*Category is required</p>
+                    </div>
+                </div>
+                <input class="waves-effect waves-light btn model-submit" type="submit" [disabled]="MeetupForm.invalid" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="meetupsObs | async as onemeetup else loading">
+        <div class="col s12 m6">
+            <app-meetups *ngFor="let meetup of onemeetup | filter: queryString" [meetup]="meetup" [category]="category">
+            </app-meetups>
+        </div>
+    </div>
+
+</div>
