@@ -8,7 +8,7 @@ const crypto = require('crypto'),
 // User Model Definition
 const userSchema = new Schema({  
     firstName: { type: String, required: true, lowercase: true },    
-    lastName: { type: String, required: true, lowercase: true },
+    lastName: { type: String, lowercase: true },
     email: { type: String, required: true, unique: true, lowercase: true },
     isAdmin: { type: Boolean },
     location: { type: String },

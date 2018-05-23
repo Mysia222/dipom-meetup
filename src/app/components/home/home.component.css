@@ -2,10 +2,11 @@
     .slides-wrapper {
         display: none;
     }
-    .mobile-title {
+    h3.mobile-title {
         display: block;
-        margin-left: -130px;
-        color:  #31caa9;
+        color: #1f967c;
+        text-align: center;
+        padding: 5px 0px;
     }
     app-meetups.ng-tns-c2-0.ng-star-inserted {
         margin-left: -300px;
@@ -16,13 +17,29 @@
     nav.lighten-2 {
         width: 170%;
     }
+    #cont.home-wr {
+        margin-top: 0px;
+        margin-left: 0px;
+    }
 }
-@media (min-device-width: 800px) {
+@media (min-width: 800px) {
     .mobile-title {
         display: none;
     }
-    
+    .home-wr {
+        margin-top: 10px;
+        margin-left: 350px;
+    } 
 }
+@media (max-width: 800px) {
+    h3.mobile-title {
+        display: block;
+        color: #1f967c;
+        text-align: center;
+        padding: 5px 0px;
+    }
+}
+
 .col.s12.m6 {
     display: flex;
 }
@@ -35,11 +52,6 @@ h2 {
     text-align: center;
     font-size: 30px;
     color: #898686;
-}
-
-.home-wr {
-    margin-top: 10px;
-    margin-left: 350px;
 }
 
 .price-card {

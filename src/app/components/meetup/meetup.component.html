@@ -50,13 +50,13 @@
                         </div>
                     </div>
                     <div class="col s7">
-                        <p class="category-label">Category:</p>
+                        <p class="category-label">Категория:</p>
                         <input id="input_text" formControlName="category" type="text" value={{meetup.meetupData.category}}>
                     </div>
                     <div class="row s7">
                     <div class="col s7">
                     <p>Description:</p>
-                    <textarea id="textarea1" [froalaEditor] formControlName="description" class="materialize-textarea" value={{meetup.meetupData.description}}></textarea>
+                    <textarea id="textarea1" formControlName="description" class="materialize-textarea" value={{meetup.meetupData.description}}></textarea>
                     </div>
                     <input class="waves-effect waves-light btn" type="submit" value="Save">
                     <a class="waves-effect waves-light btn" (click)="deletemeetup()">delete</a>
@@ -85,12 +85,17 @@
                             <span class="price-card">{{meetup.meetupData.category}}</span>
                             <br>
                             <br>
-                            <button class="btn modal-trigger">Присоединиться</button>
+                            <button class="btn modal-trigger"  *ngIf="authService.getloggedIn() && !isFavEdded" (click)="addToFav(meetup._id)">Присоединиться</button>
+                            <button *ngIf="isFavEdded" class="btn disabled">Присоединиться</button>
+                            <button *ngIf="isFavEdded" (click)="deleteToFav(meetup._id)" class="btn red">Отмена</button>
                         </div>
                     </div>
                 </div>
                 <div class="row s7">
-                        
+                    <!-- <form [formGroup]="editorForm" >
+                    <textarea [froalaEditor] formControlName="editorData" id="textarea1" class="materialize-textarea">
+                    </textarea>
+                    </form> -->
                     <p>Описание:</p>
                     <div id="textarea1" class="materialize-textarea">
                         {{meetupObj}}
@@ -106,16 +111,14 @@
                     <div class="admin-card" *ngIf="authService.getloggedIn()">
                         <div class="row">
                             <form [formGroup]="AddCommentForm" (ngSubmit)="addCommentSubmit()">
-                                <div class="card once-meetup">
+                                <div class="card once-meetup comment-card">
                                     <div class="card-content">
                                         <span class="card-title price-card"> 
                                  Title: <input formControlName="commentsTitle" id="input_text" type="text"> 
                                  Rating (0-5): <input formControlName="commentsRating" id="input_text" type="text"> 
                                  </span>
                                         <p>Description:</p>
-                                        <textarea [froalaEditor] formControlName="editorData"></textarea>
-                                        <textarea [froalaEditor] formControlName="commentsDescription" class="materialize-textarea add-comment">
-                                 </textarea> 
+                                        <input formControlName="commentsDescription" id="input_text" type="text"> 
                                         <input class="waves-effect waves-light btn" type="submit" [disabled]="AddCommentForm.invalid" value="Add comment">
                                     </div>
                                 </div>

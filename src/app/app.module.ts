@@ -34,6 +34,7 @@ import { AuthGuard } from './guards/auth.guard'; //add admin Guard
 import { ApplicationRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
+import { MaterializeModule } from 'angular2-materialize';
 
 // Import Angular plugin.
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
@@ -70,7 +71,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     AppRoutingModule,
     Ng2CarouselamosModule,
     FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
+    MaterializeModule
   ],
   providers: [AuthService, AuthGuard, UsersService, MeetupsService, FavoritesService],
   bootstrap: [AppComponent]

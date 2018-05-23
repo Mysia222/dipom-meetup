@@ -3,6 +3,23 @@
     margin: 0 auto;
 }
 
+@media (max-width: 800px) {
+    div#login-form {
+        width: 100%;
+    }
+    .row[_ngcontent-c2] {
+        width: 90%;
+    }
+    .input-field.col.s12.social-div[_ngcontent-c2] {
+        padding-left: 0px;
+    }
+    h2 {
+        /* margin-left: -10px; */
+        display: block;
+        padding-left: 100px;
+    }
+}
+
 .card {
     width: 300px;
     margin: 20px 30px;

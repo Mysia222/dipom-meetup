@@ -40,9 +40,7 @@ export class RegisterComponent implements OnInit {
       Validators.minLength(2), 
       Validators.maxLength(12)
     ]);
-    this.lastName = new FormControl('', 
-    Validators.required
-    );
+    this.lastName = new FormControl('');
     this.location = new FormControl('', 
     Validators.required
     );

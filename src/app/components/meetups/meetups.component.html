@@ -1,7 +1,7 @@
-<div *ngIf="isFavEdded">
+<div *ngIf="isFavEdded && openWindow">
     <div id="modal2" class="modal modal-fixed-footer open" style="z-index: 1005; display: block; opacity: 1; transform: scaleX(1); top: 10%;">
         <div class="model-cont">
-            <button (click)="isFavEdded=false" class="modal-action modal-close waves-effect waves-green btn-flat "> 
+            <button (click)="openWindow=false" class="modal-action modal-close waves-effect waves-green btn-flat "> 
                         <i class="large material-icons">close</i></button>
             <h4>Item added to favorites</h4>
             <i class="large material-icons done">check_circle</i>
@@ -20,7 +20,9 @@
         </div>
     </div>
     <div class="add-button" *ngIf="isUser">
-        <button (click)="addToFav(meetup._id)" class="waves-effect waves-light btn">Take part</button>
+        <button (click)="addToFav(meetup._id)" *ngIf="!isFavEdded" class="waves-effect waves-light btn">Take part</button>
+        <button *ngIf="isFavEdded" class="btn disabled">Take part</button>
+        <button *ngIf="isFavEdded" (click)="deleteToFav(meetup._id)" class="btn red">Cancel</button>
     </div>
 
 </div>

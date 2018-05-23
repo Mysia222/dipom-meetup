@@ -47,6 +47,12 @@ span.name-event {
 .col.s12.m6 {
     display: flex;
 }
+.card.once-meetup.comment-card {
+    width: 100%;
+    height: 100%;
+    margin-left: -200px;
+    margin-top: 51px;
+}
 
 .card-content {
     padding: 0px;

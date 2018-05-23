@@ -25,6 +25,12 @@ export class FavoritesService {
             .map(response => response.json())
     } 
 
+    public deleteFav(favId: string):Observable<any> {
+
+        return this.http.delete(this.favUrl + "/" +  favId)
+            .map(response => response.json())
+    } 
+
     public getAllUsersFavs(): Observable<Favorite[]>  {
 
         return this.http.get(this.favUrl)

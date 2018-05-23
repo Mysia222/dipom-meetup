@@ -1,5 +1,5 @@
 <h2> Регистрация</h2>
-<form novalidate [formGroup]="userForm" #form="ngForm" (submit)="registerUser()">
+<form novalidate [formGroup]="userForm" #form="ngForm" id="register-form" (submit)="registerUser()">
     <div class="form-group" [ngClass]="{
    'has-danger': firstName.invalid && (firstName.dirty || firstName.touched),
    'has-success': firstName.valid && (firstName.dirty || firstName.touched)
@@ -15,10 +15,7 @@
    'has-success': lastName.valid && (lastName.dirty || lastName.touched)
    }">
         <label>Last Name</label>
-        <input type="text" class="form-control" formControlName="lastName" required>
-        <div class="form-control-feedback" *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
-            <p *ngIf="lastName.errors.required">Обязательное поле</p>
-        </div>
+        <input type="text" class="form-control" formControlName="lastName">
     </div>
     <div class="form-group" [ngClass]="{
    'has-danger': email.invalid && (email.dirty || email.touched),
@@ -38,7 +35,7 @@
         <label>Местоположение</label>
         <input type="text" class="form-control" formControlName="location" required>
         <div class="form-control-feedback" *ngIf="location.errors && (location.dirty || location.touched)">
-            <p *ngIf="location.errors.required">location is required</p>
+            <p *ngIf="location.errors.required">Обязательное поле</p>
         </div>
     </div>
     <div class="form-group" [ngClass]="{
@@ -48,8 +45,8 @@
         <label>Пароль</label>
         <input type="password" class="form-control" formControlName="password" required>
         <div class="form-control-feedback" *ngIf="password.errors && (password.dirty || password.touched)">
-            <p *ngIf="password.errors.required">Password is required</p>
-            <p *ngIf="password.errors.minlength"> Паль должен быть больше 8 символов вам необходимо добавить {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} символов </p>
+            <p *ngIf="password.errors.required">Обязательное поле</p>
+            <p *ngIf="password.errors.minlength"> Пароль должен быть больше 8 символов вам необходимо добавить {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} символов </p>
         </div>
     </div>
     <div class="form-group" [ngClass]="{
@@ -59,7 +56,7 @@
         <label>Подверждение пароля </label>
         <input type="password" class="form-control" formControlName="passwordConfirm" required>
         <div class="form-control-feedback">
-            <p *ngIf="form.hasError('mismatch')"> Password mismatch</p>
+            <p *ngIf="form.hasError('mismatch')"> Пароли не совпадают</p>
         </div>
     </div>
     <input class="waves-effect waves-light btn" [disabled]="userForm.invalid" type="submit" value="Зарегистрироваться">

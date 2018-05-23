@@ -6,7 +6,7 @@ import { Router } from '@angular/router'
 import { AuthService} from '../../services/auth.service';
 import { UsersService} from '../../services/users.service';
 import { MeetupsService} from '../../services/meetups.service';
-
+import { EventEmitter } from '@angular/core';
 @Component({
   selector: 'nav-bar',
   templateUrl: './navbar.component.html',  
@@ -16,7 +16,15 @@ import { MeetupsService} from '../../services/meetups.service';
 
 export class NavbarComponent {
 
-  constructor(private authService: AuthService, private router: Router, private meetupsService: MeetupsService, private usersService: UsersService) {}
+  constructor(private authService: AuthService, private router: Router, private meetupsService: MeetupsService, private usersService: UsersService) {
+    this.sidenavActions = new EventEmitter<any>();
+    this.sidenavParams = [];
+    this.menuItems = [
+        { name: "Our Story", route: "/our-story" },
+        { name: "When & where", route: "/when-where" }
+    ];
+
+  }
   meetupsObs;
   event = false;
   isClicked = true;
@@ -70,6 +78,9 @@ export class NavbarComponent {
     */
 
   ]; 
+  title = 'app';
+  wedding = { name: 'our wedding' };
+  menuItems: MenuItem[];
 
   LogOut() {
     this.authService.setloggedOut();
@@ -90,6 +101,17 @@ export class NavbarComponent {
     this.meetupsObs = this.meetupsService.getAllMeetups();
   
   }
+  close() {
+    this.sidenavActions.emit({ action: 'sideNav', params: ['hide'] });
+  }
 
-
+  sidenavActions: EventEmitter<any>;
+  sidenavParams: any[];
 }
+
+export interface MenuItem {
+
+  name: string;
+  route: string;
+}
+

@@ -13,8 +13,15 @@
     nav.lighten-2 {
         width: 160%;
     }
-
     
+}
+@media (max-width: 800px) {
+    a.brand-logo {
+        display: block;
+        z-index: 222222;
+        margin-top: -140px;
+        width: 300px;
+    }
 }
 @media (min-device-width: 800px) {
     #nav-mobile {
@@ -30,7 +37,9 @@ nav.lighten-2 {
 a:hover {
     text-decoration: none;
 }
-
+i.material-icons {
+    color: black;
+}
 ul#dropdown1 {
     margin-top: 60px;
 }
@@ -53,9 +62,18 @@ input#search {
 input#search {
     position: absolute;
     margin-left: 40px;
+    color: black;
 }
 
-
+  
+  .page-title {
+    font-size: 17px;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: .11em;
+    line-height: 1em;
+    text-rendering: optimizeLegibility;
+  }
+  
 .search-wrapper.card {
     margin-top: 150px;
 }

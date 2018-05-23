@@ -41,26 +41,22 @@ module.exports = (router) => {
         });
     });
 
-
-/*
-
     router.delete('/:id', function(req, res) {
 
-        Meetup.deleteOne({
+        Favorite.deleteOne({
             _id: req.params.id
-        }, (err, meetup) => {
-
-            if (!meetup) {
+        }, (err, fav) => {
+            if (!fav) {
                 config.sendJSONresponse(res, 401, err);
             } else {
                 config.sendJSONresponse(res, 200, {
                     success: true,
-                    message: 'Meetup deleted!'
+                    message: 'Fav deleted!'
                 });
             }
         });
     });
-*/
+
     router.get('/user/:id', function(req, res) {
         Favorite.find({
             userId: req.params.id
