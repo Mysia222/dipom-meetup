@@ -21,6 +21,7 @@ import { UsersComponent } from './components/users/users.component';
 import { FavsComponent } from './components/favs/favs.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { MapComponent } from './components/map/map.component';
+import { TrackmeComponent } from './components/trackme/trackme.component';
 import { AuthService} from './services/auth.service';
 import { UsersService } from './services/users.service';
 import { FavoritesService } from './services/favs.service';
@@ -56,7 +57,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     NavbarComponent,
     UsersComponent,
     CommentComponent,
-    MapComponent
+    MapComponent,
+    TrackmeComponent
   ],
   imports: [
     AgmCoreModule.forRoot({

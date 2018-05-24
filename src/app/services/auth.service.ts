@@ -70,6 +70,16 @@ public logIn(user) {
 
 }
 
+public getCity(lat, long) {
+    console.log(lat, long);
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+ lat + ','+ long + '&key=AIzaSyAkonYfV76WBEr0t7bPHCOrCL6FyjtMz6o')
+    .map(data => {
+        console.log(data.json());
+     return data.json();
+    });
+
+}
+
 public setloggedIn() {
 
     this.isLoggedIn();
