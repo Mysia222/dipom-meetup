@@ -47,8 +47,8 @@
                 </li>
                 <li> <a *ngIf="authService.getloggedIn()" class="nav-link" routerLink="/profile"> Профиль</a>
                 </li>
-                <!--<li> <a *ngIf="authService.getloggedAdminIn()" class="nav-link" routerLink="/users"> Users</a>
-                  </li>-->
+                <li> <a *ngIf="authService.getloggedAdminIn()" class="nav-link" routerLink="/users"> Пользователи </a>
+                  </li>
                 <li> <a *ngIf="authService.getloggedAdminIn()" class="nav-link" routerLink="/meetups/edit"> Мероприятия </a>
                 </li>
                 <li> <a *ngIf="authService.getloggedIn()" class="nav-link" (click)="LogOut()"> Выйти</a>
@@ -113,8 +113,8 @@
                 </li>
                 <li> <a *ngIf="authService.getloggedIn()" (click)="close()" class="nav-link" routerLink="/profile"> Профиль</a>
                 </li>
-                <!--<li> <a *ngIf="authService.getloggedAdminIn()" class="nav-link" routerLink="/users"> Users</a>
-                </li>-->
+                <li> <a *ngIf="authService.getloggedAdminIn()" class="nav-link" routerLink="/users"> Пользователи </a>
+                </li>
                 <li> <a *ngIf="authService.getloggedAdminIn()" (click)="close()" class="nav-link" routerLink="/meetups/edit"> Мероприятия </a>
                 </li>
                 <li> <a *ngIf="authService.getloggedIn()" (click)="close()" class="nav-link" (click)="LogOut()"> Выйти</a>

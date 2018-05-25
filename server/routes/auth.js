@@ -18,10 +18,10 @@ module.exports = (router) => {
             var token;
             token = user.generateJwt();
             if (err) {
-                config.sendJSONresponse(res, 400, err);
+                config.sendJSONresponse(res, err);
             }
             // If user is saved
-            config.sendJSONresponse(res, 200, {
+            config.sendJSONresponse(res, {
                 success: true,
                 token: token
             });
@@ -34,19 +34,19 @@ module.exports = (router) => {
             var token;
             // If Passport throws/catches an error
             if (err) {
-                config.sendJSONresponse(res, 404, err)
+                config.sendJSONresponse(res, err)
                 return;
             }
             // If a user is found
             if (user) {
-                config.sendJSONresponse(res, 200, {
+                config.sendJSONresponse(res, {
                     message: "You are welcome!",
                     token: user.generateJwt()
                 })
             } else {
                 // If user is not found
-                config.sendJSONresponse(res, 401,  {
-                    message: "Something went wrong"
+                config.sendJSONresponse(res,  {
+                    message: "Почта или пароль введены неверно"
                 })
             }
         })(req, res);

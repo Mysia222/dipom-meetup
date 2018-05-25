@@ -9,6 +9,11 @@
                 <a routerLink="/" class="brand-logo social-logo"><img src=".\assets\img\facebook.png"> </a>
             </div>
         </div>
+        <div class="row" *ngIf="isLoginError" >
+            <div class="input-field col s12">
+            <h4> {{errorMessage}}</h4>
+            </div>
+        </div>
         <div class="row">
             <div class="input-field col s12">
                 <div class="form-group" [ngClass]="{

@@ -25,7 +25,10 @@
     margin: 20px 30px;
     padding: 10px 20px 5px 20px;
 }
-
+h4 {
+    font-size: 18px;
+    color: red;
+}
 .col.s12.m6 {
     display: flex;
 }

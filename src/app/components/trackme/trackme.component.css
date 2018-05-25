@@ -22,3 +22,11 @@ mat-nav-list.footer {
   left: 5px;
   z-index: 1;
 }
+
+#city {
+    text-align: center;
+    font-size: 27px;
+    font-weight: 500;
+    margin-top: 40px;
+
+}

@@ -1,5 +1,6 @@
 const Meetup = require('../models/meetup');
 const config = require('../config/config');
+const User = require('../models/user');
 
 module.exports = (router) => {
 
@@ -21,9 +22,9 @@ console.log(req.body);
 
         meetup.save((err) => {
             if (err) {
-                config.sendJSONresponse(res, 400, err);
+                config.sendJSONresponse(res, err);
             } else {
-                config.sendJSONresponse(res, 200, {
+                config.sendJSONresponse(res, {
                     success: true,
                     message: 'Meetup added!'
                 });
@@ -37,7 +38,7 @@ console.log(req.body);
             _id: req.params.id
         }, (err, meetup) => {
             if (!meetup) {
-                config.sendJSONresponse(res, 401, {
+                config.sendJSONresponse(res, {
                     success: false,
                     message: 'meetup not found.'
                 })
@@ -52,11 +53,11 @@ console.log(req.body);
                 }, meetup, function(err, meetup) {
                     console.log(meetup);
                     if (err)
-                        return config.sendJSONresponse(res, 500, {
+                        return config.sendJSONresponse(res, {
                             success: false,
                             message: "There was a problem updating the meetup."
                         });
-                    config.sendJSONresponse(res, 200, meetup);
+                    config.sendJSONresponse(res, meetup);
                 });
             }
         });
@@ -68,13 +69,13 @@ console.log(req.body);
             _id: req.params.id
         }, (err, meetup) => {
             if (!meetup) {
-                config.sendJSONresponse(res, 401, {
+                config.sendJSONresponse(res, {
                     success: false,
                     message: 'meetup not found.'
                 })
             } else {
                 // console.log(meetup.comments);
-                config.sendJSONresponse(res, 200, meetup.comments);
+                config.sendJSONresponse(res, meetup.comments);
             }
         });
 
@@ -85,7 +86,7 @@ console.log(req.body);
             _id: req.params.id
         }, (err, meetup) => {
             if (!meetup) {
-                config.sendJSONresponse(res, 401, {
+                config.sendJSONresponse(res, {
                     success: false,
                     message: 'Meetup not found.'
                 })
@@ -99,11 +100,11 @@ console.log(req.body);
                     _id: meetup._id
                 }, meetup, function(err, meetup) {
                     if (err)
-                        return config.sendJSONresponse(res, 500, {
+                        return config.sendJSONresponse(res, {
                             success: false,
                             message: "There was a problem updating the meetup."
                         });
-                    config.sendJSONresponse(res, 200, meetup);
+                    config.sendJSONresponse(res, meetup);
                 });
             }
         });
@@ -112,13 +113,13 @@ console.log(req.body);
     router.get('/', function(req, res) {
         Meetup.find({}, (err, meetups) => {
             if (err) {
-                config.sendJSONresponse(res, 500, err);
+                config.sendJSONresponse(res, err);
             } else {
 
                 if (!meetups) {
-                    config.sendJSONresponse(res, 401, err);
+                    config.sendJSONresponse(res, err);
                 } else {
-                    config.sendJSONresponse(res, 200, meetups);
+                    config.sendJSONresponse(res, meetups);
                 }
             }
         }).sort({
@@ -134,9 +135,9 @@ console.log(req.body);
         }, (err, meetup) => {
 
             if (!meetup) {
-                config.sendJSONresponse(res, 401, err);
+                config.sendJSONresponse(res, err);
             } else {
-                config.sendJSONresponse(res, 200, {
+                config.sendJSONresponse(res, {
                     success: true,
                     message: 'meetup deleted!'
                 });
@@ -151,12 +152,12 @@ console.log(req.body);
         }, (err, meetup) => {
 
             if (!meetup) {
-                config.sendJSONresponse(res, 401, {
+                config.sendJSONresponse(res, {
                     success: false,
                     message: 'meetup not found.'
                 })
             } else {
-                config.sendJSONresponse(res, 200, meetup);
+                config.sendJSONresponse(res, meetup);
             }
         });
 
@@ -167,11 +168,29 @@ console.log(req.body);
             _id: req.params.id
         }, req.body, function(err, meetup) {
             if (err)
-                return config.sendJSONresponse(res, 500, {
+                return config.sendJSONresponse(res, {
                     success: false,
                     message: "There was a problem updating the meetup."
                 });
-            config.sendJSONresponse(res, 200, meetup);
+            config.sendJSONresponse(res, meetup);
+        });
+    });
+
+
+    router.get('/allusers/admin', function(req, res) {
+        User.find({}, (err, meetups) => {
+            if (err) {
+                config.sendJSONresponse(res, err);
+            } else {
+    
+                if (!meetups) {
+                    config.sendJSONresponse(res, err);
+                } else {
+                    config.sendJSONresponse(res, meetups);
+                }
+            }
+        }).sort({
+            '_id': -1
         });
     });
 

@@ -13,10 +13,10 @@ module.exports = (router) => {
 
         fav.save((err) => {
             if (err) {
-                config.sendJSONresponse(res, 500, err);
+                config.sendJSONresponse(res, err);
             }
             else {
-                config.sendJSONresponse(res, 200, {
+                config.sendJSONresponse(res, {
                     success: true,
                     message: 'Fav added!'
                 });
@@ -28,12 +28,12 @@ module.exports = (router) => {
 
         Favorite.find({}, (err, favs) => {
             if (err) {
-                config.sendJSONresponse(res, 500, err);
+                config.sendJSONresponse(res, err);
             } else {
                 if (!favs) {
-                    config.sendJSONresponse(res, 401, err);
+                    config.sendJSONresponse(res, err);
                 } else {
-                    config.sendJSONresponse(res, 200, favs);
+                    config.sendJSONresponse(res, favs);
                 }
             }
         }).sort({
@@ -47,9 +47,9 @@ module.exports = (router) => {
             _id: req.params.id
         }, (err, fav) => {
             if (!fav) {
-                config.sendJSONresponse(res, 401, err);
+                config.sendJSONresponse(res, err);
             } else {
-                config.sendJSONresponse(res, 200, {
+                config.sendJSONresponse(res, {
                     success: true,
                     message: 'Fav deleted!'
                 });
@@ -62,12 +62,12 @@ module.exports = (router) => {
             userId: req.params.id
         }, (err, favs) => {
             if (!favs) {
-                config.sendJSONresponse(res, 401, {
+                config.sendJSONresponse(res, {
                     success: false,
                     message: 'Favs not found.'
                 })
             } else {
-                config.sendJSONresponse(res, 200, favs);
+                config.sendJSONresponse(res, favs);
             }
         });
 
@@ -78,11 +78,11 @@ module.exports = (router) => {
             _id: req.params.id
         }, req.body, function(err, meetup) {
             if (err)
-                return config.sendJSONresponse(res, 500, {
+                return config.sendJSONresponse(res, {
                     success: false,
                     message: "There was a problem updating the user."
                 });
-            config.sendJSONresponse(res, 200, meetup);
+            config.sendJSONresponse(res, meetup);
         });
     });
 */

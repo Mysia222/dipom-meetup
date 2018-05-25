@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   email: FormControl;
   password: FormControl;
-
+  isLoginError: boolean = false;
+  errorMessage: string;
   constructor(private router:Router, private authService: AuthService, private usersService: UsersService) {}
 
   ngOnInit() {
@@ -59,14 +60,19 @@ export class LoginComponent implements OnInit {
     };
 
     this.authService.logIn(user).subscribe(data => {
-        console.log(data);
-        this.authService.setloggedIn();
-        this.authService.isLoggedIn();
-        if (this.authService.getloggedAdminIn()) {
-            this.router.navigate(['meetups/edit']);
+        console.log(data.json().message);
+        if (data.json().token) {
+          this.authService.setloggedIn();
+          this.authService.isLoggedIn();
+          if (this.authService.getloggedAdminIn()) {
+              this.router.navigate(['meetups/edit']);
+          } else {
+              this.router.navigate(['profile']);
+  
+          }
         } else {
-            this.router.navigate(['profile']);
-
+          this.errorMessage = data.json().message;
+          this.isLoginError = true;
         }
 
     });

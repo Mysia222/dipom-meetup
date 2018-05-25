@@ -14,15 +14,18 @@ import {UsersService} from '../../services/users.service';
 
 export class UsersComponent  {
 
-  usersObs;
+  public usersObs;
 
   constructor( private usersService: UsersService) {
   }
  
   ngOnInit() {
 
-    this.usersObs = this.usersService.getAllUsers();
-    console.log(this.usersObs);
+    this.usersService.getAllUsers()
+    .subscribe(data => {
+      console.log(data);
+      this.usersObs = data;
+  });
 
   }
   

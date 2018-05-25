@@ -51,7 +51,13 @@
                     </div>
                     <div class="col s7">
                         <p class="category-label">Категория:</p>
-                        <input id="input_text" formControlName="category" type="text" value={{meetup.meetupData.category}}>
+                        <!-- <input id="input_text" formControlName="category" type="text" value={{meetup.meetupData.category}}> -->
+                        <div class="input-field col s12">
+                            <select class="browser-default" formControlName="category">
+                              <option value="{{meetup.meetupData.category}}" disabled selected>{{meetup.meetupData.category}}</option>
+                              <option *ngFor="let category of categories" value="{{category.category_name}}">{{category.category_name}}</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="row s7">
                     <div class="col s7">

@@ -113,7 +113,14 @@ input#icon_prefix {
     position: absolute;
 }
 
-
+.input-field > select {
+    display: block;
+    position: relative;
+    width: 30%;
+    opacity: 1;
+    pointer-events: all;
+    height: auto;
+}
 
 card .card-title {
     font-size: 20px;

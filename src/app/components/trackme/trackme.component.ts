@@ -16,6 +16,8 @@ export class TrackmeComponent implements OnInit {
   marker: google.maps.Marker;
   isTracking: boolean;
   accuracy: any;
+  geocoder;
+  public city;
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
@@ -32,15 +34,12 @@ export class TrackmeComponent implements OnInit {
       navigator.geolocation.watchPosition((position) => {
         this.currentLat = position.coords.latitude;
     this.currentLong = position.coords.longitude;
-    
-    console.log(this.currentLat, this.currentLong);
-    this.authService.getCity(this.currentLat, this.currentLong);
-    console.log(this.authService.getCity(this.currentLat, this.currentLong));
+    this.geocoder = new google.maps.Geocoder();
+
+    this.codeLatLng(this.currentLat, this.currentLong);
 
     const location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
     this.map.panTo(location);
-
     if (!this.marker) {
       this.marker = new google.maps.Marker({
         position: location,
@@ -75,6 +74,46 @@ export class TrackmeComponent implements OnInit {
     } else {
       alert('Geolocation is not supported by this browser.');
     }
+  }
+
+
+  codeLatLng(lat, lng) {
+
+    var latlng = new google.maps.LatLng(lat, lng);
+    this.geocoder.geocode({'latLng': latlng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+      console.log(results)
+        if (results[1]) {
+         //formatted address
+         //alert(results[0].formatted_address)
+         console.log (results[0]);
+
+        //find country name
+             for (var i=0; i<results[0].address_components.length; i++) {
+            for (var b=0;b<results[0].address_components[i].types.length;b++) {
+
+            //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+                if (results[0].address_components[i].types[b] == "sublocality_level_1") {
+                    //this is the object you are looking for
+                    this.city= results[0].address_components[i+1];
+                    console.log(this.city);
+                    break;
+                }
+            }
+        }
+        //city data
+        //alert(this.city.short_name + " " + this.city.long_name)
+        console.log(this.city);
+        document.getElementById("city").innerHTML = 'Популярные мероприятия в городе ' + this.city.short_name;
+
+
+        } else {
+          alert("No results found");
+        }
+      } else {
+        alert("Geocoder failed due to: " + status);
+      }
+    });
   }
 
   showPosition(position) {

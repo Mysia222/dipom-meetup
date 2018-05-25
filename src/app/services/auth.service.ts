@@ -59,6 +59,7 @@ public isLoggedIn() {
 }
 
 public logIn(user) {
+    console.log(this.http.post(this.authURL + '/login', user));
     return this.http.post(this.authURL + '/login', user)
     .map(data => {
         console.log(data);

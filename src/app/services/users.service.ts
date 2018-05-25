@@ -17,6 +17,7 @@ export class UsersService {
     url = "http://localhost:8000";
     profileUrl = "http://localhost:8000/profile";
     registerUrl = "http://localhost:8000/auth";
+    meetupUrl = "http://localhost:8000/meetups";
     private token = localStorage.getItem('mean-token');
     private userEmail: string;
 
@@ -43,8 +44,8 @@ export class UsersService {
 
     getAllUsers() {
 
-        return this.http.get(this.profileUrl)
-             .map(response => console.log(response.json()))
+        return this.http.get(this.meetupUrl+'/allusers/admin')
+             .map(response => response.json())
 
     }
 

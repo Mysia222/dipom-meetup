@@ -64,4 +64,11 @@ input#icon_prefix {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    margin-left: 300px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 29px;
+    margin-left: 20%;
 }

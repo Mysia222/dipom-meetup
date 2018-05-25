@@ -33,6 +33,53 @@ export class MeetupComponent  {
   public editorContent: string = 'My Document\'s Title'
   @Input() isAdmin;
   title = 'Crystal Editor';
+  categories = [
+    {
+        "category_id": 1,
+        "category_name": "Писательство"
+    }, 
+    {
+        "category_id": 2,
+        "category_name": "Домашние любимцы"
+    }, 
+    {
+        "category_id": 3,
+        "category_name": "Фильмы"
+    }, 
+    {
+        "category_id": 4,
+        "category_name": "Хобби и ремёсла"
+    }, 
+    {
+        "category_id": 5,
+        "category_name": "Искусство"
+    }, 
+    {
+        "category_id": 6,
+        "category_name": "Технологии"
+    },
+    {
+        "category_id": 7,
+        "category_name": "Мода и красота"
+    },
+    {
+        "category_id": 8,
+        "category_name": "Карьера и бизнес"
+    },
+    {
+        "category_id": 9,
+        "category_name": "Танцы"
+    },
+    {
+        "category_id": 1,
+        "category_name": "Язык и культура"
+    }, 
+    {
+        "category_id": 1,
+        "category_name": "Семья"
+    }, 
+    
+  ]; 
   
   editorForm = new FormGroup ({
     editorData: new FormControl()
