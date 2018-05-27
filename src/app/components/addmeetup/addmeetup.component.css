@@ -1,0 +1,49 @@
+.modal.add-meetup {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: #fafafa;
+    padding: 0;
+    max-height: none;
+    width: 95%;
+    margin: auto;
+    overflow-y: auto;
+    border-radius: 2px;
+}
+label#add-form {
+    font-size: 18px;
+    color: black;
+}
+
+p.error-input.ng-star-inserted {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    color: red;
+}
+
+.modal .modal-content {
+    padding: 80px 100px;
+}
+
+input.form-control::placeholder {
+    padding-left: 10px;
+    color: #757575;
+}
+
+h4 {
+    font-size: 26px;
+    font-weight: 500;
+    color:#258b80;
+    margin-bottom: 40px;
+}
+
+.form-group.description {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+.fr-box.fr-basic.fr-top {
+    margin-top: 20px;
+    /* width: 100px; */
+    /* height: 100px; */
+}

@@ -3,26 +3,23 @@ import { Observable } from 'rxjs/Observable';
 // import { Input } from '@angular/core/src/metadata/directives';
 import { AuthService } from '../../services/auth.service';
 import { MeetupsService } from '../../services/meetups.service'
-import {Input} from '@angular/core';
+
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { create } from 'domain';
-
+import {Input} from '@angular/core';
 @Component({
-  selector: 'app-edit',
-  templateUrl: './edit.component.html',  
-  styleUrls: ['./edit.component.css'],
+  selector: 'add-meetup',
+  templateUrl: './addmeetup.component.html',  
+  styleUrls: ['./addmeetup.component.css'],
   providers: [MeetupsService]
 })
-export class EditComponent  {
-  public meetups=[];
-  public searchableList: any[];
+export class AddmeetupComponent  {
   processValidation = false;
   statusCode: number;
   meetupsObs;
   isAdmin;
-  isDialogOpen = false;
+  @Input() isDialogOpen;
   MeetupForm: FormGroup;
-
   name: FormControl;
   description: FormControl;
   image: FormControl;
@@ -31,25 +28,64 @@ export class EditComponent  {
   eventsDate: FormControl;
   createdBy: FormControl;
   address: FormControl;
-
+  categories = [
+    {
+        "category_id": 1,
+        "category_name": "Писательство"
+    }, 
+    {
+        "category_id": 2,
+        "category_name": "Домашние любимцы"
+    }, 
+    {
+        "category_id": 3,
+        "category_name": "Фильмы"
+    }, 
+    {
+        "category_id": 4,
+        "category_name": "Хобби и ремёсла"
+    }, 
+    {
+        "category_id": 5,
+        "category_name": "Искусство"
+    }, 
+    {
+        "category_id": 6,
+        "category_name": "Технологии"
+    },
+    {
+        "category_id": 7,
+        "category_name": "Мода и красота"
+    },
+    {
+        "category_id": 8,
+        "category_name": "Карьера и бизнес"
+    },
+    {
+        "category_id": 9,
+        "category_name": "Танцы"
+    },
+    {
+        "category_id": 1,
+        "category_name": "Язык и культура"
+    }, 
+    {
+        "category_id": 1,
+        "category_name": "Семья"
+    }, 
+    
+  ]; 
 
   constructor( private meetupsService: MeetupsService) {
 
-    this.searchableList = ['title'];
    
   }
 
-  getAllMeetups() {
-
-    this.meetupsObs = this.meetupsService.getAllMeetups();
-  
-}
 
 ngOnInit() {
 
   this.createFormControls();
   this.createForm();
-  this.getAllMeetups();
   this.isAdmin = true;
   
 }
@@ -69,7 +105,7 @@ createFormControls() {
   );
   this.price = new FormControl('', [
     Validators.required,
-    Validators.pattern("[1-9?]*")
+    Validators.pattern("[0-9?]*")
   ]);
   this.image = new FormControl('', [
     Validators.required
@@ -111,9 +147,15 @@ onMeetupFormSubmit() {
   console.log(meetup);
   this.meetupsService.createMeetup(meetup)
       .subscribe(data => {
-          this.getAllMeetups();
+        this.getAllMeetups();
+console.log(data);
       });
   this.isDialogOpen = false;
+}
+
+getAllMeetups() {
+
+  this.meetupsObs = this.meetupsService.getAllMeetups();
 
 }
 openModal() {
@@ -122,16 +164,6 @@ openModal() {
   this.MeetupForm.reset();
   document.querySelectorAll('input')
   console.log(this.MeetupForm);
-}
-
-deleteMeetup(meetupId) {
-
-  this.meetupsService.deleteMeetupById(meetupId)
-     .subscribe(successCode => {
-         this.statusCode = 204;
-         this.getAllMeetups();
-     }, errorCode => this.statusCode = errorCode);
-
 }
 
 }

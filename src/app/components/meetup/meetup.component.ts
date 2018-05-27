@@ -7,7 +7,7 @@ import {FavoritesService} from '../../services/favs.service';
 import {AuthService} from '../../services/auth.service';
 import { Favorite } from '../../models/fav';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 @Component({
   selector: 'app-meetup',
   templateUrl: './meetup.component.html',  
@@ -15,7 +15,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   providers: [MeetupsService]
 })
 
-export class MeetupComponent  {
+export class MeetupComponent   {
   currentUrl;
   meetup;
   statusCode: number;
@@ -29,9 +29,12 @@ export class MeetupComponent  {
   openWindow = false;
   obj: Favorite;
   favorites;
+  @ViewChild('textarea1') textarea1: ElementRef;
+
   isDelete = false;
   public editorContent: string = 'My Document\'s Title'
   @Input() isAdmin;
+  @Input() isUser;
   title = 'Crystal Editor';
   categories = [
     {
@@ -116,14 +119,7 @@ AddCommentForm = new FormGroup({
   getMeetupById(meetupId) 
   {
     this.meetupObs = this.meetupsService.getMeetupById(meetupId);
-    this.meetupsService.getMeetupObjById(meetupId).subscribe(data => {
-      this.meetupObj = new String(data.json().meetupData.description)
-    .replace(/&/g, '&amp;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');console.log(this.meetupObj, data.json())});
-  }
+}
 
   onSubmit () {
     console.log(this.editorForm.value)
@@ -224,12 +220,28 @@ deleteToFav(meetupId) {
   });
   
 }
-
+ ready() {
+  alert( 'DOM готов' );
+  this.meetupsService.getMeetupObjById(this.currentUrl.id).subscribe(data => {
+    document.querySelectorAll("#textarea1")[0].innerHTML = data.json().meetupData.description;
+});
+}
   ngOnInit() {
     this.currentUrl = this.activatedRoute.snapshot.params;
+   // document.addEventListener("DOMContentLoaded", this.ready);
     this.commentsObs = this.meetupsService.getComments(this.currentUrl.id);
     this.getMeetupById(this.currentUrl.id);
-
+    this.meetupsService.getMeetupObjById(this.currentUrl.id).subscribe(data => {
+      console.log(data.json().meetupData.description);
+  });
   }
 
+  @ViewChild('input') input;
+
+//   ngAfterContentInit() {
+//      this.input.nativeElement.focus();
+//   } 
+//   ngAfterViewInit() {
+//     this.input.nativeElement.focus();
+//  } 
 }

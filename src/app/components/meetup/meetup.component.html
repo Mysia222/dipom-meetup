@@ -61,11 +61,11 @@
                     </div>
                     <div class="row s7">
                     <div class="col s7">
-                    <p>Description:</p>
-                    <textarea id="textarea1" formControlName="description" class="materialize-textarea" value={{meetup.meetupData.description}}></textarea>
+                    <p>Описание:</p>
+                    <textarea id="textarea12" formControlName="description" class="materialize-textarea" value={{meetup.meetupData.description}}></textarea>
                     </div>
                     <input class="waves-effect waves-light btn" type="submit" value="Save">
-                    <a class="waves-effect waves-light btn" (click)="deletemeetup()">delete</a>
+                    <a class="waves-effect waves-light btn" (click)="deletemeetup()">Удалить</a>
                     </div>
                 </form>
             </div>
@@ -91,6 +91,9 @@
                             <span class="price-card">{{meetup.meetupData.category}}</span>
                             <br>
                             <br>
+                            <div class="add-button" *ngIf="!isUser">
+                                <p>Для того, чтобы присоедениться необходимо <a routerLink="/login"> зарегистрироваться </a> </p>
+                            </div>
                             <button class="btn modal-trigger"  *ngIf="authService.getloggedIn() && !isFavEdded" (click)="addToFav(meetup._id)">Присоединиться</button>
                             <button *ngIf="isFavEdded" class="btn disabled">Присоединиться</button>
                             <button *ngIf="isFavEdded" (click)="deleteToFav(meetup._id)" class="btn red">Отмена</button>
@@ -101,11 +104,13 @@
                     <!-- <form [formGroup]="editorForm" >
                     <textarea [froalaEditor] formControlName="editorData" id="textarea1" class="materialize-textarea">
                     </textarea>
-                    </form> -->
+                    </form>
+                    <app-editor></app-editor> -->
                     <p>Описание:</p>
-                    <div id="textarea1" class="materialize-textarea">
-                        {{meetupObj}}
+                    <div id="textarea1" #textarea1 class="materialize-textarea">
+                    ukhj
                     </div>
+                    <input type="text" #input>
                 </div>
                 <div class="row s7 map-class">
                     <app-map> </app-map>
@@ -159,3 +164,7 @@
     </div>
 
 </div>
+
+<script>
+    
+</script>

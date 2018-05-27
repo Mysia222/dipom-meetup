@@ -3,7 +3,7 @@
         <div class="model-cont">
             <button (click)="openWindow=false" class="modal-action modal-close waves-effect waves-green btn-flat "> 
                         <i class="large material-icons">close</i></button>
-            <h4>Item added to favorites</h4>
+            <h4>Добавлено</h4>
             <i class="large material-icons done">check_circle</i>
         </div>
     </div>
@@ -15,14 +15,14 @@
         </div>
         <div class="card-content">
             <span class="card-title">{{meetup.meetupData.name}}</span>
-            <span class="card-title price-card">{{meetup.meetupData.price | currency:"USD":true }}</span>
+            <span class="card-title price-card">{{meetup.meetupData.price | currency:"RUB":true }}</span>
             <p>{{meetup.createdBy}}</p>
         </div>
     </div>
     <div class="add-button" *ngIf="isUser">
-        <button (click)="addToFav(meetup._id)" *ngIf="!isFavEdded" class="waves-effect waves-light btn">Take part</button>
-        <button *ngIf="isFavEdded" class="btn disabled">Take part</button>
-        <button *ngIf="isFavEdded" (click)="deleteToFav(meetup._id)" class="btn red">Cancel</button>
+        <button (click)="addToFav(meetup._id)" *ngIf="!isFavEdded" class="waves-effect waves-light btn">Присоедениться</button>
+        <button *ngIf="isFavEdded" class="btn disabled">Присоедениться</button>
+        <button *ngIf="isFavEdded" (click)="deleteToFav(meetup._id)" class="btn red">Отмена</button>
     </div>
 
 </div>

@@ -22,6 +22,9 @@ import { FavsComponent } from './components/favs/favs.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { MapComponent } from './components/map/map.component';
 import { TrackmeComponent } from './components/trackme/trackme.component';
+import { AddmeetupComponent } from './components/addmeetup/addmeetup.component';
+
+
 import { AuthService} from './services/auth.service';
 import { UsersService } from './services/users.service';
 import { FavoritesService } from './services/favs.service';
@@ -36,6 +39,9 @@ import { ApplicationRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
 import { MaterializeModule } from 'angular2-materialize';
+
+//import { EditorModule } from './components/editor/editor.module';
+import { EditorComponent } from './components/editor/editor.component';
 
 // Import Angular plugin.
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
@@ -58,7 +64,9 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     UsersComponent,
     CommentComponent,
     MapComponent,
-    TrackmeComponent
+    TrackmeComponent,
+    AddmeetupComponent,
+    EditorComponent
   ],
   imports: [
     AgmCoreModule.forRoot({

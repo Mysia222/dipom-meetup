@@ -1,0 +1,15 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+
+<form [formGroup]="editorForm" (ngSubmit)="onSubmit()">
+  <textarea [froalaEditor] formControlName="editorData"></textarea>
+  <button type="submit">Submit</button>
+</form>
+1.<div>{{editorForm.controls['editorData'].value}}</div>
+<!-- 2.<textarea>{{editorForm.controls['editorData'].value}}</textarea>
+3. <input [ngModel]="editorForm.controls['editorData'].value"/> -->
+<!-- <div [froalaEditor] [(froalaModel)]="editorForm.controls['editorData'].value"></div> -->
