@@ -1,0 +1,21 @@
+.row {
+    margin-left: 400px;
+    margin-right: auto;
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+ul {
+    margin-left: 400px;
+    width: 20%;
+}
+.search-ico {
+    position: absolute;
+    margin-top: 5px;
+}
+h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-left: 300px;
+    color: #898686;
+}

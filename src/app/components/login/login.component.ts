@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
           if (this.authService.getloggedAdminIn()) {
               this.router.navigate(['meetups/edit']);
           } else {
-              this.router.navigate(['profile']);
+              this.router.navigate(['meetups']);
   
           }
         } else {

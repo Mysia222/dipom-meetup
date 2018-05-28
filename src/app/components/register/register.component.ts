@@ -9,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import { UsersService } from '../../services/users.service';
-
+import { MapService } from '../../services/map.service';
 @Component({
   selector: 'register',
   templateUrl: './register.component.html',  
@@ -24,11 +24,11 @@ export class RegisterComponent implements OnInit {
   password: FormControl;
   passwordConfirm: FormControl;
   location: FormControl;
-  
-  constructor(private router: Router, private usersService: UsersService) {}
+  isChangeLoc = false;
+  constructor(private router: Router, private usersService: UsersService, private mapService: MapService) {}
 
   ngOnInit() {
-
+    this.mapService.codeLatLng();
     this.createFormControls();
     this.createForm();
     
@@ -41,9 +41,7 @@ export class RegisterComponent implements OnInit {
       Validators.maxLength(12)
     ]);
     this.lastName = new FormControl('');
-    this.location = new FormControl('', 
-    Validators.required
-    );
+    this.location = new FormControl('');
     this.email = new FormControl('', [
       Validators.required, 
       Validators.email,
@@ -78,6 +76,7 @@ export class RegisterComponent implements OnInit {
   registerUser() {
 
     let user = this.userForm.value;
+    user.location = this.userForm.value.location || document.getElementById("city").innerHTML;
     delete user.passwordConfirm;
     this.usersService.createUser(user)
         .subscribe(

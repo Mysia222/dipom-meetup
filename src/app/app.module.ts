@@ -23,12 +23,13 @@ import { CommentComponent } from './components/comment/comment.component';
 import { MapComponent } from './components/map/map.component';
 import { TrackmeComponent } from './components/trackme/trackme.component';
 import { AddmeetupComponent } from './components/addmeetup/addmeetup.component';
-
+import { MeetuplistComponent } from './components/meetuplist/meetuplist.component';
 
 import { AuthService} from './services/auth.service';
 import { UsersService } from './services/users.service';
 import { FavoritesService } from './services/favs.service';
 import { MeetupsService } from './services/meetups.service';
+import { MapService } from './services/map.service';
 
 import { HttpModule } from '@angular/http';
 import { FilterPipe } from './pipes/filter.pipe';
@@ -66,7 +67,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     MapComponent,
     TrackmeComponent,
     AddmeetupComponent,
-    EditorComponent
+    EditorComponent,
+    MeetuplistComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -84,7 +86,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     FroalaViewModule.forRoot(),
     MaterializeModule
   ],
-  providers: [AuthService, AuthGuard, UsersService, MeetupsService, FavoritesService],
+  providers: [AuthService, AuthGuard, UsersService, MeetupsService, FavoritesService, MapService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

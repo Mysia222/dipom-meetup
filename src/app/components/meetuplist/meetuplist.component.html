@@ -1,0 +1,54 @@
+
+<h2>Все мероприятия</h2>
+<ul>
+        <li>
+            <span class="search-ico"> <i class="material-icons prefix search-ico">search</i></span> <input id="icon_prefix" type="text" [(ngModel)]="queryString" class="validate">
+        </li>
+        <li>
+            <label> Сортировка по цене: </label>
+            <select class="browser-default"  [(ngModel)]="sortString" >
+                <option value="" disabled> Выберете селектор</option>
+                <option value="No sort" selected> Без сортировки</option>
+                <option value="SortPrice: Lowest to Highest"> Цена: Самый низкая к самой высокой</option>
+                <option value="SortPrice: Highest to Lowest"> Цена: Самый высокая к самой низкой</option>
+                <option value="3">Бесплатные</option>
+            </select>
+            <label> Категория: </label>
+            <select class="browser-default" formControlName="category" required>
+                    <option value="Выберете основную категорию" disabled selected>Выберете основную категорию</option>
+                    <option *ngFor="let category of categories" value="{{category.category_name}}">{{category.category_name}}</option>
+            </select>
+        </li>
+</ul>
+<div class="row" *ngIf="meetupsObs | async as onemeetup else loading">
+
+            <div class="col s4" *ngFor="let meetup of onemeetup | filter: queryString">
+                <div *ngIf="isFavEdded && openWindow" >
+                    <div id="modal2" class="modal modal-fixed-footer open" style="z-index: 1005; display: block; opacity: 1; transform: scaleX(1); top: 10%;">
+                        <div class="model-cont">
+                            <button (click)="openWindow=false" class="modal-action modal-close waves-effect waves-green btn-flat "> 
+                                        <i class="large material-icons">close</i></button>
+                            <h4>Добавлено</h4>
+                            <i class="large material-icons done">check_circle</i>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="meetup else users">
+                    <div class="card" [routerLink]="['/meetups/', meetup._id]">
+                        <div class="card-image">
+                            <img src="./assets/img/{{meetup.meetupData.image}}">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">{{meetup.meetupData.name}}</span>
+                            <span class="card-title price-card">{{meetup.meetupData.price | currency:"RUB":true }}</span>
+                            <p>{{meetup.createdBy}}</p>
+                        </div>
+                    </div>
+                    <div class="add-button" *ngIf="isUser">
+                        <button (click)="addToFav(meetup._id)" *ngIf="!isFavEdded" class="waves-effect waves-light btn">Присоедениться</button>
+                        <button *ngIf="isFavEdded" class="btn disabled">Присоедениться</button>
+                        <button *ngIf="isFavEdded" (click)="deleteToFav(meetup._id)" class="btn red">Отмена</button>
+                    </div>
+                </div>
+            </div>
+</div>

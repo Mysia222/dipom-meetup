@@ -4,8 +4,8 @@
    'has-danger': firstName.invalid && (firstName.dirty || firstName.touched),
    'has-success': firstName.valid && (firstName.dirty || firstName.touched)
    }">
-        <label>Имя</label>
-        <input type="text" class="form-control" formControlName="firstName" required>
+        <label id="registr">Имя</label>
+        <input type="text" class="form-control" formControlName="firstName" placeholder="Введите свое имя" required>
         <div class="form-control-feedback" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
             <p *ngIf="firstName.errors.required">Обязательное поле</p>
         </div>
@@ -14,15 +14,15 @@
    'has-danger': lastName.invalid && (lastName.dirty || lastName.touched),
    'has-success': lastName.valid && (lastName.dirty || lastName.touched)
    }">
-        <label>Last Name</label>
-        <input type="text" class="form-control" formControlName="lastName">
+        <label id="registr">Фамилия</label>
+        <input type="text" class="form-control" placeholder="Введите свою фимилию" formControlName="lastName">
     </div>
     <div class="form-group" [ngClass]="{
    'has-danger': email.invalid && (email.dirty || email.touched),
    'has-success': email.valid && (email.dirty || email.touched)
    }">
-        <label>Email</label>
-        <input type="email" class="form-control" formControlName="email" required>
+        <label id="registr">Email</label>
+        <input type="email" class="form-control" placeholder="Введите свою почту" formControlName="email" required>
         <div class="form-control-feedback" *ngIf="email.errors && (email.dirty || email.touched)">
             <p *ngIf="email.errors.required">Обязательное поле</p>
             <p *ngIf="email.errors.pattern">Формат почты john@doe.com.</p>
@@ -32,8 +32,13 @@
    'has-danger': location.invalid && (location.dirty || location.touched),
    'has-success': location.valid && (location.dirty || location.touched)
    }">
-        <label>Местоположение</label>
-        <input type="text" class="form-control" formControlName="location" required>
+        <label id="registr">Местоположение</label>
+
+        <div id="city" *ngIf="!isChangeLoc"> <i class="material-icons">location_on</i> </div>
+        <div>
+            <p id="chang-loc"><a (click)="isChangeLoc = !isChangeLoc" *ngIf="!isChangeLoc">(Изменить расплоложение)</a></p>
+        </div>
+        <input type="text" *ngIf="isChangeLoc" placeholder="Поиск адреса" class="form-control" formControlName="location">
         <div class="form-control-feedback" *ngIf="location.errors && (location.dirty || location.touched)">
             <p *ngIf="location.errors.required">Обязательное поле</p>
         </div>
@@ -42,8 +47,8 @@
    'has-danger': password.invalid && (password.dirty || password.touched),
    'has-success': password.valid && (password.dirty || password.touched)
    }">
-        <label>Пароль</label>
-        <input type="password" class="form-control" formControlName="password" required>
+        <label id="registr">Пароль</label>
+        <input type="password" class="form-control" placeholder="Введите пароль, содержащий не менее 8 символов"  formControlName="password" required>
         <div class="form-control-feedback" *ngIf="password.errors && (password.dirty || password.touched)">
             <p *ngIf="password.errors.required">Обязательное поле</p>
             <p *ngIf="password.errors.minlength"> Пароль должен быть больше 8 символов вам необходимо добавить {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} символов </p>
@@ -53,8 +58,8 @@
    'has-danger': password.invalid && (password.dirty || password.touched),
    'has-success': password.valid && (password.dirty || password.touched)
    }">
-        <label>Подверждение пароля </label>
-        <input type="password" class="form-control" formControlName="passwordConfirm" required>
+        <label id="registr">Подверждение пароля </label>
+        <input type="password" class="form-control" placeholder="Введите пароль еще раз"  formControlName="passwordConfirm" required>
         <div class="form-control-feedback">
             <p *ngIf="form.hasError('mismatch')"> Пароли не совпадают</p>
         </div>

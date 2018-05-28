@@ -15,10 +15,10 @@
     <div *ngIf="isDelete">
         <div id="modal2" class="modal modal-fixed-footer open" style="z-index: 1005; display: block; opacity: 1; transform: scaleX(1); top: 10%;">
             <div class="modal-content">
-                <h4>Item is deleted</h4>
+                <h4>Мероприятие удалено</h4>
             </div>
             <div class="modal-footer">
-                <a routerLink="/meetups/edit/" class="modal-action modal-close waves-effect waves-green btn-flat ">Go edit meetups</a>
+                <a routerLink="/meetups/edit/" class="modal-action modal-close waves-effect waves-green btn-flat ">Закрыть</a>
             </div>
         </div>
     </div>
@@ -91,8 +91,8 @@
                             <span class="price-card">{{meetup.meetupData.category}}</span>
                             <br>
                             <br>
-                            <div class="add-button" *ngIf="!isUser">
-                                <p>Для того, чтобы присоедениться необходимо <a routerLink="/login"> зарегистрироваться </a> </p>
+                            <div class="add-button" *ngIf="!authService.getloggedIn()">
+                                <p>Для того, чтобы присоедениться необходимо <a routerLink="/register"> зарегистрироваться </a> или <a routerLink="/login"> войти </a></p>
                             </div>
                             <button class="btn modal-trigger"  *ngIf="authService.getloggedIn() && !isFavEdded" (click)="addToFav(meetup._id)">Присоединиться</button>
                             <button *ngIf="isFavEdded" class="btn disabled">Присоединиться</button>
@@ -110,7 +110,6 @@
                     <div id="textarea1" #textarea1 class="materialize-textarea">
                     ukhj
                     </div>
-                    <input type="text" #input>
                 </div>
                 <div class="row s7 map-class">
                     <app-map> </app-map>

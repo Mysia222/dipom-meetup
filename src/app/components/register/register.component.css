@@ -60,11 +60,38 @@ h2 {
 
 form {
     width: 40%;
-    margin-left: 374px;
+    margin-left: 480px;
 }
 
 .form-control-feedback {
     color: red;
-    margin-top: -30px;
+    margin-top: -10px;
     margin-bottom: 40px;
+}
+
+label#registr {
+    font-size: .9rem;
+    color: #0e0e0e;
+}
+
+p#chang-loc {
+    margin-top: 5px;
+    font-size: 13px;
+    margin-bottom: 14px;
+}
+
+i.material-icons {
+    font-size: 17px;
+}
+
+div#city {
+    margin-top: 10px;
+}
+
+.form-control-feedback[_ngcontent-c2] {
+    color: red;
+    margin-top: -20px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    font-size: 13px;
 }

@@ -7,6 +7,8 @@ import { EditComponent } from './components/edit/edit.component';
 import { MeetupComponent } from './components/meetup/meetup.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UsersComponent } from './components/users/users.component';
+import { MeetupsComponent } from './components/meetups/meetups.component';
+import { MeetuplistComponent } from './components/meetuplist/meetuplist.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -51,6 +53,10 @@ const appRoutes: Routes = [
   {
     path: 'meetups/category/:id',
     component: HomeComponent
+  },
+  {
+    path: 'meetups',
+    component: MeetuplistComponent
   },
   
   {
