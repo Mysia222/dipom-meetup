@@ -94,7 +94,7 @@ export class NavbarComponent {
     document.getElementById("search").setAttribute("value", "");
     this.queryString = "";
     this.isClicked = !this.isClicked;
-  }
+  }subscribe
 
   ngOnInit() {
 

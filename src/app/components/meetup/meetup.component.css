@@ -1,12 +1,51 @@
 
-@media (max-device-width: 800px) {
+@media (max-width: 800px) {
     .card.once-meetup {
-        width: 60%;
-        margin-left: -600px;
+        width: 90%;
+        margin-left: -700px;
         position: absolute;
     }
+
+    .row.s7.descript-map {
+        margin-left: -600px;
+        /* width: 20%; */
+    }
+    .row.s7.descript-map.descr {
+        margin-top: 440px;
+    }
+    .card.once-meetup.comment {
+        margin-left: -340px;
+        /* width: 100%; */
+        width: 360%!important;
+   }
+    p[_ngcontent-c2] {
+        font-weight: bold;
+        margin-left: 0px;
+    }
+    .agm-map-container-inner.sebm-google-map-container-inner {
+        width: 80%;
+    }
+    .agm-map-container-inner[_ngcontent-c5] {
+        width: 40%!important;
+        height: inherit;
+    }
+
+    div#div-descr {
+        margin-left: -200px;
+    }
+    .author {
+        margin-top: -40px;
+        position: inherit;
+        text-align: right;
+    }
+    #div-descr[_ngcontent-c2] {
+        margin-left: 0px!important;
+        width: 100%;
+    }
+    
+    
 }
-@media (min-device-width: 800px) {
+@media (min-width: 800px) {
     .card.once-meetup {
     width: 130%;
     height: 500px;
@@ -15,16 +54,33 @@
     .card.once-meetup.edit {
         margin-left: -300px;
     }
+    select.browser-default.form-categ {
+        display: block;
+        width: 40%;
+    }
     .author {
-        margin-left: 960px;
-        /* margin-top: -45px; */
-        position: absolute;
+        margin-top: -40px;
+        position: inherit;
         text-align: right;
     }
     .row.s7.map-class {
         margin-left: -300px;
         /* font-size: 13px; */
     }
+    #div-descr {
+        margin-left: -200px!important;
+        width: 100%;
+    }
+}
+
+#comm {
+    margin-left: -80px;
+}
+
+
+p.comment-par {
+    font-weight: 300;
+    /* width: 77700px; */
 }
 span.name-event {
     font-size: 22px;
@@ -42,6 +98,11 @@ span.name-event {
     padding: 0px;
     height: 360px;
     padding-bottom: 10px;
+    font-size: 16px;
+}
+
+.card-title.price-card {
+    margin-bottom: 32px!important;
 }
 
 .col.s12.m6 {
@@ -79,7 +140,9 @@ h2 {
     font-size: 30px;
     color: #898686;
 }
-
+input#input_text {
+    font-weight: 400;
+}
 .home-wr {
     margin-top: 10px;
     margin-left: 350px;

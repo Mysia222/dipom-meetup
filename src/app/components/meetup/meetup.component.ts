@@ -8,6 +8,9 @@ import {AuthService} from '../../services/auth.service';
 import { Favorite } from '../../models/fav';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common'; 
+import { Inject }  from '@angular/core';
+
 @Component({
   selector: 'app-meetup',
   templateUrl: './meetup.component.html',  
@@ -29,6 +32,7 @@ export class MeetupComponent   {
   openWindow = false;
   obj: Favorite;
   favorites;
+  @ViewChild('div') div: ElementRef;
   @ViewChild('textarea1') textarea1: ElementRef;
 
   isDelete = false;
@@ -113,6 +117,7 @@ AddCommentForm = new FormGroup({
     private authService: AuthService,
     private router:Router,
     private favoritesService: FavoritesService) {
+    
   }
  
 
@@ -127,10 +132,10 @@ AddCommentForm = new FormGroup({
   addCommentSubmit() {
 
     this.comment = this.AddCommentForm.value;
-    console.log(this.comment);
     
     this.meetupsService.addComment(this.comment, this.currentUrl.id)
     .subscribe(data => {
+      this.router.navigate(['meetups/' + this.currentUrl.id]);
     });
 }
 
@@ -220,28 +225,27 @@ deleteToFav(meetupId) {
   });
   
 }
- ready() {
-  alert( 'DOM готов' );
-  this.meetupsService.getMeetupObjById(this.currentUrl.id).subscribe(data => {
-    document.querySelectorAll("#textarea1")[0].innerHTML = data.json().meetupData.description;
-});
-}
+
   ngOnInit() {
+    let htmldecs;
     this.currentUrl = this.activatedRoute.snapshot.params;
-   // document.addEventListener("DOMContentLoaded", this.ready);
     this.commentsObs = this.meetupsService.getComments(this.currentUrl.id);
     this.getMeetupById(this.currentUrl.id);
     this.meetupsService.getMeetupObjById(this.currentUrl.id).subscribe(data => {
-      console.log(data.json().meetupData.description);
+      htmldecs = data.json().meetupData.description;
+      //document.getElementById("div-descr").innerHTML=data.json().meetupData.description;
+       //console.log(data.json().meetupData.description);
   });
+  setTimeout(() => {
+    this.div.nativeElement.innerHTML = htmldecs;
+    console.log(this.div.nativeElement.innerHTML);
+ }, 1000);
   }
 
-  @ViewChild('input') input;
-
-//   ngAfterContentInit() {
-//      this.input.nativeElement.focus();
-//   } 
-//   ngAfterViewInit() {
-//     this.input.nativeElement.focus();
-//  } 
+  ngAfterViewInit() {
+    setTimeout(() => {
+      console.log(this.div.nativeElement.innerHTML);
+   }, 1000);
+    
+}
 }

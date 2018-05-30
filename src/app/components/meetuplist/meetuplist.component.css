@@ -1,9 +1,29 @@
-.row {
-    margin-left: 400px;
-    margin-right: auto;
-    width: 70%;
-    margin-bottom: 20px;
+
+@media (max-width: 800px) {
+    .row {
+        width: 90%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+    
 }
+@media (min-width: 800px) {
+    .row {
+        margin-left: 400px;
+        margin-right: auto;
+        width: 70%;
+        margin-bottom: 20px;
+    }
+    
+}
+
+span.card-title.price-card {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
 
 ul {
     margin-left: 400px;
@@ -18,4 +38,21 @@ h2 {
     font-size: 30px;
     margin-left: 300px;
     color: #898686;
+}
+
+.card-image img {
+    height: 200px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.row .col.s6 {
+    width: 30%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}
+
+input#icon_prefix {
+    margin-left: 30px;
 }

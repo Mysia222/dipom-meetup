@@ -28,39 +28,37 @@
         <div class="admin-card" *ngIf="authService.getloggedAdminIn() else user">
             <div class="row">
                 <form [formGroup]="EditmeetupForm" (submit)="onUpdateMeetupSubmit()">
-                    <div class="col s5">
+                    <div class="row">
                         <div class="card once-meetup edit">
                             <div class="card-image">
                                 <img src="./assets/img/{{meetup.meetupData.image}}">
                             </div>
                             <div class="card-content">
-                                <span class="card-title price-card"> 
+                                <p class="card-title price-card"> 
                       Название: <input formCozntrolName="name" id="input_text" type="text" value = "{{meetup.meetupData.name}}"/> 
-                      </span>
-                                <span> 
+                                  </p>
+                                <p> 
                       Изображение(Url): <input  id="input_text" formControlName="image" type="text" value = {{meetup.meetupData.image}}>
-                      </span>
-                                <span class="price-card"> 
+                      </p>
+                                <p class="price-card"> 
                       Цена(USD): <input formControlName="price" id="input_text" type="text" value = {{meetup.meetupData.price}}> 
-                      </span>
-                                <span> 
+                      </p>
+                                <p> 
                       Организатор: <input id="input_text" formControlName="createdBy" type="text" value = {{meetup.createdBy}}>
-                      </span>
+                      </p>
+                      <p>
+                            Категория:
+
+                        </p>
+                        <select class="browser-default form-categ" formControlName="category">
+                                <option value="{{meetup.meetupData.category}}" disabled selected>{{meetup.meetupData.category}}</option>
+                                <option *ngFor="let category of categories" value="{{category.category_name}}">{{category.category_name}}</option>
+                              </select>
                             </div>
                         </div>
                     </div>
-                    <div class="col s7">
-                        <p class="category-label">Категория:</p>
-                        <!-- <input id="input_text" formControlName="category" type="text" value={{meetup.meetupData.category}}> -->
-                        <div class="input-field col s12">
-                            <select class="browser-default" formControlName="category">
-                              <option value="{{meetup.meetupData.category}}" disabled selected>{{meetup.meetupData.category}}</option>
-                              <option *ngFor="let category of categories" value="{{category.category_name}}">{{category.category_name}}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row s7">
-                    <div class="col s7">
+                    <div class="row">
+                    <div class="row">
                     <p>Описание:</p>
                     <textarea id="textarea12" formControlName="description" class="materialize-textarea" value={{meetup.meetupData.description}}></textarea>
                     </div>
@@ -100,37 +98,41 @@
                         </div>
                     </div>
                 </div>
-                <div class="row s7">
+                <div class="row s7 descript-map descr">
                     <!-- <form [formGroup]="editorForm" >
                     <textarea [froalaEditor] formControlName="editorData" id="textarea1" class="materialize-textarea">
                     </textarea>
                     </form>
                     <app-editor></app-editor> -->
                     <p>Описание:</p>
-                    <div id="textarea1" #textarea1 class="materialize-textarea">
-                    ukhj
+
+                    <div id="div-descr" #textarea1 class="materialize-textarea">
+                            <div #div >loading...</div>
                     </div>
                 </div>
-                <div class="row s7 map-class">
+                <div class="row s7 map-class descript-map">
                     <app-map> </app-map>
                 </div>
             </div>
             <div>
-                <div *ngIf="!authService.getloggedAdminIn() && authService.getloggedIn()">
-                    <h5>Comments</h5>
+                <div id="coom" *ngIf="!authService.getloggedAdminIn() && authService.getloggedIn()">
+                    <h5>Коментарии</h5>
                     <div class="admin-card" *ngIf="authService.getloggedIn()">
                         <div class="row">
                             <form [formGroup]="AddCommentForm" (ngSubmit)="addCommentSubmit()">
                                 <div class="card once-meetup comment-card">
                                     <div class="card-content">
                                         <span class="card-title price-card"> 
-                                 Title: <input formControlName="commentsTitle" id="input_text" type="text"> 
-                                 Rating (0-5): <input formControlName="commentsRating" id="input_text" type="text"> 
+                                 <p class="comment-par"> Вопрос: <input style="
+                                    width: 900px;" formControlName="commentsTitle" id="input_text" type="text"> </p>
+                                <p class="comment-par" > Оценка (0-5): <input style="width: 900px;" formControlName="commentsRating" id="input_text" type="text"> </p>
                                  </span>
-                                        <p>Description:</p>
+                                        <p>Описание:</p>
                                         <input formControlName="commentsDescription" id="input_text" type="text"> 
+                                        <p>
                                         <input class="waves-effect waves-light btn" type="submit" [disabled]="AddCommentForm.invalid" value="Add comment">
-                                    </div>
+                                    </p>
+                                </div>
                                 </div>
                             </form>
                         </div>

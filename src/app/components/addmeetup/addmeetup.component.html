@@ -46,7 +46,7 @@
                     'has-danger': price.invalid && (price.dirty || price.touched),
                     'has-success': price.valid && (price.dirty || price.touched)
                     }">
-                    <label id="add-form">Цена (RUB)</label>
+                    <label id="add-form">Цена (USD)</label>
                     <input type="text" class="form-control" placeholder="Веведите цену билета или 0, если мероприятие бесплатное"  formControlName="price" required>
                     <div class="form-control-feedback" *ngIf="price.errors && (price.dirty || price.touched)">
                         <p class="error-input" *ngIf="price.errors.required">*Обязательное поле</p>

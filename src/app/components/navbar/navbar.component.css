@@ -13,6 +13,11 @@
     nav.lighten-2 {
         width: 160%;
     }
+    .brand-logo[_ngcontent-c1] img[_ngcontent-c1] {
+        width: 40%;
+        margin: 10px 20px 50px 70px;
+    }
+
     
 }
 @media (max-width: 800px) {
@@ -22,13 +27,21 @@
         margin-top: -140px;
         width: 300px;
     }
+
 }
-@media (min-device-width: 800px) {
+@media (min-width: 800px) {
     #nav-mobile {
         transform: translateX(0%);
     }
+    #div-descr {
+        margin-left: -200px!important;
+    }
+    .row.s12.descript-map.descr {
+        margin-left: -300px;
+    }
     
 }
+
 /*click="document.getElementById('nav-mobile').style.width="100px'""*/
 nav.lighten-2 {
     background-color: #258b80;
@@ -124,4 +137,12 @@ button {
     background: none;
     border: none;
 
+}
+
+#search-button {
+    color: black;
+    width: 302px;
+    text-align: left;
+    background-color: white;
+    /* z-index: 222222222; */
 }

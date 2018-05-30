@@ -65,7 +65,7 @@
                         <div *ngIf="queryString && isClicked">
                             <div class="search-results" (click)="makeInvisible($event)" *ngIf="meetupsObs | async as onemeetup else loading">
                                 <div *ngFor="let meetup of onemeetup | filter: queryString" class="list-search">
-                                    <button [routerLink]="['/meetups/', meetup._id]">  {{meetup.meetupData.name}} </button>
+                                    <button [routerLink]="['/meetups/', meetup._id]" id="search-button">  {{meetup.meetupData.name}} </button>
                                 </div>
                             </div>
                         </div>
@@ -99,8 +99,8 @@
                         <div *ngIf="queryString && isClicked">
                             <div class="search-results" (click)="makeInvisible($event)" *ngIf="meetupsObs | async as onemeetup else loading">
                                 <div *ngFor="let meetup of onemeetup | filter: queryString" class="list-search">
-                                    <button [routerLink]="['/meetups/', meetup._id]">  {{meetup.title}} </button>
-                                </div>
+                                    <button [routerLink]="['/meetups/', meetup._id]" id="search-button">  {{meetup.title}} </button>
+                                </div>t
                             </div>
                         </div>
                     </div>

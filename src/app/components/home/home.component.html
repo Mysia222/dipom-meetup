@@ -21,7 +21,7 @@
               <div class="items">
                   <div class = "slider-info">
                   <h1>{{ item.title }}</h1>
-                  <button data-target="modal1" (click) = "openModal()" class="btn modal-trigger">{{ item.buttonVal }}</button>
+                  <button data-target="modal1" routerLink="/meetups" class="btn modal-trigger">{{ item.buttonVal }}</button>
                   </div>
                 <img class="slider-img" src="{{ item.name }}">
               </div>
@@ -47,10 +47,9 @@
     </ul> -->
    <app-trackme> </app-trackme>
     <div class="row" [@flyInOut]="'in'" *ngIf="meetupsObs | async as onemeetup else loading">
-        <div class="col s4" >
-            <app-meetups *ngFor="let meetup of onemeetup | sort: sortString | filter: queryString" [meetup]="meetup" [isUser] = "this.authService.getloggedIn()" [category] = "category">   
+
+            <app-meetups class="col s4" *ngFor="let meetup of onemeetup | sort: sortString | filter: queryString" [meetup]="meetup" [isUser] = "this.authService.getloggedIn()" [category] = "category">   
             </app-meetups>
-        </div>
     </div>
     <ng-template #loading>
         <div class="preloader-wrapper big active">
