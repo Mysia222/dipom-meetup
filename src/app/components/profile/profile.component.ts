@@ -19,6 +19,8 @@ export class ProfileComponent  {
   profile;
   statusCode: number;
   meetupObs;
+  isYourMeetups = true;
+  isMyMeetups = false;
   isDelete = false;
   @Input() isAdmin;
   favsObs;
@@ -49,5 +51,18 @@ EditProfileForm = new FormGroup({
   ngOnInit() {
     this.profile = this.authService.isLoggedIn();
     this.favsObs = this.favoritesService.getFavsByUserId(this.profile._id); 
+  }
+
+  changeYourMeetups() {
+    if(this.isYourMeetups) {
+      this.isYourMeetups = false;
+      this.isMyMeetups=true;
+    } else {
+      if(this.isMyMeetups) {
+        this.isYourMeetups = true;
+        this.isMyMeetups=false;
+      }
+
+    }
   }
 }

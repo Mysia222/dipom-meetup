@@ -32,20 +32,26 @@
             </div>
         </div>
         <div *ngIf="!authService.getloggedAdminIn() && authService.getloggedIn()">
-        <h4>Мероприятия:</h4>
-        <div class="row favs" *ngIf="favsObs | async as onefav else loading">    
-            <div *ngIf="onefav.length else cat">
-            <app-favs class="col s12 m6 l3" *ngFor="let fav of onefav"  [fav]="fav">   
-            </app-favs>
-            </div> 
-        </div>
-        </div>
-        <ng-template #cat>
-            <div class="no-fav">
-                <h6>Вы еще не участвуйте в мероприятиях :(</h6>
-                <img src="./assets/img/no-fav.jpg">
+        <h4>Мероприятия</h4>
+        <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+            <li class="tab"><a (click)="changeYourMeetups()">Как участник</a></li>
+            <li class="tab"><a (click)="changeYourMeetups()">Как создатель</a></li>
+          </ul>
+          <div id="test1" *ngIf="isYourMeetups" class="col s12">        
+            <div class="row favs" *ngIf="favsObs | async as onefav else loading">    
+                <div *ngIf="onefav.length else cat">
+                    <app-favs class="col s12 m6 l3" *ngFor="let fav of onefav"  [fav]="fav">   
+                    </app-favs>
+                </div> 
             </div>
-        </ng-template>
+            <ng-template #cat>
+                <div class="no-fav">
+                    <h6>Вы еще не участвуйте в мероприятиях :( <a routerLink="/meetups">Выбрать мероприятие</a></h6>
+                </div>
+            </ng-template>
+        </div>
+          <div id="test2" *ngIf="isMyMeetups" class="col s12"><p>Test 2</p></div>
+        </div>
         <ng-template #loading>
             <div class="preloader-wrapper big active">
                 <div class="spinner-layer spinner-green-only">
