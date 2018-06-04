@@ -29,7 +29,7 @@ export class ProfileComponent  {
   favsObs;
   meetupsObs
   yourfavsObs;
-
+  isEdit = false;
   EditMeetupForm = new FormGroup({
     title: new FormControl('', Validators.required),
     author: new FormControl('', Validators.required),
@@ -62,7 +62,13 @@ EditProfileForm = new FormGroup({
     // createUser: req.body.createUser
     // //this.yourfavsObs =  this.favoritesService.getFavsByUserCreate(this.profile._id); 
   }
-
+  editProfile(profileId) {
+    this.isEdit = true;
+  }
+  saveProfile(profileId) {
+    
+    this.isEdit = false;
+  }
   changeYourMeetups() {
     if(this.isYourMeetups) {
       this.isYourMeetups = false;

@@ -9,22 +9,38 @@
                 <form [formGroup]="EditProfileForm">
                 <div class="col s5">
                 <div class="card once-meetup">
-                    <div class="card-image">
+                    <div class="card-image profile-image">
                         <img src="./assets/img/profile.png">
                     </div>
+                    <button class="btn modal-trigger" *ngIf="!isEdit" (click)="editProfile(authService.isLoggedIn()._id)">Редактировать</button>
+                    <button class="btn modal-trigger" *ngIf="isEdit" (click)="saveProfile(authService.isLoggedIn()._id)">Сохранить</button>
                 </div>
                 </div>
                 <div class="col s7">
-                <div class="card-content">
-                    <span class=" price-card"> 
-                    <span class="label"> Email: </span> <input formControlName="email" id="input_text" type="text" value = {{profile.email}}> 
-                    </span>
-                    <span> 
-                    <span class="label"> Имя:</span> <input id="input_text" formControlName="firstName" type="text" value = {{profile.firstName|uppercase}}>
-                    </span>
-                    <span class="price-card"> 
-                    <span class="label">Фамилия: </span> <input formControlName="lastName" id="input_text" type="text" value = {{profile.lastName|uppercase}}> 
-                     </span>
+                <div class="card-content row">
+                    <div class="col label-col">
+                        <div class="div-label">
+                            <span class="label"> Email: </span>
+                        </div>
+                        <div  class="div-label">
+                            <span class="label"> Имя: </span>
+                        </div>
+                        <div  class="div-label">
+                            <span class="label"> Фамилия: </span>
+                        </div>
+                    </div>
+                    <div class="col s7">
+                        <div class=" price-card"> 
+                            <input [readonly]="!isEdit" formControlName="email" id="input_text" type="text" value = {{profile.email}}> 
+                        </div>
+                        <div> 
+                            <input [readonly]="!isEdit" id="input_text" formControlName="firstName" type="text" value = {{profile.firstName|uppercase}}>
+                        </div> 
+                        <div class="price-card"> 
+                            <input [readonly]="!isEdit" formControlName="lastName" id="input_text" type="text" value = {{profile.lastName|uppercase}}> 
+                        </div>
+                        </div>
+
                     </div>
                 </div>
                 <!--<input class="waves-effect waves-light btn profile-account" type="submit" value="Save">-->

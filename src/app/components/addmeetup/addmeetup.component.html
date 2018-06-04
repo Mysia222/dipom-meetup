@@ -30,7 +30,7 @@
                 'has-success': eventsDate.valid && (eventsDate.dirty || eventsDate.touched)
                 }">
                     <label id="add-form">Дата</label>
-                    <input type='date' formControlName="eventsDate" />
+                    <input type="time" formControlName="eventsDate" />
                     <div class="form-control-feedback" *ngIf="eventsDate.errors && (eventsDate.dirty || eventsDate.touched)">
                         <p class="error-input" *ngIf="eventsDate.errors.required">*Обязательное поле</p>
                     </div>
