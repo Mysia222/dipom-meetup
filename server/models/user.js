@@ -12,6 +12,7 @@ const userSchema = new Schema({
     email: { type: String, required: true, unique: true, lowercase: true },
     isAdmin: { type: Boolean },
     location: { type: String },
+    image: {type: String},
     hash: String,
     salt: String
 });
@@ -23,6 +24,7 @@ userSchema.methods.setPassword = function(password){
   };
   
   userSchema.methods.validPassword = function(password) {
+    
     var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
     return this.hash === hash;
   };
@@ -37,7 +39,6 @@ userSchema.methods.setPassword = function(password){
       firstName: this.firstName,
       lastName: this.lastName,
       isAdmin: this.isAdmin,
-      location: this.location,
       exp: parseInt(expiry.getTime() / 1000),
     }, config.secret);
   };

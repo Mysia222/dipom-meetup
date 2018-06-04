@@ -34,6 +34,7 @@ public codeLatLng() {
 getCity(lat, lng) {
 
     var latlng = new google.maps.LatLng(lat, lng);
+    console.log(lat, lng);
     this.geocoder.geocode({'latLng': latlng}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         if (results[1]) {

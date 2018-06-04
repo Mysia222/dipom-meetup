@@ -9,6 +9,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { UsersComponent } from './components/users/users.component';
 import { MeetupsComponent } from './components/meetups/meetups.component';
 import { MeetuplistComponent } from './components/meetuplist/meetuplist.component';
+import { AddmeetupComponent } from './components/addmeetup/addmeetup.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -58,7 +59,11 @@ const appRoutes: Routes = [
     path: 'meetups',
     component: MeetuplistComponent
   },
-  
+  {
+    path: 'addmeetups/add',
+    component: AddmeetupComponent,
+    canActivate: [AuthGuard]
+  },
   {
       path: '**',
       component: HomeComponent

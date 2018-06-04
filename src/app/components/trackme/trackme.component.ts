@@ -22,8 +22,8 @@ export class TrackmeComponent implements OnInit {
 
   ngOnInit() {
     const mapProp = {
-      center: new google.maps.LatLng(18.5793, 73.8143),
-      zoom: 15,
+      center: new google.maps.LatLng(53.9170029, 27.584480199999998),
+      zoom: 5,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 

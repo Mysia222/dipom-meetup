@@ -6,8 +6,8 @@
 
 .card {
     width: 350px;
-    margin: 20px 2px;
-    padding: 10px 20px 5px 20px;
+    margin: 0px 2px;
+    padding: 20px 20px 31px 20px;
 }
 
 .col.s12.m6 {
@@ -75,10 +75,13 @@ input#icon_prefix {
     margin-bottom: 30px!important;
 }
 
-div#modal2 {
+div#modal2[_ngcontent-c5] {
     width: 30%;
-    height: 30%;
-    border: solid 5px #ffced2;
+    height: 200px;
+    box-shadow: 1px black;
+    /* height: 30%; */
+    box-shadow: 0 12px 12px 0 rgba(14, 14, 14, 0.4);
+    /* border: solid 5px #ffced2; */
 }
 
 button.modal-action.modal-close.waves-effect.waves-green.btn-flat {
@@ -98,4 +101,23 @@ i.large.material-icons.done {
 
 .model-cont {
     padding: 20px;
+}
+
+span.card-title {
+    margin-top: 15px;
+}
+
+.card-content[_ngcontent-c5] {
+    padding: 0px;
+    padding-bottom: 30px;
+}
+
+.ng-star-inserted[_ngcontent-c5] {
+    margin: 10px 0px 0px 0px;
+}
+
+.modal.modal-fixed-footer {
+    /* padding: 0; */
+    height: 200px;
+    width: 30%;
 }

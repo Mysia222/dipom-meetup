@@ -33,7 +33,7 @@ export class EditComponent  {
   address: FormControl;
 
 
-  constructor( private meetupsService: MeetupsService) {
+  constructor( private meetupsService: MeetupsService, private authService: AuthService) {
 
     this.searchableList = ['title'];
    
@@ -103,10 +103,12 @@ onMeetupFormSubmit() {
   if (this.MeetupForm.invalid) {
       return;
   }
-  
+  let profile = this.authService.isLoggedIn();
+  console.log(profile);
   let meetup = {
     meetupData: this.MeetupForm.value,
-    createdBy: this.MeetupForm.value.createdBy
+    createdBy: this.MeetupForm.value.createdBy,
+    createUser: profile._id
   };
   console.log(meetup);
   this.meetupsService.createMeetup(meetup)

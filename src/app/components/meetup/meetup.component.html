@@ -58,9 +58,11 @@
                         </div>
                     </div>
                     <div class="row">
-                    <div class="row">
+                    <div class="row decr-form">
                     <p>Описание:</p>
-                    <textarea id="textarea12" formControlName="description" class="materialize-textarea" value={{meetup.meetupData.description}}></textarea>
+                    <!-- <textarea id="textarea12" formControlName="description" class="materialize-textarea" value={{meetup.meetupData.description}}></textarea> -->
+
+                    <textarea [froalaEditor] formControlName="description"></textarea>
                     </div>
                     <input class="waves-effect waves-light btn" type="submit" value="Save">
                     <a class="waves-effect waves-light btn" (click)="deletemeetup()">Удалить</a>
@@ -89,12 +91,19 @@
                             <span class="price-card">{{meetup.meetupData.category}}</span>
                             <br>
                             <br>
-                            <div class="add-button" *ngIf="!authService.getloggedIn()">
-                                <p>Для того, чтобы присоедениться необходимо <a routerLink="/register"> зарегистрироваться </a> или <a routerLink="/login"> войти </a></p>
+                            <div class="add-button" *ngIf="isFav">
+                                <p>Вы уже присоеденились</p>
+                                <br>
                             </div>
-                            <button class="btn modal-trigger"  *ngIf="authService.getloggedIn() && !isFavEdded" (click)="addToFav(meetup._id)">Присоединиться</button>
-                            <button *ngIf="isFavEdded" class="btn disabled">Присоединиться</button>
-                            <button *ngIf="isFavEdded" (click)="deleteToFav(meetup._id)" class="btn red">Отмена</button>
+                            <div class="add-button" *ngIf="!authService.getloggedIn()">
+                                    <p>Для того, чтобы присоедениться необходимо <a routerLink="/register"> зарегистрироваться </a> или <a routerLink="/login"> войти </a></p>
+                            </div>
+                            <div class="add-button" *ngIf="authService.getloggedIn()">
+                                <button class="btn modal-trigger"  *ngIf="!isFavEdded && !isFav" (click)="addToFav(meetup._id)">Присоединиться</button>
+                                <button *ngIf="isFavEdded" class="btn disabled">Присоединиться</button>
+                                <button *ngIf="isFavEdded || isFav" (click)="deleteToFav(meetup._id)" class="btn red">Отмена</button>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -130,7 +139,7 @@
                                         <p>Описание:</p>
                                         <input formControlName="commentsDescription" id="input_text" type="text"> 
                                         <p>
-                                        <input class="waves-effect waves-light btn" type="submit" [disabled]="AddCommentForm.invalid" value="Add comment">
+                                        <input class="waves-effect waves-light btn" type="submit" [disabled]="AddCommentForm.invalid" value="Добавить комментарий">
                                     </p>
                                 </div>
                                 </div>

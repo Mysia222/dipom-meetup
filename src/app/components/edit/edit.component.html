@@ -10,9 +10,9 @@
     </ul>
 
     <button data-target="modal1" (click)="openModal()" class="btn modal-trigger">Создать мероприятие</button>
-
-    <add-meetup *ngIf="isDialogOpen" [isDialogOpen] = "isDialogOpen" ></add-meetup>
-
+    <div *ngIf="isDialogOpen">
+    <add-meetup [isDialogOpen] = "isDialogOpen" ></add-meetup>
+    </div>
     <div class="row" *ngIf="meetupsObs | async as onemeetup else loading">
         <div class="col s12 m6">
             <app-meetups *ngFor="let meetup of onemeetup | filter: queryString" [meetup]="meetup" [category]="category">

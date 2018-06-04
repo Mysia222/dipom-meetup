@@ -8,7 +8,7 @@
             <span class="card-title">{{meetup.meetupData.name}}</span>
             <span class="card-title price-card">{{meetup.meetupData.price | currency:"USD":true }}</span>
             <p>{{meetup.createdBy}}</p>
-            <p>{{meetup.meetupData.eventsDate}}</p>
+            <p>{{meetup.meetupData.eventsDate | date:'fullDate'}}</p>
         </div>
     </div>
 </div>

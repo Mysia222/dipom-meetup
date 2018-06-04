@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const config = require('../config/config');
 const passport = require('passport');
-
+var LocalStorage = require('node-localstorage').LocalStorage;
 module.exports = (router) => {
 
     router.post('/register', function(req, res) {
@@ -30,6 +30,38 @@ module.exports = (router) => {
 
     router.post('/login', (req, res) => {
 
+        if(Object.keys(req.body).length == 0) {
+            //console.log(req.body);
+            if (typeof localStorage === "undefined" || localStorage === null) {
+                var LocalStorage = require('node-localstorage').LocalStorage;
+                localStorage = new LocalStorage('./scratch');
+            }    
+            //localStorage.removeItem("user");
+            var user1 =  JSON.parse(localStorage.getItem('user')).user;
+            // if(user1.firstName == 'юлия' || user1.lastName ==='ольховик') {
+            //     user1.firstName = "Yulia";
+            //     user1.lastName = "Alkhovik";
+            //     user1.location = "Minsk";
+            // }
+            var password = JSON.parse(localStorage.getItem('user')).password;
+            console.log(password);
+            User.findOne({ email: user1.email }, (err, user) => {
+                if (!user) {
+                    let user = new User (user1);
+                    user.setPassword(password);
+                    user.save((err) => {if(err) console.log(err)});
+                    console.log(user,"uuuu");
+                } else {
+                       
+                console.log(user);
+                }
+            });
+            req.body = {
+                email: user1.email,
+                password: password
+            }
+
+        } 
         passport.authenticate('local', function(err, user, info) {
             var token;
             // If Passport throws/catches an error
@@ -51,6 +83,8 @@ module.exports = (router) => {
             }
         })(req, res);
     });
+
+   // router.get('/fbLogin',  passport.authenticate('facebook'));
 
     return router;
 }

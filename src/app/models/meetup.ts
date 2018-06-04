@@ -1,7 +1,8 @@
 export class Meetup {
     constructor(
         public createdBy: string,
-        public meetupData: any
+        public meetupData: any,
+        public createUser: string
         
     )
          { 

@@ -29,12 +29,6 @@ h2 {
     margin-left: 350px;
 }
 
-.price-card {
-    position: absolute;
-    margin-left: 150px;
-    font-size: 17px;
-}
-
 span.card-title {
     font-size: 18px !important;
 }
@@ -72,3 +66,20 @@ h1 {
     font-size: 29px;
     margin-left: 20%;
 }
+
+@media (max-width: 800px) {
+
+    .row .col.s4 {
+        width: 80%;
+        margin-left: 10%;
+    }
+
+}
+@media (min-width: 800px) {
+    .users {
+
+        margin-left: 20%;
+    
+    }
+}
+    

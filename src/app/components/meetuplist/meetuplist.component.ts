@@ -18,7 +18,8 @@ export class MeetuplistComponent  {
   statusCode: number;
   meetupsObs;
   isAdmin;
-  queryString = "";
+  sortString = "Выберете селектор";
+  filtercategory = "Выберете основную категорию";
   categories = [
     {
         "category_id": 1,

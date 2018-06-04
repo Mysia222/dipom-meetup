@@ -22,6 +22,7 @@ export class MeetupsComponent  {
   profile;
   isFavEdded = false;
   openWindow = false;
+  isFav = true;
   obj: Favorite;
 
   constructor(private meetupsService: MeetupsService, private favoritesService: FavoritesService, private authService: AuthService) {
@@ -70,6 +71,20 @@ export class MeetupsComponent  {
     });
  }
 
+ isInFav(meetupId) {
+   console.log(meetupId);
+  let profile = this.authService.isLoggedIn();
+  let isFav = false;
+  this.favoritesService.getFavsByUserId(profile._id).subscribe(favs => {
+    favs.forEach(element => {
+      console.log(element);
+        if(element.meetupId === meetupId) {
+          isFav = true;
+        }
+    });
+  });
+  return isFav;
+}
 
   ngOnInit() {
     

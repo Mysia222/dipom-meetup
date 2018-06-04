@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AuthService} from '../../services/auth.service';
 import { UsersService} from '../../services/users.service';
-import { Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReactiveFormsModule, FormsModule,FormBuilder } from '@angular/forms';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -19,14 +19,75 @@ export class LoginComponent implements OnInit {
   password: FormControl;
   isLoginError: boolean = false;
   errorMessage: string;
-  constructor(private router:Router, private authService: AuthService, private usersService: UsersService) {}
+  constructor(private router:Router, private authService: AuthService, private usersService: UsersService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
-
-    this.createFormControls();
-    this.createForm();
+    let fb = this.activatedRoute.snapshot.params;
+    let user = {};
+    if(window.location.href == "http://localhost:4200/login?fb=true#_=_" || window.location.href == "http://localhost:4200/login?tw=true#_=_") {
+      console.log(fb);
+      this.authService.logIn(user).subscribe(data => {
+        if (data.json().token) {
+          this.authService.setloggedIn();
+          console.log(data.json().message,"dasd");
+          this.authService.isLoggedIn();
+          if (this.authService.getloggedAdminIn()) {
+              this.router.navigate(['meetups/edit']);
+          } else {
+              this.router.navigate(['meetups']);
+    
+          }
+        } else {
+          this.errorMessage = data.json().message;
+          this.isLoginError = true;
+        }
+    
+    });
+    } else {
+      this.createFormControls();
+      this.createForm();
+    }
 
   }
+
+  fbLogin(){
+    let user = {};
+    this.authService.fbLogIn().subscribe(data => {
+        console.log(data);
+        
+      window.location.href = data; 
+       // this.logIn(user);
+
+      // if (data.json().token) {
+      //   this.authService.setloggedIn();
+      //   this.authService.isLoggedIn();
+      //   if (this.authService.getloggedAdminIn()) {
+      //       this.router.navigate(['meetups/edit']);
+      //   } else {
+      //       this.router.navigate(['meetups']);
+
+      //   }
+      // } else {
+      //   this.errorMessage = data.json().message;
+      //   this.isLoginError = true;
+      // }
+      
+
+  });
+  
+}
+
+
+twLogin() {
+  let user = {};
+  this.authService.twLogIn().subscribe(data => {
+    console.log(data);
+    console.log("data");
+    window.location.href = data; 
+
+});
+
+}
 
   createFormControls() {
   
@@ -59,22 +120,27 @@ export class LoginComponent implements OnInit {
         password: e.target.elements[1].value
     };
 
-    this.authService.logIn(user).subscribe(data => {
-        console.log(data.json().message);
-        if (data.json().token) {
-          this.authService.setloggedIn();
-          this.authService.isLoggedIn();
-          if (this.authService.getloggedAdminIn()) {
-              this.router.navigate(['meetups/edit']);
-          } else {
-              this.router.navigate(['meetups']);
-  
-          }
-        } else {
-          this.errorMessage = data.json().message;
-          this.isLoginError = true;
-        }
+    this.logIn(user);
+ }
+ logIn(user) {
 
-    });
+  this.authService.logIn(user).subscribe(data => {
+    if (data.json().token) {
+      this.authService.setloggedIn();
+      console.log(data.json().message,"dasd");
+      this.authService.isLoggedIn();
+      if (this.authService.getloggedAdminIn()) {
+          this.router.navigate(['meetups/edit']);
+      } else {
+          this.router.navigate(['meetups']);
+
+      }
+    } else {
+      this.errorMessage = data.json().message;
+      this.isLoginError = true;
+    }
+
+});
+
  }
 }

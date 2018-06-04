@@ -23,7 +23,8 @@ const meetupSchema = new Schema({
         commentsRating: { type: Number, default: 0 },
         commentsTitle: { type: String },
         commentsDescription: { type: String }
-    }]   
+    }],
+    createUser: { type: String }
 });
 
 

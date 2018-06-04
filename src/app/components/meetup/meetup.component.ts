@@ -11,6 +11,10 @@ import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common'; 
 import { Inject }  from '@angular/core';
 
+import { create } from 'domain';
+
+
+
 @Component({
   selector: 'app-meetup',
   templateUrl: './meetup.component.html',  
@@ -30,13 +34,14 @@ export class MeetupComponent   {
   profile;
   isFavEdded = false;
   openWindow = false;
+  isFav = false;
   obj: Favorite;
   favorites;
   @ViewChild('div') div: ElementRef;
   @ViewChild('textarea1') textarea1: ElementRef;
 
   isDelete = false;
-  public editorContent: string = 'My Document\'s Title'
+
   @Input() isAdmin;
   @Input() isUser;
   title = 'Crystal Editor';
@@ -139,7 +144,6 @@ AddCommentForm = new FormGroup({
     });
 }
 
-
   onUpdateMeetupSubmit() {
 
     const meetups = {
@@ -148,7 +152,6 @@ AddCommentForm = new FormGroup({
     };
     this.meetupsService.getMeetupById(this.currentUrl.id).subscribe(
         meetup => {
-            console.log(meetup.meetupData);
             for (var key in meetup.meetupData) {
                 if (!meetups.meetupData[key]) {
                   meetups.meetupData[key] = meetup.meetupData[key];
@@ -178,14 +181,21 @@ deletemeetup() {
 
 }
 
+isInFav(meetupId, userId) {
 
+  this.favoritesService.getFavsByUserId(userId).subscribe(favs => {
+    favs.forEach(element => {
+        if(element.meetupId === meetupId) {
+          this.isFav = true;
+          console.log(element);
+        }
+      });
+  });
+}
 
 addToFav(meetupId) {
-    
-   
   this.isFavEdded = true;
   this.openWindow = true;
-  this.profile = this.authService.isLoggedIn();
   this.obj = {
   meetupId: meetupId, 
   userId: this.profile._id, 
@@ -211,8 +221,6 @@ deleteToFav(meetupId) {
   
   this.isFavEdded = false;
   this.openWindow = false;
-  this.profile = this.authService.isLoggedIn();
-  
   this.favoritesService.getFavsByUserId(this.profile._id).subscribe(favs => {
     favs.forEach(element => {
       if(element.meetupId === meetupId) {
@@ -230,6 +238,11 @@ deleteToFav(meetupId) {
     let htmldecs;
     this.currentUrl = this.activatedRoute.snapshot.params;
     this.commentsObs = this.meetupsService.getComments(this.currentUrl.id);
+    if(this.authService.getloggedIn()) {
+      this.profile = this.authService.isLoggedIn();
+      this.isInFav(this.currentUrl.id, this.profile._id);
+    }
+
     this.getMeetupById(this.currentUrl.id);
     this.meetupsService.getMeetupObjById(this.currentUrl.id).subscribe(data => {
       htmldecs = data.json().meetupData.description;

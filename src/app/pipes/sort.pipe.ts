@@ -9,7 +9,7 @@ export class SortPipe implements PipeTransform {
   }
  transform(value: any, sort: string) {
   
-console.log(sort)
+console.log(value);
 
   if(sort === "SortPrice: Lowest to Highest") {
 
@@ -21,8 +21,16 @@ console.log(sort)
     return value.sort(this.comparePrice).reverse();
 
   }
+  if (sort === "Выберете селектор" || !sort) {
+    
+    return value;
+  }
   if (sort == undefined || sort == "No sort") {
     return value;
   }
+  if (sort === "free" || value.meetupData.price == "0" ) {
+    return value.filter(item => item.meetupData.price === 0);
+  }
+  return value;
  }
 }

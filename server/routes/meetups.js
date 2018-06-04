@@ -17,7 +17,8 @@ console.log(req.body);
                 category: req.body.meetupData.category,
                 rating: 0
             },
-            createdBy: req.body.createdBy
+            createdBy: req.body.createdBy,
+            createUser: req.body.createUser
         });
 
         meetup.save((err) => {

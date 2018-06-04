@@ -5,8 +5,8 @@
             <div class="input-field col s12 social-div">
                 <h2>Войти через</h2>
                 <a routerLink="/" class="brand-logo social-logo"><img src=".\assets\img\vk.png"> </a>
-                <a routerLink="/" class="brand-logo social-logo"><img src=".\assets\img\twitter.png"> </a>
-                <a routerLink="/" class="brand-logo social-logo"><img src=".\assets\img\facebook.png"> </a>
+                <a href="javascript:void(0)" (click)="twLogin()" class="brand-logo social-logo"><img src=".\assets\img\twitter.png"> </a>
+                <a href="javascript:void(0)" (click)="fbLogin()" class="brand-logo social-logo"><img src=".\assets\img\facebook.png"> </a>
             </div>
         </div>
         <div class="row" *ngIf="isLoginError" >

@@ -7,6 +7,14 @@ const express = require('express'),
       cors = require('cors'),
       jwt = require('express-jwt');
 
+      var LocalStrategy = require('passport-local').Strategy;
+      
+var User = require ('./models/user'), 
+FacebookStrategy = require('passport-facebook').Strategy,
+TwitterStrategy = require('passport-twitter').Strategy;
+var passport = require('passport');
+
+
 //mongoDB
 const mongoose = require('mongoose');
 
@@ -32,6 +40,103 @@ app.use(cors({ origin: 'http://localhost:4200' }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'dist')));
+
+app.use(passport.initialize());
+//app.use(passport.session());
+
+passport.serializeUser(function(user, done) {
+    done(null, user);
+  });
+  
+  passport.deserializeUser(function(user, done) {
+    done(null, user);
+  });
+
+
+
+
+
+
+passport.use(new TwitterStrategy({
+    consumerKey: "tZKzcapWe3XLPFolVEfRuU31u",
+    consumerSecret: "XdoPqbWCuInYVMgSh4chUeb2WMXbqBNx3r13OPptl4oinKhW9j",
+    callbackURL: "http://localhost:8000/auth/twitter/callback",
+    profileFields: ['id', 'displayName', 'photos', 'email', 'picture.type(large)']
+  },
+  function(token, tokenSecret, profile, done) {
+    if (typeof localStorage === "undefined" || localStorage === null) {
+      var LocalStorage = require('node-localstorage').LocalStorage;
+      localStorage = new LocalStorage('./scratch');
+    }
+    localStorage.removeItem("user");
+    let user = {
+      firstName: profile.displayName.split(' ')[0],
+      lastName: profile.displayName.split(' ')[1],
+      email: profile._json.email,
+      location: 'Minsk',
+      image: profile._json.picture
+    };
+    console.log(profile);
+    let password = profile._json.id;
+    localStorage.setItem("user", JSON.stringify({ user: user, password: password}));
+    return done(null, profile);
+
+  }
+));
+
+
+app.get('/auth/twitter/callback',
+  passport.authenticate('twitter', { successRedirect: 'http://localhost:4200/?tw=true',
+                                     failureRedirect: '/login' }));
+
+
+
+
+
+passport.use(new FacebookStrategy({
+    clientID: "376871946134522",
+    clientSecret: "bac7faef6cfd5ad7d993ae9dd34f08d5",
+    callbackURL: "http://localhost:8000/auth/facebook/callback",
+    profileFields: ['id', 'displayName', 'photos', 'email']
+  },
+  function(accessToken, refreshToken, profile, done) {
+      if (typeof localStorage === "undefined" || localStorage === null) {
+        var LocalStorage = require('node-localstorage').LocalStorage;
+        localStorage = new LocalStorage('./scratch');
+      }
+      localStorage.removeItem("user");
+      let user = {
+        firstName: profile.displayName.split(' ')[0],
+        lastName: profile.displayName.split(' ')[1],
+        email: profile._json.email,
+        location: 'Minsk' 
+      };
+      console.log(profile._json);
+      let password = profile._json.id;
+      console.log("user.setPassword(password)");
+      localStorage.setItem("user", JSON.stringify({ user: user, password: password}));
+      return done(null, profile);
+  }
+));
+
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { successRedirect: 'http://localhost:4200/login?fb=true',
+                                      failureRedirect: '/login' }));
+
+app.get('/auth/facebook',
+  passport.authenticate('facebook', { scope: 'email' })
+);
+
+
+
+
+
+
+
+
+
+
 
 // Use routes in application
 app.use('/favorites', favorites);

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 // import { Input } from '@angular/core/src/metadata/directives';
 import { AuthService } from '../../services/auth.service';
 import { MeetupsService } from '../../services/meetups.service'
-
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { create } from 'domain';
 import {Input} from '@angular/core';
@@ -76,7 +76,7 @@ export class AddmeetupComponent  {
     
   ]; 
 
-  constructor( private meetupsService: MeetupsService) {
+  constructor( private meetupsService: MeetupsService, private authService: AuthService, private router: Router) {
 
    
   }
@@ -139,18 +139,18 @@ onMeetupFormSubmit() {
   if (this.MeetupForm.invalid) {
       return;
   }
-  
+  let profile = this.authService.isLoggedIn()
   let meetup = {
     meetupData: this.MeetupForm.value,
-    createdBy: this.MeetupForm.value.createdBy
+    createdBy: this.MeetupForm.value.createdBy,
+    createUser: profile._id
   };
-  console.log(meetup);
   this.meetupsService.createMeetup(meetup)
       .subscribe(data => {
         this.getAllMeetups();
-console.log(data);
       });
   this.isDialogOpen = false;
+  this.router.navigate(['/profile']);
 }
 
 getAllMeetups() {
@@ -164,6 +164,11 @@ openModal() {
   this.MeetupForm.reset();
   document.querySelectorAll('input')
   console.log(this.MeetupForm);
+}
+
+closeModal() {
+  this.isDialogOpen=false;
+
 }
 
 }

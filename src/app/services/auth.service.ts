@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { User } from '../models/user';
-
+//import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable()
 export class AuthService {
 
@@ -20,7 +20,6 @@ export class AuthService {
   }
 
   private saveToken(token: string): void {
-
     localStorage.setItem('mean-token', token);
     this.token = token;
 
@@ -35,8 +34,24 @@ private getToken(): string {
 
 }
 
-private getUserDetails(): User {
+fbLogIn() {
+    return this.http.get('http://localhost:8000/auth/facebook')
+    .map(data => {
+        console.log(typeof data)
+     return data.url;
+    });
+}
 
+twLogIn() {
+
+    return this.http.get('http://localhost:8000/auth/twitter')
+    .map(data => {
+        console.log(data);
+     return data.url;
+    });
+}
+
+private getUserDetails() {
     const token = this.getToken();
     let user;
     if (token) {
@@ -46,7 +61,6 @@ private getUserDetails(): User {
     } else {
       return null;
     }
-
 }
 
 public isLoggedIn() {
@@ -59,7 +73,6 @@ public isLoggedIn() {
 }
 
 public logIn(user) {
-    console.log(this.http.post(this.authURL + '/login', user));
     return this.http.post(this.authURL + '/login', user)
     .map(data => {
         console.log(data);
@@ -72,7 +85,6 @@ public logIn(user) {
 }
 
 public getCity(lat, long) {
-    console.log(lat, long);
     return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+ lat + ','+ long + '&key=AIzaSyAkonYfV76WBEr0t7bPHCOrCL6FyjtMz6o')
     .map(data => {
         console.log(data.json());

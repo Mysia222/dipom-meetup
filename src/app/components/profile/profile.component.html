@@ -50,7 +50,32 @@
                 </div>
             </ng-template>
         </div>
-          <div id="test2" *ngIf="isMyMeetups" class="col s12"><p>Test 2</p></div>
+          <div id="test2" *ngIf="isMyMeetups" class="col s12">
+                <h6>
+                        <a (click)="openModal()" >Создать новое мероприятие</a>
+                </h6>
+                <div class="row favs" *ngIf="meetupsObs | async as onemeetup else loading">    
+                    <div *ngIf="onemeetup.length else onemeet">
+                        <div *ngFor="let meetup of onemeetup">
+                            <div class="card" *ngIf="meetup.createUser === authService.isLoggedIn()._id" [routerLink]="['/meetups/', meetup._id]">
+                                <div class="card-image">
+                                    <img src="./assets/img/{{meetup.meetupData.image}}">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title">{{meetup.meetupData.name}}</span>
+                                    <span class="card-title price-card">{{meetup.meetupData.price | currency:"USD":true }}</span>
+                                    <p>{{meetup.createdBy}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <ng-template #onemeet>
+                    <h6>Вы еще не создали ни одного мероприятия :( 
+                        <a (click)="openModal()" >Создать мероприятие</a>
+                    </h6>
+                </ng-template>
+          </div>
         </div>
         <ng-template #loading>
             <div class="preloader-wrapper big active">
@@ -67,5 +92,8 @@
              </div>
             </div>
         </ng-template>
+        <div *ngIf="isDialogOpen">
+                <add-meetup [isDialogOpen] = "isDialogOpen" ></add-meetup>
+        </div>
     </div>
 </div>

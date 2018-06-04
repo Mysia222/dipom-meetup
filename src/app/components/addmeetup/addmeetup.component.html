@@ -1,5 +1,8 @@
- <div id="modal2" *ngIf="isDialogOpen"  class="modal add-meetup open" style="z-index: 1005; display: block; opacity: 1; transform: scaleX(1); top: 10%;">
-        <div class="modal-content">
+ <div id="modal2"  *ngIf="isDialogOpen" class="modal add-meetup open" style="z-index: 1005; display: block; opacity: 1; transform: scaleX(1); top: 10%;">
+        <button (click)="closeModal()" class="modal-action modal-close waves-effect waves-green btn-flat "> 
+                <i class="large material-icons">close</i>
+        </button>   
+    <div class="modal-content">
             <h4>Создание мероприятия</h4>
             <form novalidate [formGroup]="MeetupForm" id="add-meetup-form" (ngSubmit)="onMeetupFormSubmit()" class="col s4 edit-meetups-form">
                 <div class="form-group" [ngClass]="{

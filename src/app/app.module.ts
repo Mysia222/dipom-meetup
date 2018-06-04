@@ -34,20 +34,23 @@ import { MapService } from './services/map.service';
 import { HttpModule } from '@angular/http';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { categoryFilterPipe } from './pipes/categoryFilter.pipe';
 import { AuthGuard } from './guards/auth.guard'; //add admin Guard
 
 import { ApplicationRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
 import { MaterializeModule } from 'angular2-materialize';
-
+// import { JwtModule } from '@auth0/angular-jwt';
 //import { EditorModule } from './components/editor/editor.module';
 import { EditorComponent } from './components/editor/editor.component';
 
 // Import Angular plugin.
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
-
+export function tokenGetter() {
+  return localStorage.getItem('mean-token');
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +61,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     EditComponent,
     FilterPipe,
     SortPipe,
+    categoryFilterPipe,
     MeetupComponent,
     FavsComponent,
     ProfileComponent,
@@ -85,6 +89,14 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
     MaterializeModule
+    // JwtModule.forRoot({
+    //   config: {
+    //     tokenGetter: () => {
+    //       return localStorage.getItem('mean_token');
+    //     },
+    //     whitelistedDomains: ['localhost:8000/auth/']
+    //   }
+    // })
   ],
   providers: [AuthService, AuthGuard, UsersService, MeetupsService, FavoritesService, MapService],
   bootstrap: [AppComponent]

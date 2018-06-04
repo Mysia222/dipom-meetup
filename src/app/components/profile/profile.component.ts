@@ -4,9 +4,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { trigger,state,style,transition,animate,keyframes } from '@angular/animations';
 import { AuthService } from '../../services/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { UsersService} from '../../services/users.service';
 import {FavoritesService} from '../../services/favs.service';
-
+import { MeetupsService } from '../../services/meetups.service'
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',  
@@ -23,7 +24,11 @@ export class ProfileComponent  {
   isMyMeetups = false;
   isDelete = false;
   @Input() isAdmin;
+  isDialogOpen = false;
+  MeetupForm: FormGroup;
   favsObs;
+  meetupsObs
+  yourfavsObs;
 
   EditMeetupForm = new FormGroup({
     title: new FormControl('', Validators.required),
@@ -44,13 +49,18 @@ EditProfileForm = new FormGroup({
     private authService: AuthService,
     private router:Router,
     private usersService: UsersService,
-    private favoritesService: FavoritesService) {
+    private favoritesService: FavoritesService,
+    private meetupsService: MeetupsService) {
   }
  
 
   ngOnInit() {
     this.profile = this.authService.isLoggedIn();
     this.favsObs = this.favoritesService.getFavsByUserId(this.profile._id); 
+    this.meetupsObs = this.meetupsService.getAllMeetups();
+    // this.yourfavsObs = this.(this.profile._id); 
+    // createUser: req.body.createUser
+    // //this.yourfavsObs =  this.favoritesService.getFavsByUserCreate(this.profile._id); 
   }
 
   changeYourMeetups() {
@@ -65,4 +75,13 @@ EditProfileForm = new FormGroup({
 
     }
   }
+
+  openModal() {
+    this.isDialogOpen = true;
+    //document.getElementById('add-meetup-form');
+   // this.MeetupForm.reset();
+    //document.querySelectorAll('input')
+    console.log(this.MeetupForm);
+  }
+  
 }

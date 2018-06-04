@@ -7,29 +7,31 @@
         <li>
             <label> Сортировка по цене: </label>
             <select class="browser-default"  [(ngModel)]="sortString">
-                <option value="Выберете селектор" disabled selected> Выберете селектор</option>
+                <option value="Выберете селектор" disabled > Выберете селектор</option>
                 <option value="Без сортировки"> Без сортировки</option>
                 <option value="SortPrice: Lowest to Highest"> Цена: Самый низкая к самой высокой</option>
                 <option value="SortPrice: Highest to Lowest"> Цена: Самый высокая к самой низкой</option>
-                <option value="Бесплатные">Бесплатные</option>
+                <option value="free">Бесплатные</option>
             </select>
             <label> Категория: </label>
-            <select class="browser-default">
-                    <option value="Выберете основную категорию" disabled selected>Выберете основную категорию</option>
-                    <option *ngFor="let category of categories" value="{{category.category_name}}">{{category.category_name}}</option>
+            <select class="browser-default" [(ngModel)]="filtercategory">
+                <option value="Выберете основную категорию" disabled>Выберете основную категорию</option>
+                <option value="Выберете основную категорию">Все категории</option>
+                <option *ngFor="let category of categories" value="{{category.category_name}}">{{category.category_name}}</option>
             </select>
         </li>
 </ul>
 <div class="row" *ngIf="meetupsObs | async as onemeetup else loading">
 
-            <div class="col s6" *ngFor="let meetup of onemeetup | filter: queryString">
+            <div class="col s6" *ngFor="let meetup of onemeetup | filter: queryString | sort: sortString | categoryFilter: filtercategory">
                 <div *ngIf="isFavEdded && openWindow" >
-                    <div id="modal2" class="modal modal-fixed-footer open" style="z-index: 1005; display: block; opacity: 1; transform: scaleX(1); top: 10%;">
+                    <div id="modal2" class="modal modal-fixed-footer open" style="z-index: 1005; display: block; opacity: 1; transform: scaleX(1); top: 30%;">
                         <div class="model-cont">
                             <button (click)="openWindow=false" class="modal-action modal-close waves-effect waves-green btn-flat "> 
                                         <i class="large material-icons">close</i></button>
-                            <h4>Добавлено</h4>
-                            <i class="large material-icons done">check_circle</i>
+                            <h4 style="text-align: center;
+                            font-size: 30px;
+                            font-weight: 500;">Добавлено</h4>
                         </div>
                     </div>
                 </div>
@@ -44,11 +46,11 @@
                             <p>{{meetup.createdBy}}</p>
                         </div>
                     </div>
-                    <div class="add-button" *ngIf="isUser">
+                    <!-- <div class="add-button" *ngIf="isUser">
                         <button (click)="addToFav(meetup._id)" *ngIf="!isFavEdded" class="waves-effect waves-light btn">Присоедениться</button>
                         <button *ngIf="isFavEdded" class="btn disabled">Присоедениться</button>
                         <button *ngIf="isFavEdded" (click)="deleteToFav(meetup._id)" class="btn red">Отмена</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 </div>

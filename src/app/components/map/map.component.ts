@@ -16,8 +16,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export class MapComponent  {
   title: string = 'Месторасположение';
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  lat: number = 53.9170029;
+  lng: number = 27.584480199999998;
 
   constructor(
     private meetupsService: MeetupsService, 
