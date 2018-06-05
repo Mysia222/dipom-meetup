@@ -49,9 +49,9 @@ export class UsersService {
 
     }
 
-    updateUser(meetup) {
+    updateUser(userId, user) {
 
-        return this.http.put(this.url +"/"+ meetup.id, meetup)
+        return this.http.put(this.meetupUrl +"/edit/"+ userId, user)
             .map(response => response.json())
 
     } 

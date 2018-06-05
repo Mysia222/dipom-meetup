@@ -6,15 +6,15 @@
     <div>
         <div class="admin-card" *ngIf="authService.getloggedIn()">
             <div class="row">
-                <form [formGroup]="EditProfileForm">
+            <form [formGroup]="EditProfileForm" (submit)="saveProfile()">
                 <div class="col s5">
                 <div class="card once-meetup">
                     <div class="card-image profile-image">
                         <img src="./assets/img/profile.png">
                     </div>
-                    <button class="btn modal-trigger" *ngIf="!isEdit" (click)="editProfile(authService.isLoggedIn()._id)">Редактировать</button>
-                    <button class="btn modal-trigger" *ngIf="isEdit" (click)="saveProfile(authService.isLoggedIn()._id)">Сохранить</button>
                 </div>
+                <button class="btn modal-trigger" *ngIf="!isEdit" (click)="editProfile()">Редактировать</button>
+                <button class="btn modal-trigger" type="submit" *ngIf="isEdit">Сохранить</button>
                 </div>
                 <div class="col s7">
                 <div class="card-content row">
@@ -31,13 +31,13 @@
                     </div>
                     <div class="col s7">
                         <div class=" price-card"> 
-                            <input [readonly]="!isEdit" formControlName="email" id="input_text" type="text" value = {{profile.email}}> 
+                            <input [readonly]="!isEdit" [ngStyle]="isEdit && {'border': '1px solid'}" formControlName="email" id="input_text" type="text" value = {{profile.email}}> 
                         </div>
                         <div> 
-                            <input [readonly]="!isEdit" id="input_text" formControlName="firstName" type="text" value = {{profile.firstName|uppercase}}>
+                            <input [readonly]="!isEdit" [ngStyle]="isEdit && {'border': '1px solid'}" id="input_text" formControlName="firstName" type="text" value = {{profile.firstName|uppercase}}>
                         </div> 
                         <div class="price-card"> 
-                            <input [readonly]="!isEdit" formControlName="lastName" id="input_text" type="text" value = {{profile.lastName|uppercase}}> 
+                            <input [readonly]="!isEdit" [ngStyle]="isEdit && {'border': '1px solid'}" formControlName="lastName" id="input_text" type="text" value = {{profile.lastName|uppercase}}> 
                         </div>
                         </div>
 

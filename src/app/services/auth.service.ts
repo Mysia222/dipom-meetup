@@ -69,7 +69,6 @@ public isLoggedIn() {
     this.isAdmin = user.isAdmin;
     this.userId = user._id;
     return user;
-
 }
 
 public logIn(user) {
@@ -81,7 +80,6 @@ public logIn(user) {
           }
      return data;
     });
-
 }
 
 public getCity(lat, long) {

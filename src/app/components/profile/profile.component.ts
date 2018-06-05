@@ -62,12 +62,33 @@ EditProfileForm = new FormGroup({
     // createUser: req.body.createUser
     // //this.yourfavsObs =  this.favoritesService.getFavsByUserCreate(this.profile._id); 
   }
-  editProfile(profileId) {
+  editProfile() {
     this.isEdit = true;
   }
-  saveProfile(profileId) {
+  saveProfile() {
     
     this.isEdit = false;
+    const users = {
+      email: this.EditProfileForm.value.email,
+      firstName: this.EditProfileForm.value.firstName,
+      lastName: this.EditProfileForm.value.lastName
+    };
+    let user =  this.authService.isLoggedIn();
+    for (var key in user) {
+      if (!users[key]) {
+        users[key] = user[key];
+      }
+     }
+     console.log(users)
+    this.usersService.updateUser(this.profile._id, users).subscribe(
+      user => {
+          console.log(user);
+          this.profile = this.authService.isLoggedIn();
+          this.router.navigate(['profile']);
+
+        }
+    );
+    
   }
   changeYourMeetups() {
     if(this.isYourMeetups) {

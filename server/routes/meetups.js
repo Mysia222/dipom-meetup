@@ -145,7 +145,21 @@ console.log(req.body);
             }
         });
     });
-
+    router.put('/edit/:id', function(req, res) {
+        User.update({
+            _id: req.params.id
+        }, req.body, function(err, user) {
+            console.log(user);
+            if (err){
+                console.log(err);
+                return config.sendJSONresponse(res, {
+                    success: false,
+                    message: "There was a problem updating the user."
+                });
+            }
+            config.sendJSONresponse(res, user);
+        });
+    });
     router.get('/:id', function(req, res) {
 
         Meetup.findOne({
