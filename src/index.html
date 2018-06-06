@@ -25,7 +25,7 @@
 
 
 </head>
-
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 <script>
     $('.modal').modal({
         dismissible: true, // Modal can be dismissed by clicking outside of the modal
@@ -43,8 +43,10 @@
             } // Callback for Modal close
     });
 
-    // Or with jQuery
-
+var elem = document.querySelector('.datepicker');
+var instance = M.Datepicker.init(elem, {
+    maxDate: new Date()
+});
     $(document).ready(function(){
     $('.tabs').tabs();
     });
@@ -53,7 +55,15 @@
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkonYfV76WBEr0t7bPHCOrCL6FyjtMz6o">
 </script>
-
+<script>
+        setTimeout(function() { 
+        var elem = document.querySelector('.datepicker');
+        
+var instance = M.Datepicker.init(elem, {
+    maxDate: new Date()
+}); }, 1000);
+console.log(instance);
+</script>
 <body>
     <app-root></app-root>
 </body>

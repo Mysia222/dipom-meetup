@@ -68,7 +68,7 @@ export class MeetuplistComponent  {
     
   ]; 
 
-  constructor( private meetupsService: MeetupsService) {
+  constructor( private meetupsService: MeetupsService, private authService: AuthService) {
 
    
   }

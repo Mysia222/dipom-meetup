@@ -95,6 +95,6 @@ export class HomeComponent  {
 
 		this.getAllMeetups();
 		console.log(this.authService.getloggedIn());
-
+		
 	}
 }

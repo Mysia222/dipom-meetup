@@ -6,9 +6,23 @@
         left: auto;
         right: auto;
     }
+    ul[_ngcontent-c2] {
+        margin-left: 30px;
+        width: 70%;
+    }
+    h2[_ngcontent-c2] {
+        text-align: center;
+        font-size: 30px;
+        margin-left: 0px;
+        color: #898686;
+    }
     
 }
 @media (min-width: 800px) {
+    ul {
+        margin-left: 400px;
+        width: 20%;
+    }
     .row {
         margin-left: 400px;
         margin-right: auto;
@@ -24,11 +38,6 @@ span.card-title.price-card {
 }
 
 
-
-ul {
-    margin-left: 400px;
-    width: 20%;
-}
 .search-ico {
     position: absolute;
     margin-top: 5px;
@@ -73,4 +82,73 @@ div#modal2[_ngcontent-c5] {
     /* padding: 0; */
     height: 200px;
     width: 30%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-device-width: 800px) {
+    .slides-wrapper {
+        display: none;
+    }
+    h3.mobile-title {
+        display: block;
+        color: #1f967c;
+        text-align: center;
+        padding: 5px 0px;
+    }
+    app-meetups.ng-tns-c2-0.ng-star-inserted {
+        margin-left: -300px;
+    }
+    h2.row {
+        margin-left: -300px;
+    }
+    nav.lighten-2 {
+        width: 170%;
+    }
+    #cont.home-wr {
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+}
+@media (min-width: 800px) {
+
+}
+@media (max-width: 800px) {
+
+    .row .col.s4 {
+        width: 70%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+}
+
+.col.s12.m6 {
+    display: flex;
+}
+
+
+
+
+
+.col.s12.m6[_ngcontent-c2] {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 110%;
+    margin-left: -30px;
 }
