@@ -24,7 +24,7 @@ import { create } from 'domain';
 
 export class MeetupComponent   {
   currentUrl;
-  meetup;
+  oncemeetup;
   statusCode: number;
   meetupObs;
   comment;
@@ -140,6 +140,8 @@ AddCommentForm = new FormGroup({
     
     this.meetupsService.addComment(this.comment, this.currentUrl.id)
     .subscribe(data => {
+      this.commentsObs = this.meetupsService.getComments(this.currentUrl.id);
+      this.AddCommentForm.reset();
       this.router.navigate(['meetups/' + this.currentUrl.id]);
     });
 }
@@ -242,6 +244,11 @@ deleteToFav(meetupId) {
       this.profile = this.authService.isLoggedIn();
       this.isInFav(this.currentUrl.id, this.profile._id);
     }
+    this.meetupsService.getMeetupById(this.currentUrl.id).subscribe(
+      meetup => {
+        this.oncemeetup = meetup;
+      }
+  );
 
     this.getMeetupById(this.currentUrl.id);
     this.meetupsService.getMeetupObjById(this.currentUrl.id).subscribe(data => {
@@ -251,13 +258,11 @@ deleteToFav(meetupId) {
   });
   setTimeout(() => {
     this.div.nativeElement.innerHTML = htmldecs;
-    console.log(this.div.nativeElement.innerHTML);
  }, 1000);
   }
 
   ngAfterViewInit() {
     setTimeout(() => {
-      console.log(this.div.nativeElement.innerHTML);
    }, 1000);
     
 }

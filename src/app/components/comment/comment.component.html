@@ -1,24 +1,31 @@
- <div >
+ <div>
           <div class = "admin-card">
           <div class="row">
                 <div class="card once-meetup comment">
                   <div class="card-content">
-                              <div class="card-content">
-                                    <!-- <span class="card-title price-card"> 
-                                    Рейтинг: {{ comment.commentsRating }}
-                                      
-                                    </span> -->
-                                    <span class="card-title price-card"> 
-                                    Название: {{ comment.commentsTitle }}
-                                          
-                                    </span>
-                                    <p>Описание:</p>
-                                    <span>{{ comment.commentsDescription }}</span>
-                              </div>
+                        <div class="card-content">
+                              <!-- <span class="card-title price-card"> 
+                              Рейтинг: {{ comment.commentsRating }}
+                                    
+                              </span> -->
+                              <span class="card-title price-card"> 
+                              Вопрос: {{ comment.commentsTitle }}
+                                    
+                              </span>
+                              <p>Описание:</p>
+                              <span>{{ comment.commentsDescription }}</span>
+                        </div>
                   </div>
                 </div>
 
           </div>
+          <div class="row"> <a (click)="openModal()" >Ответить</a> </div> 
+          <div class="row" *ngIf="isDialogOpen">  
+                              <label id="add-form">Ответ</label>
+                              <input type="text" name = "answer" placeholder="Введите ответ" class="form-control">
+                        
+                        <button class="waves-effect waves-light btn model-submit" (click)="onСommentFormSubmit()"> Ответить</button>
+         </div> 
           </div>
 </div>
 

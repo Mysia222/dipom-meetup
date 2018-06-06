@@ -116,7 +116,21 @@
                     <p>Описание:</p>
 
                     <div id="div-descr" #textarea1 class="materialize-textarea">
-                            <div #div >loading...</div>
+                            <div #div >            
+                                <div class="preloader-wrapper big active">
+                                <div class="spinner-layer spinner-green-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                             </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row s7 map-class descript-map">
@@ -149,7 +163,7 @@
                 </div>
                 <div *ngIf="commentsObs | async as onecomment else loading">
                     <div>
-                        <app-comment *ngFor="let comment of onecomment" [comment]="comment">
+                        <app-comment *ngFor="let comment of onecomment" [comment]="comment" [oncemeetup]="oncemeetup">
                         </app-comment>
                     </div>
                 </div>

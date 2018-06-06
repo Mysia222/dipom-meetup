@@ -30,7 +30,7 @@
                 'has-success': eventsDate.valid && (eventsDate.dirty || eventsDate.touched)
                 }">
                     <label id="add-form">Дата</label>
-                    <input type="time" formControlName="eventsDate" />
+                    <input type="text" class="datepicker">
                     <div class="form-control-feedback" *ngIf="eventsDate.errors && (eventsDate.dirty || eventsDate.touched)">
                         <p class="error-input" *ngIf="eventsDate.errors.required">*Обязательное поле</p>
                     </div>
@@ -99,3 +99,25 @@
         </div>
     </div>
 
+
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script>
+    setTimeout(function() { 
+        var elem = document.querySelector('.datepicker');
+        
+        var instance = M.Datepicker.init(elem, {
+        minDate: new Date()}); 
+        var elems = document.querySelectorAll('.timepicker');
+        var instances = M.Timepicker.init(elems);
+        
+        }, 1000);
+
+
+//     setTimeout(function() { 
+//     var elems = document.querySelectorAll('.timepicker');
+//     var instances = M.Timepicker.init(elems, options);
+// }, 1000);
+
+console.log(instance);
+      
+</script>

@@ -47,6 +47,7 @@
     </ul> -->
    <app-trackme> </app-trackme>
    <input type="text" class="datepicker">
+   <input type="text" class="timepicker">
     <div class="row" [@flyInOut]="'in'" *ngIf="meetupsObs | async as onemeetup else loading">
 
             <app-meetups class="col s4" *ngFor="let meetup of onemeetup | sort: sortString | filter: queryString" [meetup]="meetup" [isUser] = "this.authService.getloggedIn()" [category] = "category">   
@@ -69,16 +70,25 @@
 </div>
 
 
-<script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<!-- <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 <script>
     setTimeout(function() { 
         var elem = document.querySelector('.datepicker');
         
-var instance = M.Datepicker.init(elem, {
-    maxDate: new Date()
-}); }, 1000);
+        var instance = M.Datepicker.init(elem, {
+        minDate: new Date()}); 
+        var elems = document.querySelectorAll('.timepicker');
+        var instances = M.Timepicker.init(elems);
+        
+        }, 1000);
+
+
+//     setTimeout(function() { 
+//     var elems = document.querySelectorAll('.timepicker');
+//     var instances = M.Timepicker.init(elems, options);
+// }, 1000);
+
 console.log(instance);
-
-
       
-</script>
+
+</script> -->
