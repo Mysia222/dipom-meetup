@@ -8,7 +8,9 @@ const express = require('express'),
       jwt = require('express-jwt');
 
       var LocalStrategy = require('passport-local').Strategy;
+
       
+
 var User = require ('./models/user'), 
 FacebookStrategy = require('passport-facebook').Strategy,
 TwitterStrategy = require('passport-twitter').Strategy;
@@ -30,6 +32,24 @@ const auth = require('./routes/auth')(router);
 const profiles = require('./routes/profiles')(router);
 const favorites = require('./routes/favorites')(router);
 
+var multer  = require('multer')
+var DIR = './server/uploads/';
+
+var storage = multer.diskStorage(
+  {
+      destination: DIR,
+      filename: function ( req, file, cb ) {
+          //req.body is empty...
+          //How could I get the new_file_name property sent from client here?
+          cb( null, file.originalname);
+      }
+  }
+);
+
+var upload = multer( { storage: storage } ).single('photo');
+
+//var upload = multer({dest: DIR}).single('photo');  
+
 //connection to DB
 mongoose.connect(config.dbUrl,  { useMongoClient: true });
 mongoose.connection.once('connected', function() {
@@ -39,7 +59,8 @@ mongoose.connection.once('connected', function() {
 app.use(cors({ origin: 'http://localhost:4200' }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'dist')));
+//app.use(express.static(path.join(__dirname, 'dist')));
+app.use('/static', express.static('server/uploads'));
 
 app.use(passport.initialize());
 //app.use(passport.session());
@@ -85,6 +106,20 @@ passport.use(new TwitterStrategy({
 ));
 
 
+app.post('/avatar', function (req, res, next) {
+  var path = '';
+  console.log(__dirname + '/uploads')
+  upload(req, res, function (err) {
+     if (err) {
+       // An error occurred when uploading
+       console.log(err);
+       return res.status(422).send("an Error occured")
+     }  
+     path = req.file.filename;
+     return res.send("http://localhost:8000/static/"+path); 
+ });	 
+})
+
 app.get('/auth/twitter/callback',
   passport.authenticate('twitter', { successRedirect: 'http://localhost:4200/?tw=true',
                                      failureRedirect: '/login' }));
@@ -128,12 +163,7 @@ app.get('/auth/facebook',
   passport.authenticate('facebook', { scope: 'email' })
 );
 
-
-
-
-
-
-
+///app.use( express.static('./server/uploads/'));
 
 
 

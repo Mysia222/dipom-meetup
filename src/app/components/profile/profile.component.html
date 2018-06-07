@@ -6,15 +6,30 @@
     <div>
         <div class="admin-card" *ngIf="authService.getloggedIn()">
             <div class="row">
-            <form [formGroup]="EditProfileForm" (submit)="saveProfile()">
+            <form [formGroup]="EditProfileForm" (submit)="saveProfile()" enctype="multipart/form-data">
                 <div class="col s5">
                 <div class="card once-meetup">
                     <div class="card-image profile-image">
-                        <img src="./assets/img/profile.png">
+                        <img src={{pictureUrl}}>
                     </div>
                 </div>
+
+                <!-- <div class="file-field input-field">
+                <div class="btn">
+                    <span>File</span>
+                    <input type="file" accept="image/*" ng2FileSelect [uploader]="uploader" formControlName="avatar" (change)="onFileChange($event)">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                  </div>
+                  </div> -->
+                  <input type="file" *ngIf="isEdit" accept="image/*" ng2FileSelect [uploader]="uploader">
+                  <button type="button" class="btn btn-success btn-s" *ngIf="isEdit"
+                        (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                 Upload with ng-2 file uploader
+                </button>
                 <button class="btn modal-trigger" *ngIf="!isEdit" (click)="editProfile()">Редактировать</button>
-                <button class="btn modal-trigger" type="submit" *ngIf="isEdit">Сохранить</button>
+                <!-- <button class="btn modal-trigger" type="submit" *ngIf="isEdit">Сохранить</button> -->
                 </div>
                 <div class="col s7">
                 <div class="card-content row">

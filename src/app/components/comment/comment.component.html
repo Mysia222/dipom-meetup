@@ -19,13 +19,15 @@
                 </div>
 
           </div>
+          <form novalidate [formGroup]="commentForm" id="add-meetup-form" (ngSubmit)="onCommentFormSubmit()" class="col s4 edit-meetups-form">
           <div class="row"> <a (click)="openModal()" >Ответить</a> </div> 
           <div class="row" *ngIf="isDialogOpen">  
                               <label id="add-form">Ответ</label>
-                              <input type="text" name = "answer" placeholder="Введите ответ" class="form-control">
+                              <input type="text" formControlName="answer" placeholder="Введите ответ" class="form-control">
                         
-                        <button class="waves-effect waves-light btn model-submit" (click)="onСommentFormSubmit()"> Ответить</button>
-         </div> 
+                        <input class="waves-effect waves-light btn model-submit" type="submit" value="Ответить"/>
+         </div>
+         </form> 
           </div>
 </div>
 

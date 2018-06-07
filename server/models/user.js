@@ -39,6 +39,7 @@ userSchema.methods.setPassword = function(password){
       firstName: this.firstName,
       lastName: this.lastName,
       isAdmin: this.isAdmin,
+      image: this.image,
       exp: parseInt(expiry.getTime() / 1000),
     }, config.secret);
   };

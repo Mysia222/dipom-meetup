@@ -53,13 +53,13 @@ export class CommentComponent  {
     this.meetupObs = this.meetupsService.getMeetupById(meetupId);
   }
 
-  onСommentFormSubmit() {
+  onCommentFormSubmit() {
 
     // let profile = this.authService.isLoggedIn()
     // let answer = {
     //   answer: this.commentForm.value.answer
     // };
-console.log("sd\asd");
+console.log("sdasd");
 console.log(this.oncemeetup)
     // this.meetupsService.updateMeetup(answer)
     //     .subscribe(data => {

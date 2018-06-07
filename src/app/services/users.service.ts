@@ -50,7 +50,7 @@ export class UsersService {
     }
 
     updateUser(userId, user) {
-
+        console.log(user)
         return this.http.put(this.meetupUrl +"/edit/"+ userId, user)
             .map(response => response.json())
 

@@ -9,4 +9,5 @@ export class User {
     isAdmin: boolean;
     exp: number;
     iat: number;
+    image: string;
 }

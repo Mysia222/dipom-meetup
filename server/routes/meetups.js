@@ -1,7 +1,7 @@
 const Meetup = require('../models/meetup');
 const config = require('../config/config');
 const User = require('../models/user');
-
+  
 module.exports = (router) => {
 
     router.post('/', function(req, res) {
@@ -157,7 +157,7 @@ console.log(req.body);
                     message: "There was a problem updating the user."
                 });
             }
-            config.sendJSONresponse(res, user);
+            config.sendJSONresponse(res, req.body);
         });
     });
     router.get('/:id', function(req, res) {

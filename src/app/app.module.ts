@@ -47,6 +47,7 @@ import { EditorComponent } from './components/editor/editor.component';
 
 // Import Angular plugin.
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 export function tokenGetter() {
   return localStorage.getItem('mean-token');
@@ -72,7 +73,8 @@ export function tokenGetter() {
     TrackmeComponent,
     AddmeetupComponent,
     EditorComponent,
-    MeetuplistComponent
+    MeetuplistComponent,
+    FileSelectDirective
   ],
   imports: [
     AgmCoreModule.forRoot({
