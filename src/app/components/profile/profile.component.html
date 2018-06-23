@@ -8,7 +8,7 @@
                 <div class="card once-meetup">
                     <div class="card-image profile-image">
                         <img *ngIf="pictureUrl" src={{pictureUrl}}>
-                        <img *ngIf="!pictureUrl" src="./assets/img/user0.png">
+                        <img *ngIf="!pictureUrl" src="./assets/img/user00.jpg">
 
                     </div>
                 </div>
@@ -88,19 +88,36 @@
             </div>
             <ng-template #cat>
                 <div class="no-fav">
-                    <button class="btn" (click)="chooseEvent()"> Выбрать мероприятие</button>
+                    <button class="btn" (click)="chooseEvent()" style = "    margin-top: 30px;
+                    margin-left: 10px;"> Выбрать мероприятие</button>
                     <!-- <h6>Вы еще не участвуйте в мероприятиях :( <a routerLink="/meetups">Выбрать мероприятие</a></h6> -->
                 </div>
             </ng-template>
         </div>
           <div id="test2" *ngIf="isMyMeetups" class="col s12">
                 <h6>
-                    <button class="btn" (click)="openModal()" >Создать новое мероприятие</button>
+                    <button class="btn" (click)="openModal()"style = "    margin-top: 30px;
+                    margin-left: 10px;" >Создать новое мероприятие</button>
                 </h6>
                 <div class="row favs" *ngIf="meetupsObs | async as onemeetup else loading">    
                     <div *ngIf="onemeetup.length else onemeet">
-                        <div class="col s12 m6 l3" *ngFor="let meetup of onemeetup">
-                            <div class="card" *ngIf="meetup.createUser === authService.isLoggedIn()._id" [routerLink]="['/meetups/', meetup._id]">
+
+                        <div *ngFor="let meetup of onemeetup">
+
+                            <div  class="col s12 m6 l3 card"  *ngIf="meetup.createUser === authService.isLoggedIn()._id" [routerLink]="['/meetups/', meetup._id]">
+                                <div class = "ico" *ngIf="profile">
+                                        <span class = "edit-ico">
+                                        <button [routerLink]="['/meetups/', onemeetup._id]" class="modal-action modal-close waves-effect waves-green btn-flat "> 
+                                            <i class="large material-icons">edit</i>
+                                        </button>
+                                    </span>
+                                    <span>
+                                        <button (click)="deletemeetup(onemeetup._id)" class="modal-action modal-close waves-effect waves-green btn-flat "> 
+                                            <i class="large material-icons">delete</i>
+                                        </button>
+                                    </span>
+                                        
+                                </div>
                                 <div class="card-image">
                                     <img src="./assets/img/{{meetup.meetupData.image}}">
                                 </div>

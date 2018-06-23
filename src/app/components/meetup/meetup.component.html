@@ -28,7 +28,7 @@
                     <h4>Участники</h4>
                     <ul>
                         <li> 
-                                <img class="users-img" src="./assets/img/user2.jpg"> <span class="span-user" >Сергей Порошенко <p class="span-user par"><a [routerLink]="['/oneUser/get/', '5b059eaa998b6b228ca55370']">Посмотреть профиль</a></p>
+                                <img class="users-img" src="./assets/img/user0.jpg"> <span class="span-user" >Daria Alexandrova<p class="span-user par"><a [routerLink]="['/oneUser/get/', '5b2ad5939b70541650ba4b6c']">Посмотреть профиль</a></p>
                                 </span></li>
                         <li> 
                                 <img class="users-img" src="./assets/img/user3.jpg"> <span class="span-user">Анна Ахматова
@@ -57,14 +57,14 @@
             <div class="row">
                 <form [formGroup]="EditmeetupForm" (submit)="onUpdateMeetupSubmit()">
                     <div class="row">
-                        <div class="card once-meetup edit">
+                        <div class="card once-meetup edit admin">
                             <div class="card-image">
                                 <img src="./assets/img/{{meetup.meetupData.image}}">
                             </div>
                             <div class="card-content">
                                 <p class="card-title price-card"> 
                       Название: 
-                      <input formCozntrolName="name" id="input_text" type="text" value = {{meetup.meetupData.name}}/> 
+                      <input formCozntrolName="name" class="names" id="input_text" type="text" value = {{meetup.meetupData.name}}/> 
                                   </p>
                                 <p> 
                       Изображение(Url): 
@@ -87,7 +87,7 @@
                       Организатор: 
                       <input id="input_text" formControlName="createdBy" type="text" value = {{meetup.createdBy}}>
                       </p>
-                      <p> 
+                      <p style = "margin-top: 79px;"> 
                         Дата начала: 
                         <input id="input_text" type="datetime-local" value="2017-06-01T08:30">
                         </p>
@@ -99,9 +99,13 @@
                             Категория:
                         </p>
                         <select class="browser-default form-categ" formControlName="category">
-                                <option  selected>Языки</option>
-                                <option *ngFor="let category of categories" value = {{category.category_name}} >{{category.category_name}}</option>
+                                <option selected> Технологии</option>
+                                <option *ngFor="let category of categories" value = {{category.category_name}}> {{category.category_name}}</option>
                               </select>
+                              <div class="block-edit">
+                                    <input class="waves-effect waves-light btn" type="submit" value="Сохранить">
+                                    <a class="waves-effect waves-light btn" (click)="deletemeetup()">Удалить</a>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -112,8 +116,7 @@
 
                     <textarea [froalaEditor] id="editor-text" formControlName="description" value = {{meetup.meetupData.description}}></textarea>
                     </div>
-                    <input class="waves-effect waves-light btn" type="submit" value="Сохранить">
-                    <a class="waves-effect waves-light btn" (click)="deletemeetup()">Удалить</a>
+
                     </div>
                 </form>
             </div>
@@ -197,7 +200,7 @@
                     </div>
                 </div>
                 <div class="row s7 map-class descript-map">
-                    <app-map> </app-map>
+                    <app-map [meetup]="meetup"> </app-map>
                 </div>
             </div>
             <div>

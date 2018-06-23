@@ -65,7 +65,7 @@ li.tab {
 }
 
 .bl-com {
-  margin-top: 100px;
+  margin-top: 20px;
 }
 select.browser-default {
   margin-top: 30px;
@@ -328,7 +328,41 @@ span.blocked {
 
 p.text-bl {
   position: absolute;
-  top: 355px;
-  /* left: 0px; */
-  right: 1060px;
+  top: 300px;
+  right: 960px;
+}
+
+p.prost {
+  font-size: 20px;
+  margin-left: 10px;
+  font-weight: 500;
+}
+
+span.label {
+  /* display: block; */
+  /* width: 100%; */
+  color: #258b80;
+  font-weight: 500;
+  /* height: 100%; */
+  padding: 0 24px;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  /* overflow: hidden; */
+  /* -webkit-transition: color .28s ease; */
+  /* transition: color .28s ease; */
+}
+
+
+a.bl {
+  display: block;
+  width: 100%;
+  color: #e81a1a;
+  font-weight: 600;
+  height: 100%;
+  padding: 0 24px;
+  font-size: 18px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-transition: color .28s ease;
+  transition: color .28s ease;
 }

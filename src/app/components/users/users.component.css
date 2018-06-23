@@ -83,3 +83,17 @@ h1 {
     }
 }
     
+
+span.label {
+    /* display: block; */
+    /* width: 100%; */
+    color: #258b80;
+    font-weight: 500;
+    /* height: 100%; */
+    padding: 0 24px;
+    font-size: 16px;
+    text-overflow: ellipsis;
+    /* overflow: hidden; */
+    /* -webkit-transition: color .28s ease; */
+    /* transition: color .28s ease; */
+  }

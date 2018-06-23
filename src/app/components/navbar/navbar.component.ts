@@ -34,24 +34,16 @@ export class NavbarComponent {
     {
         "category_id": 1,
         "category_name": "Писательство"
-    }, 
-    {
-        "category_id": 2,
-        "category_name": "Домашние любимцы"
-    }, 
+    },  
     {
         "category_id": 3,
         "category_name": "Фильмы"
-    }, 
-    {
-        "category_id": 4,
-        "category_name": "Хобби и ремёсла"
-    }, 
+    },
     {
         "category_id": 5,
         "category_name": "Искусство"
     }, 
-    /*{
+    {
         "category_id": 6,
         "category_name": "Технологии"
     },
@@ -59,23 +51,24 @@ export class NavbarComponent {
         "category_id": 7,
         "category_name": "Мода и красота"
     },
+    
     {
         "category_id": 8,
         "category_name": "Карьера и бизнес"
     },
     {
         "category_id": 9,
-        "category_name": "Танцы"
+        "category_name": "Спорт"
     },
     {
         "category_id": 1,
         "category_name": "Язык и культура"
-    }, 
-    {
-        "category_id": 1,
-        "category_name": "Семья"
-    }, 
-    */
+    }
+    // }, 
+    // {
+    //     "category_id": 1,
+    //     "category_name": "Семья"
+    // }
 
   ]; 
   title = 'app';

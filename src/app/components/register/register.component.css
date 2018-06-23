@@ -105,7 +105,7 @@ div#city {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-.search-btn[_ngcontent-c2] {
+.search-btn {
     color: black;
     width: 600px;
     border: none;

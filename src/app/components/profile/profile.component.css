@@ -259,6 +259,33 @@ li.tab {
   input[type=range]:focus::-ms-fill-upper {
     background: #ccc;
   }
-  h6 {
-    margin: 35px 10px 10px 10px;
+  i.large.material-icons {
+    font-size: 35px;
+}
+  .edit-ico {
+    position: absolute;
+    width: 100px;
+    margin: 0px 0px 0px 200px;
+}
+
+span.label {
+  /* display: block; */
+  /* width: 100%; */
+  color: #258b80;
+  font-weight: 500;
+  /* height: 100%; */
+  padding: 0 24px;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  /* overflow: hidden; */
+  /* -webkit-transition: color .28s ease; */
+  /* transition: color .28s ease; */
+}
+
+.col.s12.m6.l3.card {
+  padding: 20px;
+}
+
+.ico {
+  margin-bottom: 20px;
 }

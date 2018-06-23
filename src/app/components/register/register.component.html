@@ -34,7 +34,7 @@
    }">
         <label id="registr">Местоположение</label>
 
-        <div id="city" *ngIf="!isChangeLoc"> <i class="material-icons">location_on</i> Минск</div>
+        <div  *ngIf="!isChangeLoc"> <i class="material-icons">location_on</i> Минск</div>
         <div>
             <p id="chang-loc"><a (click)="isChangeLoc = !isChangeLoc" *ngIf="!isChangeLoc">(Изменить расплоложение)</a></p>
         </div>

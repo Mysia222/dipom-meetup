@@ -5,7 +5,10 @@ import { trigger,state,style,transition,animate,keyframes } from '@angular/anima
 import { MeetupsService } from '../../services/meetups.service';
 import { AuthService } from '../../services/auth.service';
 
+import { Meetup } from '../../models/meetup';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {FavoritesService} from '../../services/favs.service';
+import { Favorite } from '../../models/fav';
 
 @Component({
   selector: 'app-map',
@@ -16,8 +19,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export class MapComponent  {
   title: string = 'Месторасположение';
-  lat: number = 53.9170029;
-  lng: number = 27.584480199999998;
+  lat: number;
+  lng: number;
+  @Input() meetup;
 
   constructor(
     private meetupsService: MeetupsService, 
@@ -27,8 +31,15 @@ export class MapComponent  {
   }
  
   ngOnInit() {
-
-
+  if (this.meetup._id == "5b297ecebfd52e0f989e1ebc") {
+    this.lat = 55.727024;
+    this.lng = 37.5796889;
+  } 
+  if(this.meetup._id == "5b297506bfd52e0f989e1eba") {
+    this.lat = 53.8906642;
+    this.lng = 27.5373119;
   }
+}
+ 
 
 }

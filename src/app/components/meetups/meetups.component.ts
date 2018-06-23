@@ -101,7 +101,6 @@ deletemeetup(id) {
 
   ngOnInit() {
     this.profile = this.authService.isLoggedIn();
-    console.log(this.profile);
     this.isAdmin = this.authService.getloggedAdminIn();
   }
   

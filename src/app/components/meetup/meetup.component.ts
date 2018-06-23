@@ -13,6 +13,7 @@ import { Inject }  from '@angular/core';
 
 import { create } from 'domain';
 
+import { Meetup } from '../../models/meetup';
 
 
 @Component({
@@ -152,8 +153,10 @@ AddCommentForm = new FormGroup({
       meetupData: this.EditmeetupForm.value,
       createdBy: this.EditmeetupForm.value.createdBy
     };
+    meetups.meetupData.image = "book55.jpg"
     this.meetupsService.getMeetupById(this.currentUrl.id).subscribe(
         meetup => {
+
             for (var key in meetup.meetupData) {
                 if (!meetups.meetupData[key]) {
                   meetups.meetupData[key] = meetup.meetupData[key];
@@ -267,3 +270,23 @@ console.log("sddddddddddddddddd");
     
 }
 }
+// dar-alex@mail.ru
+// dar-alex@mail.ru
+
+// {
+//   "_id" : ObjectId("5b0ca73fa4fbdf175cb52aff"),
+//   "createdBy" : "WOORI EDUCATION GROUP",
+//   "comments" : [],
+//   "participants" : [],
+//   "meetupData" : {
+//       "name" : "Обучение за границей",
+//       "description" : "<h3>Время: 31.07.18 (ВТ) - c 18.30 до 21.00</h3><p><strong>Мы ответим на следующие вопросы:</strong></p><ul><li><p>Какие пути иммиграции существуют для студентов?</p></li><li><p class=\"fr-text-gray\">Как переехать в Канаду всей семьей?</p></li><li><p class=\"fr-text-gray\">Как поступить в канадский ВУЗ?</p></li><li><p class=\"fr-text-gray\">Сколько стоит обучение/проживание в Канаде?</p></li><li><p class=\"fr-text-gray\">Где лучше учить язык?</p></li><li><p class=\"fr-text-gray\">Как получить визу в Канаду?</p></li><li><p class=\"fr-text-gray\">Что делать, если мне отказали в визе?</p></li></ul><p class=\"fr-text-spaced\">Участникам семинара будут предоставленны скидки: бесплатная регистрация в Centennial и Georgian.</p><p>Главные спонсоры: Государственный колледж Centennial college (Toronto, Ontario), Государственный колледж Georgian college (Barrie, Ontario).</p><p><span style=\"font-size: 20px; color: red;\">Вход бесплатный, требуется регистрация, места ограничены</span></p>",
+//       "image" : "book6.jpg",
+//       "price" : 0,
+//       "address" : "Минск",
+//       "category" : "Карьера и бизнес",
+//       "rating" : 1,
+//       "eventsDate" : ISODate("2018-05-26T00:00:00.000Z")
+//   },
+//   "__v" : 0
+// }

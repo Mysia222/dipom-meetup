@@ -124,7 +124,7 @@ twLogin() {
     this.logIn(user);
  }
  logIn(user) {
-if(user.email === "q@q") {
+if(user.email === "dar-alex@mail.ru") {
 this.isBlock = true;
 } else {
   this.authService.logIn(user).subscribe(data => {

@@ -43,8 +43,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'users',
-    component: UsersComponent,
-    canActivate: [AuthGuard]
+    component: UsersComponent
   },
   {
     path: 'profile',

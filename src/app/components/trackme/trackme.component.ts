@@ -82,11 +82,11 @@ export class TrackmeComponent implements OnInit {
     var latlng = new google.maps.LatLng(lat, lng);
     this.geocoder.geocode({'latLng': latlng}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-      console.log(results)
+
         if (results[1]) {
          //formatted address
          //alert(results[0].formatted_address)
-         console.log (results[0]);
+
 
         //find country name
              for (var i=0; i<results[0].address_components.length; i++) {
@@ -96,14 +96,14 @@ export class TrackmeComponent implements OnInit {
                 if (results[0].address_components[i].types[b] == "sublocality_level_1") {
                     //this is the object you are looking for
                     this.city= results[0].address_components[i+1];
-                    console.log(this.city);
+                   
                     break;
                 }
             }
         }
         //city data
         //alert(this.city.short_name + " " + this.city.long_name)
-        console.log(this.city);
+ 
         document.getElementById("city").innerHTML = 'Популярные мероприятия в городе Минск';
 
 

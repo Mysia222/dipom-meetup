@@ -116,30 +116,30 @@ EditProfileForm = new FormGroup({
     console.log(id);
     this.isEdit = false;
     this.blocked = true;
-    const users = {
-      email: this.EditProfileForm.value.email,
-      firstName: this.EditProfileForm.value.firstName,
-      lastName: this.EditProfileForm.value.lastName,
-      image: 'Lighthouse.jpg',
-      isBlock: true   
-    };
-    let user =  this.authService.isLoggedIn();
-    for (var key in user) {
-      if (!users[key]) {
-        users[key] = user[key];
-      }
-     }
+    // const users = {
+    //   email: this.EditProfileForm.value.email,
+    //   firstName: this.EditProfileForm.value.firstName,
+    //   lastName: this.EditProfileForm.value.lastName,
+    //   image: 'Lighthouse.jpg',
+    //   isBlock: true   
+    // };
+    // let user =  this.authService.isLoggedIn();
+    // for (var key in user) {
+    //   if (!users[key]) {
+    //     users[key] = user[key];
+    //   }
+    //  }
 
-     console.log(users)
-    this.usersService.updateUser(this.profile._id, users).subscribe(
-      user => {
-          console.log(user);
-          this.pictureUrl = user.image
-          this.profile = this.authService.isLoggedIn();
-          this.router.navigate(['profile']);
+    //  console.log(users)
+    // this.usersService.updateUser(this.profile._id, users).subscribe(
+    //   user => {
+    //       console.log(user);
+    //       this.pictureUrl = user.image
+    //       this.profile = this.authService.isLoggedIn();
+    //       this.router.navigate(['profile']);
 
-        }
-    );
+    //     }
+    // );
   }
 
   onFileChange(event) {

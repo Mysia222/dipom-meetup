@@ -228,12 +228,13 @@ onMeetupFormSubmit() {
     createdBy: this.MeetupForm.value.createdBy,
     createUser: profile._id
   };
-  meetup.meetupData.image = "book1.jpg";
+  meetup.meetupData.image = "book22.jpg";
   this.meetupsService.createMeetup(meetup)
       .subscribe(data => {
         this.getAllMeetups();
       });
   this.isDialogOpen = false;
+  this.getAllMeetups();
   this.router.navigate(['/profile']);
 }
 
