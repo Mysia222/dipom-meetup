@@ -1,23 +1,24 @@
 <div class="home-wr">
     <h2> Редактирование мероприятия</h2>
-    <ul>
-        <li>
-            <i class="material-icons prefix search-ico">search</i>
-        </li>
-        <li>
-            <input id="icon_prefix" type="text" [(ngModel)]="queryString" class="validate">
-        </li>
-    </ul>
+    <div class="cont">
+        <ul>
+            <li>
+                <i class="material-icons prefix search-ico">search</i>
+            </li>
+            <li>
+                <input id="icon_prefix" type="text" [(ngModel)]="queryString" class="validate">
+            </li>
+        </ul>
 
-    <button data-target="modal1" (click)="openModal()" class="btn modal-trigger">Создать мероприятие</button>
-    <div *ngIf="isDialogOpen">
-    <add-meetup [isDialogOpen] = "isDialogOpen" ></add-meetup>
-    </div>
-    <div class="row" *ngIf="meetupsObs | async as onemeetup else loading">
-        <div class="col s12 m6">
-            <app-meetups *ngFor="let meetup of onemeetup | filter: queryString" [meetup]="meetup" [category]="category">
-            </app-meetups>
+        <button data-target="modal1" (click)="openModal()" class="btn modal-trigger">Создать мероприятие</button>
+        <div *ngIf="isDialogOpen">
+        <add-meetup [isDialogOpen] = "isDialogOpen" ></add-meetup>
+        </div>
+        <div class="row" *ngIf="meetupsObs | async as onemeetup else loading">
+            <div class="col s12 m6">
+                <app-meetups *ngFor="let meetup of onemeetup | filter: queryString" [meetup]="meetup" [category]="category">
+                </app-meetups>
+            </div>
         </div>
     </div>
-
 </div>

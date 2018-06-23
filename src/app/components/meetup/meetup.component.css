@@ -1,5 +1,5 @@
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     .card.once-meetup {
         width: 90%;
         margin-left: -700px;
@@ -45,10 +45,10 @@
     
     
 }
-@media (min-width: 800px) {
+@media (min-width: 1000px) {
     .card.once-meetup {
     width: 130%;
-    height: 500px;
+    height: 600px;
     margin-left: -400px;
     }  
     .card.once-meetup.edit {
@@ -77,6 +77,10 @@
     margin-left: -80px;
 }
 
+.row.part {
+    margin-left: 0px;
+    margin-top: 10px;
+}
 
 p.comment-par {
     font-weight: 300;
@@ -264,4 +268,48 @@ h5 {
 .row.decr-form {
     margin-left: -300px;
     width: 100%;
+}
+
+.date-cat {
+    margin-top: 20px;
+}
+
+
+.no-title {
+    margin-top: 60px;
+}
+
+.modal.modal-fixed-footer.open.users {
+    width: 40%!important;
+    height: 100%!important;
+}
+
+img.users-img {
+    width: 120px;
+}
+
+.span-user {
+
+    margin-top: 0px;
+    position: absolute;
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: 500;
+
+}
+
+p.span-user.par {
+    margin-left: 5px;
+    width: 150%;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+h4 {
+    margin-bottom: 30px;
+}
+
+div#modal2 {
+    width: 50%;
+    height: 50%;
 }

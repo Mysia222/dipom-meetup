@@ -13,6 +13,7 @@ const userSchema = new Schema({
     isAdmin: { type: Boolean },
     location: { type: String },
     image: {type: String},
+    isBlock: { type: Boolean },
     hash: String,
     salt: String
 });
@@ -40,6 +41,7 @@ userSchema.methods.setPassword = function(password){
       lastName: this.lastName,
       isAdmin: this.isAdmin,
       image: this.image,
+      isBlock: this.isBlock,
       exp: parseInt(expiry.getTime() / 1000),
     }, config.secret);
   };

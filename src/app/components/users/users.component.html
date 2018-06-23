@@ -2,10 +2,11 @@
 <h1>Все пользователи</h1>
      <div class="row">
          <div class="users" >
-             <div *ngFor="let user of usersObs " class = "col s4">   
-                    <div class="card" [routerLink]="['/user/', user._id]">
+             <div *ngFor="let user of usersObs let i = index" class = "col s4">   
+                    <div class="card" [routerLink]="['/oneUser/get/', '5b059af0998b6b228ca5536c']">
                         <div class="card-image">
-                            <img src="./assets/img/profile.png">
+                        
+                            <img src="./assets/img/user{{i}}.jpg">
                         </div>
                         <div class="card-content">
                             <span class="card-title">{{user.firstName}}</span>

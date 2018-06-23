@@ -65,7 +65,9 @@ h2 {
     margin-left: 150px;
     font-size: 17px;
 }
-
+img.slider-img {
+  width: 1500px;
+}
 span.card-title {
     font-size: 18px !important;
 }

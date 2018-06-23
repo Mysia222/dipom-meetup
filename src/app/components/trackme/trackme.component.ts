@@ -104,7 +104,7 @@ export class TrackmeComponent implements OnInit {
         //city data
         //alert(this.city.short_name + " " + this.city.long_name)
         console.log(this.city);
-        document.getElementById("city").innerHTML = 'Популярные мероприятия в городе ' + this.city.short_name;
+        document.getElementById("city").innerHTML = 'Популярные мероприятия в городе Минск';
 
 
         } else {

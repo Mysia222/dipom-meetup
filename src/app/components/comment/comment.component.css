@@ -10,7 +10,29 @@
         /* width: 100%; */
         width: 360%!important;
    }
-
-  
     
+}
+
+
+p.descr-p {
+    font-weight: bold;
+    /* margin-top: 30px; */
+    padding-left: -10px;
+    padding-bottom: 10px;
+    padding-top: 15px;
+    display: block;
+}
+
+.row.answerr {
+    float: left;
+}
+
+img.answ {
+    width: 60%;
+}
+
+.card.once-meetup.comment.an {
+    width: 80%;
+    margin-left: 100px;
+    margin-top: -20px;
 }

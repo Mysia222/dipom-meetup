@@ -23,6 +23,7 @@ export class CommentComponent  {
   processValidation = false;
   isDelete = false;
   @Input() isAdmin;
+  isAnswer = false;
   @Input() comment;
   @Input() oncemeetup;
   commentForm: FormGroup;
@@ -67,6 +68,7 @@ console.log(this.oncemeetup)
     //       //this.getAllMeetups();
     //     });
     this.isDialogOpen = false;
+    this.isAnswer = true;
     //this.router.navigate(['/profile']);
 }
 

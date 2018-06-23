@@ -10,7 +10,8 @@ const meetupSchema = new Schema({
         description: { type: String },
         image: { type: String },
         price: {type: Number, required: true  },
-        eventsDate: { type: Date, default: Date.now() },
+        eventsStartDate: { type: Date, default: Date.now() },
+        eventsEndDate: { type: Date, default: Date.now() },
         address: { type: String },
         category: { type: String }, 
         rating:  {type: Number }

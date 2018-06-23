@@ -1,0 +1,334 @@
+
+
+.tabs .tab a {
+    /* color: rgba(114, 37, 40, 0.7); */
+    display: block;
+    width: 100%;
+    color: #258b80;
+    font-weight: 500;
+    height: 100%;
+    padding: 0 24px;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-transition: color .28s ease;
+    transition: color .28s ease;
+}
+
+
+h4 {
+    text-align: center;
+    font-weight: 400;
+    font-size: 27px;
+    /* margin-left: 10px; */
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 800px) {
+    .home-wr {
+        margin-left: 350px;
+        margin-top: 70px;
+    }
+}
+@media (max-width: 800px) {
+}
+.home-wr {
+    margin-top: 70px;
+}
+.row.favs.ng-star-inserted {
+    margin-top: 50px;
+}
+
+li.tab {
+    border: 1px solid lightgrey;
+}
+
+.card-image.profile-image {
+    width: 210px;
+    margin: 0 auto;
+}
+.card.once-meetup {
+    width: 70%;
+}
+
+.card-content.row {
+    margin-left: -50px;
+    /* width: 90%; */
+}
+.label-col {
+    margin-top: 18px;
+}
+
+.div-label {
+    margin-bottom: 40px;
+}
+
+.bl-com {
+  margin-top: 100px;
+}
+select.browser-default {
+  margin-top: 30px;
+}
+.file-field {
+    position: relative;
+  }
+  
+  .file-field .file-path-wrapper {
+    overflow: hidden;
+    padding-left: 10px;
+  }
+  
+  .file-field input.file-path {
+    width: 100%;
+  }
+  
+  .file-field .btn, .file-field .btn-large {
+    float: left;
+    height: 3rem;
+    line-height: 3rem;
+  }
+  
+  .file-field span {
+    cursor: pointer;
+  }
+  
+  .file-field input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+  
+  .file-field input[type=file]::-webkit-file-upload-button {
+    display: none;
+  }
+  
+  /* Range
+     ========================================================================== */
+  .range-field {
+    position: relative;
+  }
+  
+  input[type=range],
+  input[type=range] + .thumb {
+    cursor: pointer;
+  }
+  
+  input[type=range] {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    margin: 15px 0;
+    padding: 0;
+  }
+  
+  input[type=range]:focus {
+    outline: none;
+  }
+  
+  input[type=range] + .thumb {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    border: none;
+    height: 0;
+    width: 0;
+    border-radius: 50%;
+    background-color: #26a69a;
+    margin-left: 7px;
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  
+  input[type=range] + .thumb .value {
+    display: block;
+    width: 30px;
+    text-align: center;
+    color: #26a69a;
+    font-size: 0;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  
+  input[type=range] + .thumb.active {
+    border-radius: 50% 50% 50% 0;
+  }
+  
+  input[type=range] + .thumb.active .value {
+    color: #fff;
+    margin-left: -1px;
+    margin-top: 8px;
+    font-size: 10px;
+  }
+  
+  input[type=range] {
+    -webkit-appearance: none;
+  }
+  
+  input[type=range]::-webkit-slider-runnable-track {
+    height: 3px;
+    background: #c2c0c2;
+    border: none;
+  }
+  
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background-color: #26a69a;
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    margin: -5px 0 0 0;
+    -webkit-transition: .3s;
+    transition: .3s;
+  }
+  
+  input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+  }
+  
+  input[type=range] {
+    /* fix for FF unable to apply focus style bug  */
+    border: 1px solid white;
+    /*required for proper track sizing in FF*/
+  }
+  
+  input[type=range]::-moz-range-track {
+    height: 3px;
+    background: #ddd;
+    border: none;
+  }
+  
+  input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background: #26a69a;
+    margin-top: -5px;
+  }
+  
+  input[type=range]:-moz-focusring {
+    outline: 1px solid #fff;
+    outline-offset: -1px;
+  }
+  
+  input[type=range]:focus::-moz-range-track {
+    background: #ccc;
+  }
+  
+  input[type=range]::-ms-track {
+    height: 3px;
+    background: transparent;
+    border-color: transparent;
+    border-width: 6px 0;
+    /*remove default tick marks*/
+    color: transparent;
+  }
+  
+  input[type=range]::-ms-fill-lower {
+    background: #777;
+  }
+  
+  input[type=range]::-ms-fill-upper {
+    background: #ddd;
+  }
+  
+  input[type=range]::-ms-thumb {
+    border: none;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background: #26a69a;
+  }
+  
+  input[type=range]:focus::-ms-fill-lower {
+    background: #888;
+  }
+  
+  input[type=range]:focus::-ms-fill-upper {
+    background: #ccc;
+  }
+  h6 {
+    margin: 35px 10px 10px 10px;
+}
+
+.col.s7.ee {
+  margin-top: -22px;
+  margin-left: 20px;
+}
+
+.price-card {
+  margin: 40px 0px;
+}
+
+select.browser-default[_ngcontent-c2] {
+  margin-top: 30px;
+  position: relative;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #258b80;
+  outline: none;
+  height: 3rem;
+  line-height: 3rem;
+  width: 100%;
+  font-size: 16px;
+  margin: 0 0 8px 0;
+  padding: 0;
+  display: block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  z-index: 1;
+}
+select.browser-default {
+  display: block;
+}
+select.browser-default {
+  display: block;
+}
+
+select {
+  background-color: rgba(255,255,255,0.9);
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #f2f2f2;
+  border-radius: 2px;
+  height: 3rem;
+}
+#sel {
+box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+select#sel {
+  margin-top: 22px;
+}
+
+span.blocked {
+  color: red;
+  font-weight: 700;
+}
+
+p.text-bl {
+  position: absolute;
+  top: 355px;
+  /* left: 0px; */
+  right: 1060px;
+}

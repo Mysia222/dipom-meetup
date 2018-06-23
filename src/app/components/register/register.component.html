@@ -34,11 +34,28 @@
    }">
         <label id="registr">Местоположение</label>
 
-        <div id="city" *ngIf="!isChangeLoc"> <i class="material-icons">location_on</i> </div>
+        <div id="city" *ngIf="!isChangeLoc"> <i class="material-icons">location_on</i> Минск</div>
         <div>
             <p id="chang-loc"><a (click)="isChangeLoc = !isChangeLoc" *ngIf="!isChangeLoc">(Изменить расплоложение)</a></p>
         </div>
-        <input type="text" *ngIf="isChangeLoc" placeholder="Поиск адреса" class="form-control" formControlName="location">
+        <div *ngIf="isChangeLoc" class="descr-loc">
+            <label id="registr">Страна, город</label>
+        <input   type="text"  [(ngModel)]="queryString" (click)="isClicked = true" id="search" placeholder="Поиск адреса" class="form-control" formControlName="location">
+            <div *ngIf="queryString && isClicked">
+                <div class="search-results">
+                    <div *ngFor="let loc of locations | filter: queryString" class="list-search">
+                        <button  class="search-btn" (click) = "makeInvisible(loc.meetupData.name)">  {{loc.meetupData.name}} </button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label id="registr">Улица, дом, квартира</label>
+                <input type="text"  placeholder="Введение подробного адреса" class="form-control" formControlName="address">
+
+            </div>
+           
+
+        </div>
         <div class="form-control-feedback" *ngIf="location.errors && (location.dirty || location.touched)">
             <p *ngIf="location.errors.required">Обязательное поле</p>
         </div>
@@ -51,7 +68,6 @@
         <input type="password" class="form-control" placeholder="Введите пароль, содержащий не менее 8 символов"  formControlName="password" required>
         <div class="form-control-feedback" *ngIf="password.errors && (password.dirty || password.touched)">
             <p *ngIf="password.errors.required">Обязательное поле</p>
-            <p *ngIf="password.errors.minlength"> Пароль должен быть больше 8 символов вам необходимо добавить {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} символов </p>
         </div>
     </div>
     <div class="form-group" [ngClass]="{

@@ -45,7 +45,10 @@ h2 {
     font-weight: bold;
     color: #898686;
 }
-
+.descr-loc {
+    margin-left: 20px;
+    padding: 10px;
+}
 .row {
     width: 60%;
 }
@@ -55,7 +58,7 @@ a.waves-effect.waves-light.btn {
 }
 
 h2 {    
-    font-weight: 300 !important;
+    font-weight: 400 !important;
 }
 
 form {
@@ -94,4 +97,19 @@ div#city {
     margin-left: 10px;
     margin-bottom: 20px;
     font-size: 13px;
+}
+
+
+.search-results {
+    /* border: 1px solid; */
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.search-btn[_ngcontent-c2] {
+    color: black;
+    width: 600px;
+    border: none;
+    height: 60px;
+    text-align: left;
+    background-color: white;
 }

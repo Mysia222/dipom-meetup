@@ -1,0 +1,125 @@
+<div class="home-wr">
+    <div *ngIf="isEdit">
+        <div id="modal2" class="modal modal-fixed-footer open" style="z-index: 1005; display: block; opacity: 1; transform: scaleX(1); top: 10%;">
+            <div class="modal-content">
+                <h4>Жалоба</h4>
+                
+                <span id="add-form">Пожалуйста, сообщите нам причину, по которой пользователь должен быть заблокирован:</span>
+
+                <select id = "sel" class="browser-default" formControlName="category" required>
+                  
+                    <option  disabled selected>Выберете причину блокировки</option>
+                    <option>Порнография</option>
+                    <option>Рассылка спама</option>
+                    <option>Оскорбительное поведение</option>
+           
+                </select>
+                <div class="bl-com">
+                <span>Комментарий:</span>
+                <textarea id="textarea1" class="materialize-textarea" placeholder="Здесь стоит описать проблему"></textarea>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button (click) = "blockUser(profile._id)" class="modal-action modal-close waves-effect waves-green btn-flat ">Заблокировать</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="admin-card">
+            <div class="row">
+            
+                <div class="col s5">
+                <div class="card once-meetup">
+                    <div class="card-image profile-image">
+                        <img src="./assets/img/user2.jpg">
+                    </div> 
+                </div>
+
+                <span *ngIf="blocked" class="blocked"> <i class="material-icons">block</i> <p class="text-bl">
+                        Пользователь заблокирован
+                </p></span>
+                <button class="btn modal-trigger red" *ngIf="!isEdit && !blocked" (click)="isEdit = true">Заблокировать</button>
+                </div>
+                <div class="col s7">
+                <div class="card-content row">
+                    <div class="col label-col">
+                        <div class="div-label">
+                            <span class="label"> Email: </span>
+                        </div>
+                        <div  class="div-label">
+                            <span class="label"> Имя: </span>
+                        </div>
+                        <div  class="div-label">
+                            <span class="label"> Фамилия: </span>
+                        </div>
+                    </div>
+                    <div class="col s7 ee">
+                        <div class=" price-card carr"> 
+                            <span id="input_text" type="text"> {{profile.email}} </span> 
+                        </div>
+                        <div class="price-card" > 
+                                <span id="input_text" type="text"> {{profile.firstName|uppercase}} </span> 
+                        </div> 
+                        <div class="price-card"> 
+                            <span id="input_text" type="text"> {{profile.lastName|uppercase}} </span> 
+                        </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div >
+        <h4>Мероприятия</h4>
+        <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+            <li class="tab"><a (click)="changeYourMeetups()">Как участник</a></li>
+            <li class="tab"><a (click)="changeYourMeetups()">Как организатор</a></li>
+          </ul>
+          <div id="test1" *ngIf="isYourMeetups" class="col s12">        
+            <div class="row favs" *ngIf="favsObs | async as onefav else loading">    
+                <div *ngIf="onefav.length">
+                    <app-favs class="col s12 m6 l3" *ngFor="let fav of onefav"  [fav]="fav">   
+                    </app-favs>
+                </div> 
+            </div>
+        </div>
+          <div id="test2" *ngIf="isMyMeetups" class="col s12">
+                <div class="row favs" *ngIf="meetupsObs | async as onemeetup else loading">    
+                    <div *ngIf="onemeetup.length">
+                        <div class="col s12 m6 l3" *ngFor="let meetup of onemeetup">
+                            <div class="card" *ngIf="meetup.createUser === authService.isLoggedIn()._id" [routerLink]="['/meetups/', meetup._id]">
+                                <div class="card-image">
+                                    <img src="./assets/img/{{meetup.meetupData.image}}">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title">{{meetup.meetupData.name}}</span>
+                                    <span class="card-title price-card">{{meetup.meetupData.price | currency:"USD":true }}</span>
+                                    <p>{{meetup.createdBy}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+          </div>
+        </div>
+        <ng-template #loading>
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-green-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+             </div>
+            </div>
+        </ng-template>
+        <div *ngIf="isDialogOpen">
+                <add-meetup [isDialogOpen] = "isDialogOpen" ></add-meetup>
+        </div>
+    </div>
+</div>

@@ -24,6 +24,7 @@ import { MapComponent } from './components/map/map.component';
 import { TrackmeComponent } from './components/trackme/trackme.component';
 import { AddmeetupComponent } from './components/addmeetup/addmeetup.component';
 import { MeetuplistComponent } from './components/meetuplist/meetuplist.component';
+import { oneUserComponent } from './components/oneUser/oneUser.component';
 
 import { AuthService} from './services/auth.service';
 import { UsersService } from './services/users.service';
@@ -48,7 +49,6 @@ import { EditorComponent } from './components/editor/editor.component';
 // Import Angular plugin.
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { FileSelectDirective } from 'ng2-file-upload';
-
 export function tokenGetter() {
   return localStorage.getItem('mean-token');
 }
@@ -69,6 +69,7 @@ export function tokenGetter() {
     NavbarComponent,
     UsersComponent,
     CommentComponent,
+    oneUserComponent,
     MapComponent,
     TrackmeComponent,
     AddmeetupComponent,

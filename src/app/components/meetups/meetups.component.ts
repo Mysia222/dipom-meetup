@@ -24,7 +24,9 @@ export class MeetupsComponent  {
   openWindow = false;
   isFav = true;
   obj: Favorite;
-
+  statusCode;
+  isAdmin = false;
+  isDelete = false;
   constructor(private meetupsService: MeetupsService, private favoritesService: FavoritesService, private authService: AuthService) {
   }
 
@@ -86,8 +88,21 @@ export class MeetupsComponent  {
   return isFav;
 }
 
+deletemeetup(id) {
+
+  this.isDelete = true
+  this.meetupsService.deleteMeetupById(id)
+      .subscribe(successCode => {
+          this.statusCode = 204;
+      }, errorCode => this.statusCode = errorCode);
+      
+
+}
+
   ngOnInit() {
-    
+    this.profile = this.authService.isLoggedIn();
+    console.log(this.profile);
+    this.isAdmin = this.authService.getloggedAdminIn();
   }
   
 }

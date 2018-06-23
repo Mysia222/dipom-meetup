@@ -135,5 +135,8 @@ public uploader:FileUploader = new FileUploader({url: 'http://localhost:8000/ava
     //document.querySelectorAll('input')
     console.log(this.MeetupForm);
   }
-  
+  chooseEvent() {
+    this.router.navigate(['meetups']);
+
+  }
 }

@@ -22,6 +22,34 @@
             </div>
         </div>
     </div>
+    <div *ngIf="showUsers">
+            <div id="modal2" class="modal modal-fixed-footer open users" style="z-index: 1005; display: block; opacity: 1; transform: scaleX(1); top: 10%;">
+                <div class="modal-content">
+                    <h4>Участники</h4>
+                    <ul>
+                        <li> 
+                                <img class="users-img" src="./assets/img/user2.jpg"> <span class="span-user" >Сергей Порошенко <p class="span-user par"><a [routerLink]="['/oneUser/get/', '5b059eaa998b6b228ca55370']">Посмотреть профиль</a></p>
+                                </span></li>
+                        <li> 
+                                <img class="users-img" src="./assets/img/user3.jpg"> <span class="span-user">Анна Ахматова
+                                        <p class="span-user par"><a routerLink="/oneUser">Посмотреть профиль</a></p>
+
+                                </span></li>
+                        <li> 
+                            <img class="users-img" src="./assets/img/user4.jpg"><span class="span-user"> Юлия Олегрова
+                                    <p class="span-user par"><a routerLink="/oneUser">Посмотреть профиль</a></p>
+                            </span></li>
+                        <li> <img class="users-img"  src="./assets/img/user5.jpg"> <span class="span-user">Петр Васильевич
+                                <p class="span-user par"><a routerLink="/oneUser" >Посмотреть профиль</a></p>
+                        </span></li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <a routerLink="/meetups" class="modal-action modal-close waves-effect waves-green btn-flat ">Закрыть</a>
+                </div>
+            </div>
+        </div>
+
 
     <div *ngIf="meetupObs | async as meetup else loading">
 
@@ -35,24 +63,44 @@
                             </div>
                             <div class="card-content">
                                 <p class="card-title price-card"> 
-                      Название: <input formCozntrolName="name" id="input_text" type="text" value = "{{meetup.meetupData.name}}"/> 
+                      Название: 
+                      <input formCozntrolName="name" id="input_text" type="text" value = {{meetup.meetupData.name}}/> 
                                   </p>
                                 <p> 
-                      Изображение(Url): <input  id="input_text" formControlName="image" type="text" value = {{meetup.meetupData.image}}>
-                      </p>
-                                <p class="price-card"> 
-                      Цена(USD): <input formControlName="price" id="input_text" type="text" value = {{meetup.meetupData.price}}> 
+                      Изображение(Url): 
+                      <div>
+                            <div class="file-field input-field">
+                                <div class="btn">
+                                    <span>Выбрать</span>
+                                    <input type="file">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text">
+                                </div>
+                            </div>
+                      </div>
+                      <p class="price-card"> 
+                      Цена(USD): 
+                      <input formControlName="price" id="input_text" type="text" value = {{meetup.meetupData.price}}> 
                       </p>
                                 <p> 
-                      Организатор: <input id="input_text" formControlName="createdBy" type="text" value = {{meetup.createdBy}}>
+                      Организатор: 
+                      <input id="input_text" formControlName="createdBy" type="text" value = {{meetup.createdBy}}>
                       </p>
+                      <p> 
+                        Дата начала: 
+                        <input id="input_text" type="datetime-local" value="2017-06-01T08:30">
+                        </p>
+                        <p> 
+                        Дата окончания: 
+                        <input id="input_text" type="datetime-local"  value="2017-06-01T08:30">
+                        </p>
                       <p>
                             Категория:
-
                         </p>
                         <select class="browser-default form-categ" formControlName="category">
-                                <option value="{{meetup.meetupData.category}}" disabled selected>{{meetup.meetupData.category}}</option>
-                                <option *ngFor="let category of categories" value="{{category.category_name}}">{{category.category_name}}</option>
+                                <option  selected>Языки</option>
+                                <option *ngFor="let category of categories" value = {{category.category_name}} >{{category.category_name}}</option>
                               </select>
                             </div>
                         </div>
@@ -62,7 +110,7 @@
                     <p>Описание:</p>
                     <!-- <textarea id="textarea12" formControlName="description" class="materialize-textarea" value={{meetup.meetupData.description}}></textarea> -->
 
-                    <textarea [froalaEditor] formControlName="description"></textarea>
+                    <textarea [froalaEditor] id="editor-text" formControlName="description" value = {{meetup.meetupData.description}}></textarea>
                     </div>
                     <input class="waves-effect waves-light btn" type="submit" value="Сохранить">
                     <a class="waves-effect waves-light btn" (click)="deletemeetup()">Удалить</a>
@@ -77,18 +125,30 @@
                         <div class="card-image">
                             <img src="./assets/img/{{meetup.meetupData.image}}">
                         </div>
+                        
                         <div class="card-content">
-                            <span class="card-title price-card">Название: 
+                            <span class="card-title price-card">
+                                Название: 
                                 <br>
                                 <span class="name-event">
                                     {{meetup.meetupData.name}}
                                 </span>
                             </span>
+                            <div class="no-title">
                             <span class="price-card">Цена(USD): <br>{{meetup.meetupData.price}} $</span>
                             <div class="author"> <span class="price-card">Организатор:<br> {{meetup.createdBy}}</span>
                             </div>
+                            <div class="date-cat">
                             <p class="price-card">Категория:</p>
                             <span class="price-card">{{meetup.meetupData.category}}</span>
+                            <div class="author date">  <b class="price-card">
+                                Даты:<br> </b>
+                                Пятница, 15 апреля
+                                <br>
+                                С 18:00 до 20:00
+                            </div>
+                        </div>
+                    </div>
                             <br>
                             <br>
                             <div class="add-button" *ngIf="isFav">
@@ -105,6 +165,9 @@
                             </div>
                             
                         </div>
+                        <div class="row part">
+                                Участников (5)     <a>Alla</a>, <a>Julie</a>, <a>Alex</a> <a (click) = "showUsers = true"> <ins> Посмотреть всех</ins></a>
+                            </div>
                     </div>
                 </div>
                 <div class="row s7 descript-map descr">

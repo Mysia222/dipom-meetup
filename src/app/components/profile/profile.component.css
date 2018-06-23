@@ -259,3 +259,6 @@ li.tab {
   input[type=range]:focus::-ms-fill-upper {
     background: #ccc;
   }
+  h6 {
+    margin: 35px 10px 10px 10px;
+}

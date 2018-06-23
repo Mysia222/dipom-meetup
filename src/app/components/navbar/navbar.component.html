@@ -75,10 +75,10 @@
                     <ul class="collapsible collapsible-accordion">
                         <li>
                             <a class="bold collapsible-header active waves-effect waves-teal">КАТЕГОРИИ</a>
-                            <div class="collapsible-body" *ngFor="let category of categories">
-                                <ul>
-                                    <li> <button class="category"> {{category.category_name }}</button></li>
-                                </ul>
+                        </li>
+                        <li *ngFor="let category of categories">
+                            <div class="cat">
+                                <button class="category"> {{category.category_name }}</button>
                             </div>
                         </li>
                     </ul>

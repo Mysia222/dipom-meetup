@@ -20,28 +20,50 @@
                     'has-success': address.valid && (address.dirty || address.touched)
                     }">
                     <label id="add-form">Адрес</label>
-                    <input type="text" class="form-control" placeholder="Поиск адреса" formControlName="address" required>
-                    <div class="form-control-feedback" *ngIf="address.errors && (address.dirty || address.touched)">
-                        <p class="error-input" *ngIf="address.errors.required">*Обязательное поле</p>
+                    <!-- <input type="text" class="form-control" placeholder="Поиск адреса" formControlName="address" required> -->
+
+                    <div  class="descr-loc">
+                        <label id="registr">Страна, город</label>
+                        <input   type="text"  [(ngModel)]="queryString" (click)="isClicked = true" id="search" placeholder="Поиск адреса" class="form-control" formControlName="address">
+                            <div *ngIf="queryString && isClicked">
+                                <div class="search-results">
+                                    <div *ngFor="let loc of locations | filter: queryString" class="list-search">
+                                        <button  class="search-btn" (click) = "makeInvisible(loc.meetupData.name)">  {{loc.meetupData.name}} </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label id="registr">Улица, дом, квартира</label>
+                                <input type="text"  placeholder="Введение подробного адреса" class="form-control">
+                
+                            </div>
+                           
+                
                     </div>
+
+
+
+
+                    
                 </div>
-                <div class="form-group" [ngClass]="{
-                'has-danger': eventsDate.invalid && (eventsDate.dirty || eventsDate.touched),
-                'has-success': eventsDate.valid && (eventsDate.dirty || eventsDate.touched)
-                }">
-                    <label id="add-form">Дата</label>
-                    <input type="text" class="datepicker">
-                    <div class="form-control-feedback" *ngIf="eventsDate.errors && (eventsDate.dirty || eventsDate.touched)">
-                        <p class="error-input" *ngIf="eventsDate.errors.required">*Обязательное поле</p>
+                <div class="form-group">
+                 <div>
+                        <label id="add-form">Дата начала</label>
+                        <input id="datetime" type="datetime-local" class="form-control" formControlName="eventsStartDate" >
+
+                 </div>
+                 <div>
+                    <label id="add-form">Дата окончания</label>
+                    <input id="datetime" type="datetime-local" class="form-control" formControlName="eventsEndDate" >
                     </div>
                 </div>
                 <div class="form-group" [ngClass]="{
                     'has-danger': createdBy.invalid && (createdBy.dirty || createdBy.touched),
                     'has-success': createdBy.valid && (createdBy.dirty || createdBy.touched)
                     }">
-                    <label id="add-form">Создатели</label>
+                    <label id="add-form">Организатор</label>
                     <input type="text" class="form-control" formControlName="createdBy" required>
-                    <div class="form-control-feedback" placeholder="Кто создатель мероприятия?"  *ngIf="createdBy.errors && (createdBy.dirty || createdBy.touched)">
+                    <div class="form-control-feedback" placeholder="Кто организатор мероприятия?"  *ngIf="createdBy.errors && (createdBy.dirty || createdBy.touched)">
                         <p class="error-input" *ngIf="createdBy.errors.required">*Обязательное поле</p>
                     </div>
                 </div>
@@ -56,15 +78,22 @@
                         <p class="error-input" *ngIf="price.errors.pattern">*Должно быть число</p>
                     </div>
                 </div>
-                <div class="form-group" [ngClass]="{
-                    'has-danger': image.invalid && (image.dirty || image.touched),
-                    'has-success': image.valid && (image.dirty || image.touched)
-                    }">
+                <div class="form-group" class="img-omg">
                     <label id="add-form"> URL Изображения </label>
-                    <input type="text" class="form-control" formControlName="image" required>
-                    <div class="form-control-feedback" *ngIf="image.errors && (image.dirty || image.touched)">
-                        <p class="error-input" *ngIf="image.errors.required">*Обязательное поле</p>
+                    <div>
+                        <!-- <input type="file" accept="image/*"> -->
+                        <div class="file-field input-field">
+                                <div class="btn">
+                                  <span>Выбрать</span>
+                                  <input type="file">
+                                </div>
+                                <div class="file-path-wrapper">
+                                  <input class="file-path validate" type="text">
+                                </div>
+                              </div>
                     </div>
+                    
+                    <!-- <input type="text" class="form-control" formControlName="image" required> -->
                 </div>
                 <div class="form-group" [ngClass]="{
                     'has-danger': category.invalid && (category.dirty || category.touched),

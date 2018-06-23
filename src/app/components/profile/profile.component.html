@@ -1,8 +1,5 @@
 <div class="home-wr">
-    <div *ngIf="isDelete">
-        <h2>This item deleted</h2>
-        <a class="waves-effect waves-light" routerLink="/meetups/edit/">Go back</a>
-    </div>
+
     <div>
         <div class="admin-card" *ngIf="authService.getloggedIn()">
             <div class="row">
@@ -10,7 +7,9 @@
                 <div class="col s5">
                 <div class="card once-meetup">
                     <div class="card-image profile-image">
-                        <img src={{pictureUrl}}>
+                        <img *ngIf="pictureUrl" src={{pictureUrl}}>
+                        <img *ngIf="!pictureUrl" src="./assets/img/user0.png">
+
                     </div>
                 </div>
 
@@ -23,10 +22,22 @@
                     <input class="file-path validate" type="text">
                   </div>
                   </div> -->
-                  <input type="file" *ngIf="isEdit" accept="image/*" ng2FileSelect [uploader]="uploader">
+
+                  <div>
+                        <div *ngIf="isEdit" class="file-field input-field">
+                            <div class="btn">
+                                <span>Выбрать</span>
+                                <input type="file"  accept="image/*" ng2FileSelect [uploader]="uploader">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>
+                        </div>
+                  </div>
+            
                   <button type="button" class="btn btn-success btn-s" *ngIf="isEdit"
-                        (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-                 Upload with ng-2 file uploader
+                        (click)="uploader.uploadAll()">
+                 Сохранить
                 </button>
                 <button class="btn modal-trigger" *ngIf="!isEdit" (click)="editProfile()">Редактировать</button>
                 <!-- <button class="btn modal-trigger" type="submit" *ngIf="isEdit">Сохранить</button> -->
@@ -66,7 +77,7 @@
         <h4>Мероприятия</h4>
         <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
             <li class="tab"><a (click)="changeYourMeetups()">Как участник</a></li>
-            <li class="tab"><a (click)="changeYourMeetups()">Как создатель</a></li>
+            <li class="tab"><a (click)="changeYourMeetups()">Как организатор</a></li>
           </ul>
           <div id="test1" *ngIf="isYourMeetups" class="col s12">        
             <div class="row favs" *ngIf="favsObs | async as onefav else loading">    
@@ -77,17 +88,18 @@
             </div>
             <ng-template #cat>
                 <div class="no-fav">
-                    <h6>Вы еще не участвуйте в мероприятиях :( <a routerLink="/meetups">Выбрать мероприятие</a></h6>
+                    <button class="btn" (click)="chooseEvent()"> Выбрать мероприятие</button>
+                    <!-- <h6>Вы еще не участвуйте в мероприятиях :( <a routerLink="/meetups">Выбрать мероприятие</a></h6> -->
                 </div>
             </ng-template>
         </div>
           <div id="test2" *ngIf="isMyMeetups" class="col s12">
                 <h6>
-                        <a (click)="openModal()" >Создать новое мероприятие</a>
+                    <button class="btn" (click)="openModal()" >Создать новое мероприятие</button>
                 </h6>
                 <div class="row favs" *ngIf="meetupsObs | async as onemeetup else loading">    
                     <div *ngIf="onemeetup.length else onemeet">
-                        <div *ngFor="let meetup of onemeetup">
+                        <div class="col s12 m6 l3" *ngFor="let meetup of onemeetup">
                             <div class="card" *ngIf="meetup.createUser === authService.isLoggedIn()._id" [routerLink]="['/meetups/', meetup._id]">
                                 <div class="card-image">
                                     <img src="./assets/img/{{meetup.meetupData.image}}">
@@ -103,7 +115,7 @@
                 </div>
                 <ng-template #onemeet>
                     <h6>Вы еще не создали ни одного мероприятия :( 
-                        <a (click)="openModal()" >Создать мероприятие</a>
+                        <button class="btn" (click)="openModal()" >Создать мероприятие</button>
                     </h6>
                 </ng-template>
           </div>

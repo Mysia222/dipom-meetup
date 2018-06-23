@@ -25,9 +25,14 @@ export class AddmeetupComponent  {
   image: FormControl;
   price: FormControl;
   category: FormControl;
-  eventsDate: FormControl;
+  eventsEndDate: FormControl;
+  eventsStartDate: FormControl;
   createdBy: FormControl;
   address: FormControl;
+  isClicked = false;
+  queryString;
+
+
   categories = [
     {
         "category_id": 1,
@@ -75,7 +80,78 @@ export class AddmeetupComponent  {
     }, 
     
   ]; 
-
+  locations = [
+    {
+      meetupData: {
+      name: "Магадан,Россия"
+      }
+    },
+    {
+      meetupData: {
+      name: "Мадурай, Индия"
+      }
+    },
+    {
+      meetupData: {
+      name: "Майами, США"
+      }
+    },
+    {
+      meetupData: {
+      name: "Манисалес, Колумбия"
+      }
+    },  
+    {
+      meetupData: {
+      name: "Мантуя, Италия"
+      }
+    },
+    {
+      meetupData: {
+        name: "Миасс, Россия"
+      }
+    },
+    {
+      meetupData: {
+        name: "Мидделбург, Голландия"
+      }
+    },
+    {
+      meetupData: {
+        name: "Милуоки, США"
+      }
+    },
+    {
+      meetupData: {
+        name: "Мингечаур, Азербайджан"
+      }
+    },
+    {
+      meetupData: {
+        name: "Миннеаполис, США"
+      }
+    },
+    {
+      meetupData: {
+        name: "Минск, Беларусь"
+      }
+    },
+    {
+      meetupData: {
+        name: "Москва, Россия"
+      }
+    },
+    {
+      meetupData: {
+      name: "Милан, Италия"
+      }
+    },
+    {
+      meetupData: {
+      name: "Мюнхен, Бавария"
+      }
+    }
+  ];
   constructor( private meetupsService: MeetupsService, private authService: AuthService, private router: Router) {
 
    
@@ -100,7 +176,10 @@ createFormControls() {
   this.description = new FormControl('', 
   Validators.required
   );
-  this.eventsDate = new FormControl('', 
+  this.eventsStartDate = new FormControl('', 
+  Validators.required
+  );
+  this.eventsEndDate = new FormControl('', 
   Validators.required
   );
   this.price = new FormControl('', [
@@ -117,17 +196,21 @@ createFormControls() {
     Validators.required
   ]);
 }
-
+makeInvisible(text) {
+  
+  this.queryString = text;
+  this.isClicked = !this.isClicked;
+}
 
 createForm() {
   
 this.MeetupForm = new FormGroup({
   name: this.name,
   description: this.description,
-  image: this.image,
   price: this.price,
   category: this.category,
-  eventsDate: this.eventsDate,
+  eventsEndDate: this.eventsEndDate,
+  eventsStartDate: this.eventsStartDate,
   createdBy: this.createdBy,
   address: this.address
 });
@@ -145,6 +228,7 @@ onMeetupFormSubmit() {
     createdBy: this.MeetupForm.value.createdBy,
     createUser: profile._id
   };
+  meetup.meetupData.image = "book1.jpg";
   this.meetupsService.createMeetup(meetup)
       .subscribe(data => {
         this.getAllMeetups();

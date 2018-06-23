@@ -36,7 +36,7 @@
                     alert('Closed');
                 } // Callback for Modal close
         });
-    
+    $('.editor-text').froalaEditor('html.set', '<p>My custom paragraph.</p>');
     var elem = document.querySelector('.datepicker');
     var instance = M.Datepicker.init(elem, {
         minDate: new Date()
@@ -50,13 +50,19 @@
         $('.tabs').tabs();
         });
         
+
+         document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
          
     </script>
-    <!-- <link rel="stylesheet" href="jquery-ui.min.css">
-    <script src="external/jquery/jquery.js"></script>
-    <script src="jquery-ui.min.js"></script> -->
-
-
 </head>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkonYfV76WBEr0t7bPHCOrCL6FyjtMz6o">
@@ -67,7 +73,7 @@
         
 var instance = M.Datepicker.init(elem, {
     maxDate: new Date()
-}); }, 1000);
+}); }, 0);
 console.log(instance);
 </script>
 <body>

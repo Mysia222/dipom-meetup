@@ -44,6 +44,7 @@ export class MeetupComponent   {
 
   @Input() isAdmin;
   @Input() isUser;
+  showUsers = false;
   title = 'Crystal Editor';
   categories = [
     {
@@ -100,10 +101,9 @@ export class MeetupComponent   {
   EditmeetupForm = new FormGroup({
     name: new FormControl('', Validators.required),
     createdBy: new FormControl('', Validators.required),
-    image: new FormControl('', Validators.required),
     price: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    category: new FormControl('', Validators.required)
+    category: new FormControl('', Validators.required),
 });
 
 AddCommentForm = new FormGroup({
@@ -220,7 +220,7 @@ addToFav(meetupId) {
 
 
 deleteToFav(meetupId) {
-  
+console.log("sddddddddddddddddd");
   this.isFavEdded = false;
   this.openWindow = false;
   this.favoritesService.getFavsByUserId(this.profile._id).subscribe(favs => {

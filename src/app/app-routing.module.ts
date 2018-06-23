@@ -10,6 +10,7 @@ import { UsersComponent } from './components/users/users.component';
 import { MeetupsComponent } from './components/meetups/meetups.component';
 import { MeetuplistComponent } from './components/meetuplist/meetuplist.component';
 import { AddmeetupComponent } from './components/addmeetup/addmeetup.component';
+import { oneUserComponent } from './components/oneUser/oneUser.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -30,6 +31,10 @@ const appRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'oneUser/get/:id',
+    component: oneUserComponent
   },
   {
     path: 'meetups/edit',

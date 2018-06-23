@@ -24,14 +24,94 @@ export class RegisterComponent implements OnInit {
   password: FormControl;
   passwordConfirm: FormControl;
   location: FormControl;
+  address: FormControl;
   isChangeLoc = false;
+
+locations = [
+  {
+    meetupData: {
+    name: "Магадан,Россия"
+    }
+  },
+  {
+    meetupData: {
+    name: "Мадурай, Индия"
+    }
+  },
+  {
+    meetupData: {
+    name: "Майами, США"
+    }
+  },
+  {
+    meetupData: {
+    name: "Манисалес, Колумбия"
+    }
+  },  
+  {
+    meetupData: {
+    name: "Мантуя, Италия"
+    }
+  },
+  {
+    meetupData: {
+      name: "Миасс, Россия"
+    }
+  },
+  {
+    meetupData: {
+      name: "Мидделбург, Голландия"
+    }
+  },
+  {
+    meetupData: {
+      name: "Милуоки, США"
+    }
+  },
+  {
+    meetupData: {
+      name: "Мингечаур, Азербайджан"
+    }
+  },
+  {
+    meetupData: {
+      name: "Миннеаполис, США"
+    }
+  },
+  {
+    meetupData: {
+      name: "Минск, Беларусь"
+    }
+  },
+  {
+    meetupData: {
+      name: "Москва, Россия"
+    }
+  },
+  {
+    meetupData: {
+    name: "Милан, Италия"
+    }
+  },
+  {
+    meetupData: {
+    name: "Мюнхен, Бавария"
+    }
+  }
+];
+
+isClicked = false;
+queryString;
   constructor(private router: Router, private usersService: UsersService, private mapService: MapService) {}
 
   ngOnInit() {
-    this.mapService.codeLatLng();
+    //this.mapService.codeLatLng();
     this.createFormControls();
     this.createForm();
-    
+    // let cities = this.mapService.getAddress().subscribe(data => {
+    //   console.log(data);
+    // });
+    // console.log(cities);
   }
   createFormControls() {
   
@@ -53,6 +133,9 @@ export class RegisterComponent implements OnInit {
     ]);
     this.passwordConfirm = new FormControl('',[
       Validators.required
+    ]);
+    this.address = new FormControl('',[
+     
     ]);
   }
 
@@ -76,6 +159,11 @@ export class RegisterComponent implements OnInit {
   registerUser() {
 
     let user = this.userForm.value;
+    if(user.address) {
+     user.location = user.location + user.address;
+    } else {
+      delete user.address;
+    }
     user.location = this.userForm.value.location || document.getElementById("city").innerHTML;
     delete user.passwordConfirm;
     this.usersService.createUser(user)
@@ -84,5 +172,10 @@ export class RegisterComponent implements OnInit {
                 this.router.navigate(['/login']);
             });
 
+}
+makeInvisible(text) {
+  
+  this.queryString = text;
+  this.isClicked = !this.isClicked;
 }
 }

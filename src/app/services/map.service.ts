@@ -16,6 +16,22 @@ export class MapService {
   constructor( private http: Http) { 
   }
 
+
+  public getAddress() {
+
+    return this.http.get("https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Vict&types=(cities)&language=ru&key= AIzaSyBVWPYuHmuPGos6frXDpeZSDTedjH9B1ow")
+        .map(response => 
+      {
+        response.json()
+      })
+} 
+
+
+
+
+
+
+
 public codeLatLng() {
 
       if (navigator.geolocation) {

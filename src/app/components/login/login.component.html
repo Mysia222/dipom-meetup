@@ -14,6 +14,12 @@
             <h4> {{errorMessage}}</h4>
             </div>
         </div>
+        <div class="row" *ngIf="isBlock" >
+            <div class="input-field col s12">
+            <h4> Ваш профиль заблокирован </h4>
+            <p>Для того, чтобы узнать причину, можете написать администратору <a href = "#">olxovik-julia@mail.ru</a></p>
+            </div>
+        </div>
         <div class="row">
             <div class="input-field col s12">
                 <div class="form-group" [ngClass]="{
@@ -21,17 +27,14 @@
                         'has-success': email.valid && (email.dirty || email.touched)
                         }">
                     <label>Адрес эл.почты</label>
-                    <input type="email" class="form-control" formControlName="email" required>
-                    <div class="form-control-feedback" *ngIf="email.errors && (email.dirty || email.touched)">
-                        <p *ngIf="email.errors.required">Пожалуйста, введите свой Email</p>
-                    </div>
+                    <input type="email" class="form-control" formControlName="email" required />
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <label>Пароль</label>
-                <input type="password" class="form-control" formControlName="password" required>
+                <input type="password" class="form-control" formControlName="password" required />
             </div>
             <p></p>
             <p>

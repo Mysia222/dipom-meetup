@@ -2,22 +2,40 @@
           <div class = "admin-card">
           <div class="row">
                 <div class="card once-meetup comment">
-                  <div class="card-content">
-                        <div class="card-content">
+
+                  <div class="card-content" >
+                        <div class="card-content" style="height: 200px;">
                               <!-- <span class="card-title price-card"> 
                               Рейтинг: {{ comment.commentsRating }}
                                     
                               </span> -->
-                              <span class="card-title price-card"> 
-                              Вопрос: {{ comment.commentsTitle }}
-                                    
-                              </span>
-                              <p>Описание:</p>
-                              <span>{{ comment.commentsDescription }}</span>
+                              <div class="row answerr" style="    width: 20%;">
+                                    <img class= "answ" src="./assets/img/user2.jpg">
+                                    <p>Yulia Alkhovik</p>
+                              </div>
+                              <div class="row answerr">
+                                    <span class="card-title price-card"> 
+                        
+                                    Вопрос: {{ comment.commentsTitle }}
+                                                      
+                                    </span>
+                                    <p class="descr-p">Описание:</p>
+                                    <span>{{ comment.commentsDescription }}</span>
+                              </div>
+
                         </div>
                   </div>
                 </div>
 
+          </div>
+          <div *ngIf="isAnswer" class="row">
+            <div class="card once-meetup comment answer an">
+                  <div class="card-content">
+                        <div class="card-content anw-rr">
+                              <span> Yulia, В следующий раз организуем</span>
+                        </div>
+                  </div>
+            </div>
           </div>
           <form novalidate [formGroup]="commentForm" id="add-meetup-form" (ngSubmit)="onCommentFormSubmit()" class="col s4 edit-meetups-form">
           <div class="row"> <a (click)="openModal()" >Ответить</a> </div> 
@@ -25,7 +43,7 @@
                               <label id="add-form">Ответ</label>
                               <input type="text" formControlName="answer" placeholder="Введите ответ" class="form-control">
                         
-                        <input class="waves-effect waves-light btn model-submit" type="submit" value="Ответить"/>
+                        <input class="waves-effect waves-light btn model-submit" (click)="isAnswer=true" type="submit" value="Ответить"/>
          </div>
          </form> 
           </div>

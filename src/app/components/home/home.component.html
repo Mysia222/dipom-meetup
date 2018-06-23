@@ -45,9 +45,11 @@
             </select>
         </li>
     </ul> -->
+    <!-- <form #form="ngForm">
+        <date-picker ngModel name="date"></date-picker>
+    </form> -->
+
    <app-trackme> </app-trackme>
-   <input type="text" class="datepicker">
-   <input type="text" class="timepicker">
     <div class="row" [@flyInOut]="'in'" *ngIf="meetupsObs | async as onemeetup else loading">
 
             <app-meetups class="col s4" *ngFor="let meetup of onemeetup | sort: sortString | filter: queryString" [meetup]="meetup" [isUser] = "this.authService.getloggedIn()" [category] = "category">   
@@ -92,3 +94,4 @@ console.log(instance);
       
 
 </script> -->
+

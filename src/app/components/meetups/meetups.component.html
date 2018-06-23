@@ -1,3 +1,13 @@
+<div *ngIf="isDelete">
+        <div id="modal2" class="modal modal-fixed-footer open" style="z-index: 1005; display: block; opacity: 1; transform: scaleX(1); top: 10%;">
+            <div class="modal-content">
+                <h4>Мероприятие удалено</h4>
+            </div>
+            <div class="modal-footer">
+                <a routerLink="/meetups" class="modal-action modal-close waves-effect waves-green btn-flat ">Закрыть</a>
+            </div>
+        </div>
+    </div>
 <div *ngIf="isFavEdded && openWindow">
     <div id="modal2" class="modal modal-fixed-footer open" style="z-index: 1005; display: block; opacity: 1; transform: scaleX(1); top: 30%;">
         <div class="model-cont">
@@ -10,11 +20,26 @@
     </div>
 </div>
 <div *ngIf="meetup else users">
-    <div class="card" [routerLink]="['/meetups/', meetup._id]">
-        <div class="card-image">
-            <img src="./assets/img/{{meetup.meetupData.image}}">
+    <div class="card">
+        <div class = "ico" *ngIf="profile">
+            <span class = "edit-ico">
+            <button [routerLink]="['/meetups/', meetup._id]" class="modal-action modal-close waves-effect waves-green btn-flat "> 
+                <i class="large material-icons">edit</i>
+            </button>
+        </span>
+        <span>
+            <button (click)="deletemeetup(meetup._id)" class="modal-action modal-close waves-effect waves-green btn-flat "> 
+                <i class="large material-icons">delete</i>
+            </button>
+        </span>
+            
         </div>
-        <div class="card-content">
+        
+
+        <div class="card-image">
+            <img [routerLink]="['/meetups/', meetup._id]" src="./assets/img/{{meetup.meetupData.image}}">
+        </div>
+        <div class="card-content" [routerLink]="['/meetups/', meetup._id]">
             <span class="card-title">{{meetup.meetupData.name}}</span>
             <span class="card-title price-card">{{meetup.meetupData.price | currency:"USD":true }}</span>
             <p>{{meetup.createdBy}}</p>

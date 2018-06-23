@@ -45,11 +45,11 @@ export class HomeComponent  {
 		
 	) {
 		this.items = [
-			// { 
-			// 	name: './assets/img/thumb2.jpg',
-			// 	title: "Незабываемый День Влюбленных",
-			// 	buttonVal: "Выбрать событие"
-			// },
+			{ 
+				name: './assets/img/thumb4.jpg',
+				title: "Изучение языков",
+				buttonVal: "Выбрать событие"
+			},
 			// { 
 			// 	name: './assets/img/thumb1.jpg',
 			// 	title: "Развлечения для детей",
@@ -66,7 +66,7 @@ export class HomeComponent  {
 			// 	name: './assets/img/thumb4.jpg',
 			// 	title: "Развлечения для детей",
 			// 	buttonVal: "Выбрать событие"
-			// }
+			// },
 			// ,
 			// { 
 			// 	name: './assets/img/thumb5.jpg',
@@ -75,7 +75,7 @@ export class HomeComponent  {
 			// }
 			// ,
 			{ 
-				name: './assets/img/thumb6.jpg',
+				name: './assets/img/book8.jpg',
 				title: "Лучшие IT-мероприятия",
 				buttonVal: "Выбрать событие"
 			}

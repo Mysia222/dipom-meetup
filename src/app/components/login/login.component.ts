@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   email: FormControl;
   password: FormControl;
+  isBlock = false;
   isLoginError: boolean = false;
   errorMessage: string;
   constructor(private router:Router, private authService: AuthService, private usersService: UsersService, private activatedRoute: ActivatedRoute) {}
@@ -123,7 +124,9 @@ twLogin() {
     this.logIn(user);
  }
  logIn(user) {
-
+if(user.email === "q@q") {
+this.isBlock = true;
+} else {
   this.authService.logIn(user).subscribe(data => {
     if (data.json().token) {
       this.authService.setloggedIn();
@@ -141,6 +144,8 @@ twLogin() {
     }
 
 });
+}
+
 
  }
 }

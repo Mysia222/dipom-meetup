@@ -47,3 +47,45 @@ h4 {
     /* width: 100px; */
     /* height: 100px; */
 }
+
+.img-omg {
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #26a69a;
+    text-align: center;
+    letter-spacing: .5px;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+}
+
+.descr-loc {
+    margin-left: 20px;
+    padding: 10px;
+}
+
+label#registr {
+    font-size: .9rem;
+    color: #0e0e0e;
+}
+
+.search-results {
+    /* border: 1px solid; */
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.search-btn {
+    color: black;
+    width: 600px;
+    border: none;
+    height: 60px;
+    text-align: left;
+    background-color: white;
+}
