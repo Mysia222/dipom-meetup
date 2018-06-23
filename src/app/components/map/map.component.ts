@@ -19,8 +19,8 @@ import { Favorite } from '../../models/fav';
 
 export class MapComponent  {
   title: string = 'Месторасположение';
-  lat: number;
-  lng: number;
+  lat = 53.9312962;
+  lng = 27.6461437;
   @Input() meetup;
 
   constructor(
@@ -38,6 +38,10 @@ export class MapComponent  {
   if(this.meetup._id == "5b297506bfd52e0f989e1eba") {
     this.lat = 53.8906642;
     this.lng = 27.5373119;
+  }
+  if(this.meetup._id == "5b2e1f7406669104602ae1de") {
+    this.lat = 53.9312962;
+    this.lng = 27.6461437;
   }
 }
  

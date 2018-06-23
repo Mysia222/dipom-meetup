@@ -12,7 +12,9 @@
 .col.s12.m6 {
     display: flex;
 }
-
+span.card-title {
+    margin-bottom: 0px!important;
+}
 .card-content {
     padding: 0px;
     padding-bottom: 10px;
